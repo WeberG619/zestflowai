@@ -221,21 +221,35 @@
         }
         
         .service-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--highlight), var(--accent));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
+            width: 100%;
+            height: 200px;
+            border-radius: 12px 12px 0 0;
+            margin: -40px -40px 20px -40px;
             overflow: hidden;
+            position: relative;
         }
         
         .service-icon img {
-            width: 30px;
-            height: 30px;
-            filter: brightness(0) invert(1);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover .service-icon img {
+            transform: scale(1.1);
+        }
+        
+        .service-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--highlight);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
         }
         
         .service-card h3 {
@@ -347,6 +361,21 @@
             background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&h=800&fit=crop') center/cover;
             opacity: 0.05;
             z-index: 0;
+        }
+        
+        .testimonial-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top, rgba(50, 130, 184, 0.05), transparent);
         }
         
         .testimonials .container {
@@ -740,23 +769,26 @@
         </div>
     </section>
     
-    <section class="start-here" style="padding: 60px 0; background: #f0f4f8; text-align: center;">
+    <section class="start-here" style="padding: 60px 0; background: linear-gradient(rgba(240, 244, 248, 0.9), rgba(240, 244, 248, 0.9)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&h=600&fit=crop') center/cover; text-align: center;">
         <div class="container">
             <h2 style="font-size: 36px; color: var(--primary); margin-bottom: 40px;">Not Sure Where to Start?</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 900px; margin: 0 auto;">
-                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 100px; background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=200&fit=crop') center/cover; opacity: 0.1;"></div>
                     <div style="font-size: 48px; margin-bottom: 20px;">🚨</div>
                     <h3 style="font-size: 24px; margin-bottom: 15px; color: var(--primary);">Website Broken?</h3>
                     <p style="color: #666; margin-bottom: 20px;">If you need an urgent fix, I can help today.</p>
                     <a href="/bug-fixing-landing-page.html" style="display: inline-block; background: #e74c3c; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: 600;">Get Emergency Fix →</a>
                 </div>
-                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 100px; background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=200&fit=crop') center/cover; opacity: 0.1;"></div>
                     <div style="font-size: 48px; margin-bottom: 20px;">⏰</div>
                     <h3 style="font-size: 24px; margin-bottom: 15px; color: var(--primary);">Wasting Time on Tasks?</h3>
                     <p style="color: #666; margin-bottom: 20px;">Let's automate it and save you hours every week.</p>
                     <a href="/automation-landing-page.html" style="display: inline-block; background: var(--highlight); color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: 600;">See Automation Options →</a>
                 </div>
-                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 100px; background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=200&fit=crop') center/cover; opacity: 0.1;"></div>
                     <div style="font-size: 48px; margin-bottom: 20px;">💭</div>
                     <h3 style="font-size: 24px; margin-bottom: 15px; color: var(--primary);">Just Browsing?</h3>
                     <p style="color: #666; margin-bottom: 20px;">Check out my work and see what's possible.</p>
@@ -776,7 +808,8 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828778.png" alt="Bug Fix Icon">
+                        <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop" alt="Bug Fixing">
+                        <span class="service-badge">Most Popular</span>
                     </div>
                     <h3>Bug Fixes & Debugging</h3>
                     <p>Quick resolution of website errors, broken features, and JavaScript issues. I'll diagnose and fix problems that are blocking your business.</p>
@@ -785,7 +818,8 @@
                 
                 <div class="service-card">
                     <div class="service-icon">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2920/2920322.png" alt="Automation Icon">
+                        <img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=600&h=400&fit=crop" alt="Python Automation">
+                        <span class="service-badge">Save 10+ hrs/week</span>
                     </div>
                     <h3>Automation Development</h3>
                     <p>Custom Python scripts that eliminate repetitive tasks. From data processing to web scraping, I build tools that save you hours every week.</p>
@@ -794,7 +828,7 @@
                 
                 <div class="service-card">
                     <div class="service-icon">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2875/2875438.png" alt="Data Icon">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Data Solutions">
                     </div>
                     <h3>Data & Excel Solutions</h3>
                     <p>Complex spreadsheet formulas, VBA macros, and automated reporting systems. Transform your data chaos into organized insights.</p>
@@ -803,7 +837,7 @@
                 
                 <div class="service-card">
                     <div class="service-icon">
-                        <img src="https://cdn-icons-png.flaticon.com/512/4215/4215831.png" alt="Testing Icon">
+                        <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?w=600&h=400&fit=crop" alt="App Testing">
                     </div>
                     <h3>Application Testing</h3>
                     <p>Comprehensive testing with detailed bug reports, reproduction steps, and priority assessments. Ensure your app works flawlessly.</p>
@@ -812,7 +846,8 @@
                 
                 <div class="service-card">
                     <div class="service-icon">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1913/1913908.png" alt="API Icon">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop" alt="API Integration">
+                        <span class="service-badge">Fast Setup</span>
                     </div>
                     <h3>API Integration</h3>
                     <p>Connect your applications and automate data flow between platforms. From payment gateways to CRM systems, I handle the technical complexity.</p>
@@ -821,7 +856,8 @@
                 
                 <div class="service-card">
                     <div class="service-icon">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1693/1693746.png" alt="AI Icon">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop" alt="AI Implementation">
+                        <span class="service-badge">Latest Tech</span>
                     </div>
                     <h3>AI Implementation</h3>
                     <p>Integrate ChatGPT and other AI models into your workflow. Custom prompts, automation, and intelligent systems that enhance your business.</p>
@@ -836,6 +872,24 @@
             <div class="section-header">
                 <h2>Recent Work</h2>
                 <p>Solutions that delivered real results for real businesses</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px;">
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; border-radius: 10px; color: white; text-align: center;">
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=100&h=100&fit=crop" alt="Success" style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 20px;">
+                    <h3 style="font-size: 24px; margin-bottom: 10px;">Emergency Fix Hero</h3>
+                    <p style="opacity: 0.9;">"Their checkout was broken on Black Friday. Fixed in 90 minutes. Saved their biggest sales day."</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 40px; border-radius: 10px; color: white; text-align: center;">
+                    <img src="https://images.unsplash.com/photo-1556745757-8d76bdb6984b?w=100&h=100&fit=crop" alt="Automation" style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 20px;">
+                    <h3 style="font-size: 24px; margin-bottom: 10px;">Automation Wizard</h3>
+                    <p style="opacity: 0.9;">"10 hours of manual Excel work now runs automatically every morning. Life changing!"</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 40px; border-radius: 10px; color: white; text-align: center;">
+                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=100&h=100&fit=crop" alt="Testing" style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 20px;">
+                    <h3 style="font-size: 24px; margin-bottom: 10px;">Bug Hunter</h3>
+                    <p style="opacity: 0.9;">"Found 3 security vulnerabilities before launch. Prevented a potential disaster."</p>
+                </div>
             </div>
             
             <div class="portfolio-grid">
@@ -940,30 +994,54 @@
         </div>
     </section>
     
-    <section class="trust-badges">
+    <section class="trust-badges" style="background: linear-gradient(rgba(248, 249, 250, 0.95), rgba(248, 249, 250, 0.95)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&h=600&fit=crop') center/cover;">
         <div class="container">
-            <div class="badges-grid">
+            <h2 style="text-align: center; font-size: 36px; margin-bottom: 50px; color: var(--primary);">Why Choose Me Over Others?</h2>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 900px; margin: 0 auto;">
+                <div style="background: white; padding: 40px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                    <h3 style="color: #e74c3c; font-size: 24px; margin-bottom: 20px;">❌ Other Developers</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 10px 0; color: #666;">⏰ "I'll get back to you in 3-5 days"</li>
+                        <li style="padding: 10px 0; color: #666;">💸 Hidden fees and scope creep</li>
+                        <li style="padding: 10px 0; color: #666;">🎯 Focus on what looks good, not what works</li>
+                        <li style="padding: 10px 0; color: #666;">📚 Overwhelming tech jargon</li>
+                        <li style="padding: 10px 0; color: #666;">🚶 Disappear after payment</li>
+                    </ul>
+                </div>
+                <div style="background: linear-gradient(135deg, #27ae60, #2ecc71); padding: 40px; border-radius: 10px; color: white; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -20px; right: -20px; background: #f39c12; color: white; padding: 10px 30px; border-radius: 20px; transform: rotate(15deg); font-weight: 600;">Your Choice</div>
+                    <h3 style="font-size: 24px; margin-bottom: 20px;">✅ Working With Me</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 10px 0;">⚡ Response within 2 hours</li>
+                        <li style="padding: 10px 0;">💰 Fixed price, no surprises</li>
+                        <li style="padding: 10px 0;">🎯 Focus on ROI and results</li>
+                        <li style="padding: 10px 0;">💬 Plain English explanations</li>
+                        <li style="padding: 10px 0;">🛡️ Support after delivery</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="badges-grid" style="margin-top: 60px;">
                 <div class="badge-item">
-                    <div class="badge-icon">🔒</div>
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200&h=200&fit=crop" alt="Secure" style="width: 60px; height: 60px; border-radius: 50%; margin-bottom: 10px;">
                     <span class="badge-text">100% Secure</span>
                 </div>
                 <div class="badge-item">
-                    <div class="badge-icon">⚡</div>
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=200&h=200&fit=crop" alt="Fast" style="width: 60px; height: 60px; border-radius: 50%; margin-bottom: 10px;">
                     <span class="badge-text">24hr Delivery</span>
                 </div>
                 <div class="badge-item">
-                    <div class="badge-icon">💰</div>
-                    <span class="badge-text">Money Back Guarantee</span>
+                    <img src="https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=200&h=200&fit=crop" alt="Guarantee" style="width: 60px; height: 60px; border-radius: 50%; margin-bottom: 10px;">
+                    <span class="badge-text">Money Back</span>
                 </div>
                 <div class="badge-item">
-                    <div class="badge-icon">🏆</div>
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=200&h=200&fit=crop" alt="Experience" style="width: 60px; height: 60px; border-radius: 50%; margin-bottom: 10px;">
                     <span class="badge-text">200+ Projects</span>
                 </div>
             </div>
         </div>
     </section>
     
-    <section class="process" id="process">
+    <section class="process" id="process" style="background: linear-gradient(rgba(248, 249, 250, 0.95), rgba(248, 249, 250, 0.95)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&h=800&fit=crop') center/cover;">
         <div class="container">
             <div class="section-header">
                 <h2>How I Work</h2>
@@ -1034,6 +1112,34 @@
                 <div class="faq-item">
                     <div class="faq-question">How do you handle project communication?</div>
                     <div class="faq-answer">I provide regular updates via your preferred method - email, Slack, Discord, or project management tools. You'll never wonder about progress, and I respond to messages within 2-4 hours during business hours.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="visual-stats" style="padding: 100px 0; background: linear-gradient(rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95)), url('https://images.unsplash.com/photo-1551434678-e076c223a692?w=1920&h=800&fit=crop') center/cover; color: white;">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 42px; margin-bottom: 60px;">Real Results That Matter</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+                <div style="text-align: center;">
+                    <div style="font-size: 64px; font-weight: 700; color: #3282b8; margin-bottom: 10px;">520</div>
+                    <p style="font-size: 18px; opacity: 0.9;">Hours Saved Per Year</p>
+                    <p style="font-size: 14px; opacity: 0.7;">For a single client's reporting</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 64px; font-weight: 700; color: #27ae60; margin-bottom: 10px;">$47K</div>
+                    <p style="font-size: 18px; opacity: 0.9;">Revenue Recovered</p>
+                    <p style="font-size: 14px; opacity: 0.7;">From a 2-hour checkout fix</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 64px; font-weight: 700; color: #e74c3c; margin-bottom: 10px;">2hrs</div>
+                    <p style="font-size: 18px; opacity: 0.9;">Average Fix Time</p>
+                    <p style="font-size: 14px; opacity: 0.7;">For emergency repairs</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 64px; font-weight: 700; color: #f39c12; margin-bottom: 10px;">100%</div>
+                    <p style="font-size: 18px; opacity: 0.9;">Satisfaction Rate</p>
+                    <p style="font-size: 14px; opacity: 0.7;">Money back guarantee</p>
                 </div>
             </div>
         </div>
