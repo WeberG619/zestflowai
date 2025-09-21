@@ -46,11 +46,14 @@
             width: 100%;
             top: 0;
             z-index: 1100;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            transform: translateY(0);
         }
         
         .announcement-bar.hidden {
             transform: translateY(-100%);
+            visibility: hidden;
+            opacity: 0;
         }
         
         .announcement-content {
@@ -1567,6 +1570,12 @@
         });
     </script>
     <script src="/website-enhancements.js"></script>
+    
+    <script>
+        // Clear old announcement dismissal for testing
+        // Remove this line after testing
+        // localStorage.removeItem('announcementDismissed');
+    </script>
     
     <!-- Quick Contact Widget -->
     <div class="quick-contact-widget" id="quickContactWidget">
