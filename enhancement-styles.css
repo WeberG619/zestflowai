@@ -1,0 +1,336 @@
+/* Business-driving enhancement styles */
+
+/* Notification Bar */
+.notification-bar {
+    background: linear-gradient(90deg, #e74c3c, #c0392b);
+    color: white;
+    padding: 12px 20px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    animation: slideDown 0.5s ease-out;
+}
+
+.notification-bar a {
+    color: white;
+    font-weight: 600;
+}
+
+.close-notification {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+/* Adjust header for notification bar */
+header {
+    top: 48px !important;
+}
+
+.hero {
+    margin-top: 48px;
+}
+
+/* Exit Intent Popup */
+.exit-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.popup-content {
+    background: white;
+    padding: 50px;
+    border-radius: 10px;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+}
+
+.close-popup {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #666;
+}
+
+.popup-form {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+.popup-form input {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.popup-form button {
+    background: #3282b8;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* Floating CTA */
+.floating-cta {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1500;
+    animation: bounceIn 1s ease-out;
+}
+
+.floating-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #e74c3c;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 5px 20px rgba(231, 76, 60, 0.4);
+    transition: all 0.3s;
+}
+
+.floating-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(231, 76, 60, 0.5);
+}
+
+.urgency {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: pulse 2s infinite;
+}
+
+/* Chat Widget */
+.chat-widget {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 1500;
+}
+
+.chat-button {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+}
+
+.chat-button:hover {
+    transform: scale(1.05);
+}
+
+.chat-icon {
+    font-size: 20px;
+}
+
+.chat-status {
+    font-weight: 600;
+}
+
+.chat-window {
+    position: absolute;
+    bottom: 70px;
+    left: 0;
+    width: 300px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.chat-header {
+    background: #27ae60;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.chat-body {
+    padding: 20px;
+}
+
+.chat-body p {
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.chat-cta {
+    display: inline-block;
+    background: #3282b8;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+/* Social Proof Toasts */
+.social-proof-toast {
+    position: fixed;
+    bottom: 100px;
+    left: -400px;
+    background: white;
+    padding: 20px 30px;
+    border-radius: 5px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #27ae60;
+    transition: left 0.3s ease-out;
+    z-index: 1400;
+}
+
+.social-proof-toast.show {
+    left: 30px;
+}
+
+/* Scroll Progress Bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3282b8, #27ae60);
+    width: 0%;
+    z-index: 2001;
+    transition: width 0.1s;
+}
+
+/* Trust Badges Section */
+.trust-badges {
+    background: #f8f9fa;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.badges-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.badge-icon {
+    width: 60px;
+    height: 60px;
+    background: #3282b8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+}
+
+.badge-text {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Animations */
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .notification-bar {
+        font-size: 14px;
+        padding: 10px;
+    }
+    
+    .floating-cta {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .chat-widget {
+        bottom: 80px;
+        left: 20px;
+    }
+    
+    .popup-content {
+        padding: 30px;
+        margin: 20px;
+    }
+    
+    .popup-form {
+        flex-direction: column;
+    }
+}
