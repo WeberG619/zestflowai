@@ -254,8 +254,12 @@
                 <li><a href="/contact.html" class="contact-btn">Get Started</a></li>
                 <li>
                     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                        <span class="sun-icon">☀️</span>
-                        <span class="moon-icon">🌙</span>
+                        <svg class="sun-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 17.5C9.5 17.5 7.5 15.5 7.5 13S9.5 8.5 12 8.5 16.5 10.5 16.5 13 14.5 17.5 12 17.5M12 7C8.7 7 6 9.7 6 13S8.7 19 12 19 18 16.3 18 13 15.3 7 12 7M12 2L14.4 6.4L19 5.7L15.8 9.2L17.3 13.6L12.9 11.1L8.6 13.7L10 9.2L6.8 5.6L11.5 6.3L12 2M3.3 7L7.8 5.5L5.5 1M18.5 1L16.2 5.5L20.7 7M1 13H5.5V11H1M18.5 11V13H23V11M3.3 19L5.6 14.5L1 13M23 13L18.4 14.5L20.7 19"/>
+                    </svg>
+                        <svg class="moon-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"/>
+                    </svg>
                     </button>
                 </li>
             </ul>
@@ -535,20 +539,42 @@ def generate_weekly_report():
             transform: rotate(180deg);
         }
         
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            transition: var(--theme-transition);
+            position: absolute;
+        }
+        
         .sun-icon {
-            display: block;
+            fill: var(--text-dark);
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
         }
         
         .moon-icon {
-            display: none;
+            fill: var(--text-dark);
+            opacity: 0;
+            transform: rotate(-180deg) scale(0);
         }
         
-        body.dark-theme .sun-icon {
-            display: none;
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            transition: var(--theme-transition);
+            position: absolute;
         }
         
-        body.dark-theme .moon-icon {
-            display: block;
+        .sun-icon {
+            fill: var(--text-dark);
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+        
+        .moon-icon {
+            fill: var(--text-dark);
+            opacity: 0;
+            transform: rotate(-180deg) scale(0);
         }
         
         /* Dark theme specific adjustments */
