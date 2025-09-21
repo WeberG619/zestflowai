@@ -105,10 +105,16 @@
         }
         
         .logo {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 700;
             color: var(--primary);
             letter-spacing: -0.5px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .logo:hover {
+            color: var(--highlight);
         }
         
         .nav-links {
@@ -731,6 +737,167 @@
             transition: 0.3s;
         }
         
+        /* Adjust all sections when announcement is hidden */
+        body.no-announcement .services,
+        body.no-announcement section {
+            scroll-margin-top: 80px; /* Height of header without announcement */
+        }
+        
+        /* Quick Contact Widget */
+        .quick-contact-widget {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            z-index: 999;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            padding: 20px;
+            width: 280px;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+        
+        .quick-contact-widget.hidden {
+            transform: translateY(400px);
+        }
+        
+        .widget-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .widget-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .widget-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #999;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .widget-close:hover {
+            background: #f0f0f0;
+            color: var(--primary);
+        }
+        
+        .availability-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: #e8f5e9;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #27ae60;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .widget-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .widget-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .widget-btn-primary {
+            background: var(--highlight);
+            color: white;
+        }
+        
+        .widget-btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .widget-btn-secondary {
+            background: #f0f0f0;
+            color: var(--primary);
+        }
+        
+        .widget-btn-secondary:hover {
+            background: #e0e0e0;
+        }
+        
+        /* Trust Badges Section */
+        .trust-badges {
+            background: white;
+            padding: 40px 0;
+            border-top: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .badges-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .badge-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .badge-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--bg-section);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--highlight);
+            font-weight: bold;
+        }
+        
+        .badge-text {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+        }
+        
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -768,6 +935,31 @@
                 align-items: center;
             }
             
+            .quick-contact-widget {
+                right: 10px;
+                bottom: 70px;
+                width: calc(100% - 20px);
+                max-width: 350px;
+            }
+            
+            .trust-badges {
+                padding: 30px 0;
+            }
+            
+            .badges-container {
+                gap: 30px;
+            }
+            
+            .badge-item {
+                gap: 5px;
+            }
+            
+            .badge-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
             .footer-content {
                 flex-direction: column;
                 gap: 20px;
@@ -789,7 +981,7 @@
     
     <header id="mainHeader">
         <nav class="container">
-            <div class="logo">ZestFlow</div>
+            <a href="/" class="logo">ZestFlow</a>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
                 <li><a href="/pricing.html">Pricing</a></li>
@@ -927,6 +1119,34 @@
                     <h3>AI Implementation</h3>
                     <p>Integrate ChatGPT and other AI models into your workflow. Custom prompts, automation, and intelligent systems that enhance your business.</p>
                     <div class="service-price">Starting at $100</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Trust Badges -->
+    <section class="trust-badges">
+        <div class="container">
+            <div class="badges-container">
+                <div class="badge-item">
+                    <div class="badge-icon">100%</div>
+                    <div class="badge-text">Satisfaction<br>Guarantee</div>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">24h</div>
+                    <div class="badge-text">Average<br>Response Time</div>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">200+</div>
+                    <div class="badge-text">Projects<br>Completed</div>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">5.0</div>
+                    <div class="badge-text">Average<br>Rating</div>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">USA</div>
+                    <div class="badge-text">Based<br>Developer</div>
                 </div>
             </div>
         </div>
@@ -1280,6 +1500,9 @@
             const header = document.getElementById('mainHeader');
             const hero = document.querySelector('.hero');
             
+            // Add transition class to body
+            document.body.classList.add('no-announcement');
+            
             // Hide announcement bar
             announcementBar.classList.add('hidden');
             
@@ -1290,6 +1513,12 @@
             if (hero) {
                 hero.classList.add('no-announcement');
             }
+            
+            // Adjust all section paddings
+            document.querySelectorAll('section').forEach(section => {
+                if (section.classList.contains('hero')) return;
+                section.style.scrollMarginTop = '80px';
+            });
             
             // Save dismissal in localStorage
             localStorage.setItem('announcementDismissed', 'true');
@@ -1304,11 +1533,18 @@
                 const header = document.getElementById('mainHeader');
                 const hero = document.querySelector('.hero');
                 
+                document.body.classList.add('no-announcement');
                 announcementBar.classList.add('hidden');
                 header.classList.add('no-announcement');
                 if (hero) {
                     hero.classList.add('no-announcement');
                 }
+                
+                // Adjust all section paddings
+                document.querySelectorAll('section').forEach(section => {
+                    if (section.classList.contains('hero')) return;
+                    section.style.scrollMarginTop = '80px';
+                });
             }
         });
         
@@ -1331,5 +1567,52 @@
         });
     </script>
     <script src="/website-enhancements.js"></script>
+    
+    <!-- Quick Contact Widget -->
+    <div class="quick-contact-widget" id="quickContactWidget">
+        <div class="widget-header">
+            <h3 class="widget-title">Need Help?</h3>
+            <button class="widget-close" onclick="closeWidget()">×</button>
+        </div>
+        
+        <div class="availability-status">
+            <div class="status-dot"></div>
+            <span>Available for new projects</span>
+        </div>
+        
+        <p style="font-size: 14px; color: #666; margin-bottom: 15px;">
+            Quick response guaranteed. Let's discuss your project!
+        </p>
+        
+        <div class="widget-buttons">
+            <a href="/contact.html?urgent=true" class="widget-btn widget-btn-primary">
+                Get Emergency Help
+            </a>
+            <a href="mailto:weber@zestflowai.com" class="widget-btn widget-btn-secondary">
+                Email Directly
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Quick Contact Widget
+        function closeWidget() {
+            document.getElementById('quickContactWidget').classList.add('hidden');
+            localStorage.setItem('widgetClosed', 'true');
+        }
+        
+        // Check if widget was previously closed
+        if (localStorage.getItem('widgetClosed') === 'true') {
+            document.getElementById('quickContactWidget').classList.add('hidden');
+        }
+        
+        // Show widget after 30 seconds if not previously closed
+        setTimeout(function() {
+            const widgetClosed = localStorage.getItem('widgetClosed');
+            if (widgetClosed !== 'true') {
+                document.getElementById('quickContactWidget').classList.remove('hidden');
+            }
+        }, 30000);
+    </script>
 </body>
 </html>
