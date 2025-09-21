@@ -114,6 +114,12 @@
             text-align: center;
         }
         
+        /* Dark mode hero */
+        body.dark-theme .pricing-hero {
+            background: linear-gradient(rgba(10, 10, 15, 0.95), rgba(16, 16, 24, 0.95)), 
+                        url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1920&h=600&fit=crop') center/cover;
+        }
+        
         .pricing-hero h1 {
             font-size: 48px;
             margin-bottom: 20px;
@@ -341,6 +347,11 @@
             margin: 0 auto;
         }
         
+        body.dark-theme .quote-box {
+            background: linear-gradient(135deg, #0a0a0f, #16161f);
+            color: #f5f5f5;
+        }
+        
         .quote-box h2 {
             font-size: 36px;
             margin-bottom: 20px;
@@ -397,6 +408,11 @@
             background: var(--success);
             color: white;
             text-align: center;
+        }
+        
+        body.dark-theme .guarantee-section {
+            background: #1b5e20;
+            color: #ffffff;
         }
         
         .guarantee-content {

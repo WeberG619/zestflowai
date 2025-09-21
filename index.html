@@ -187,6 +187,12 @@
             overflow: hidden;
         }
         
+        /* Dark mode hero */
+        body.dark-theme .hero {
+            background: linear-gradient(rgba(10, 10, 15, 0.95), rgba(16, 16, 24, 0.95)), 
+                        url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1920&h=1080&fit=crop') center/cover;
+        }
+        
         .hero-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -714,6 +720,47 @@
             border-radius: 10px;
             box-shadow: 0 5px 20px var(--shadow-color);
             border: 1px solid var(--border-color);
+        }
+        
+        /* Banner Sections with Background Images */
+        .start-here {
+            background: linear-gradient(rgba(240, 244, 248, 0.9), rgba(240, 244, 248, 0.9)), 
+                        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&h=600&fit=crop') center/cover;
+        }
+        
+        body.dark-theme .start-here {
+            background: linear-gradient(rgba(22, 22, 32, 0.95), rgba(26, 26, 38, 0.95)), 
+                        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&h=600&fit=crop') center/cover;
+        }
+        
+        .trust-badges {
+            background: linear-gradient(rgba(248, 249, 250, 0.95), rgba(248, 249, 250, 0.95)), 
+                        url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&h=600&fit=crop') center/cover;
+        }
+        
+        body.dark-theme .trust-badges {
+            background: linear-gradient(rgba(22, 22, 32, 0.95), rgba(26, 26, 38, 0.95)), 
+                        url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&h=600&fit=crop') center/cover;
+        }
+        
+        .process {
+            background: linear-gradient(rgba(248, 249, 250, 0.95), rgba(248, 249, 250, 0.95)), 
+                        url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&h=800&fit=crop') center/cover;
+        }
+        
+        body.dark-theme .process {
+            background: linear-gradient(rgba(22, 22, 32, 0.95), rgba(26, 26, 38, 0.95)), 
+                        url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&h=800&fit=crop') center/cover;
+        }
+        
+        .visual-stats {
+            background: linear-gradient(rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95)), 
+                        url('https://images.unsplash.com/photo-1551434678-e076c223a692?w=1920&h=800&fit=crop') center/cover;
+        }
+        
+        body.dark-theme .visual-stats {
+            background: linear-gradient(rgba(10, 10, 15, 0.95), rgba(16, 16, 24, 0.95)), 
+                        url('https://images.unsplash.com/photo-1551434678-e076c223a692?w=1920&h=800&fit=crop') center/cover;
         }
         
         /* Footer */

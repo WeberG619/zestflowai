@@ -109,6 +109,12 @@
             color: white;
         }
         
+        /* Dark mode hero */
+        body.dark-theme .about-hero {
+            background: linear-gradient(rgba(10, 10, 15, 0.95), rgba(16, 16, 24, 0.95)), 
+                        url('https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=1920&h=800&fit=crop') center/cover;
+        }
+        
         .hero-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -320,6 +326,12 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             text-align: center;
+        }
+        
+        /* Dark mode CTA */
+        body.dark-theme .about-cta {
+            background: linear-gradient(135deg, #0a0a0f, #16161f);
+            color: #f5f5f5;
         }
         
         .about-cta h2 {
