@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZestFlow - Technical Solutions & Development</title>
+    <meta name="description" content="Professional technical solutions including bug fixes, automation, API integration, and development services. Fast delivery, competitive rates.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f4c75;
+            --highlight: #3282b8;
+            --text-light: #f5f5f5;
+            --text-dark: #333;
+            --bg-light: #ffffff;
+            --bg-section: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--highlight);
+        }
+        
+        .contact-btn {
+            background: var(--highlight);
+            color: white;
+            padding: 10px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .contact-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(22, 33, 62, 0.9)), 
+                        url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1920&h=1080&fit=crop') center/cover;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-text p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--highlight);
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .hero-image {
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: var(--bg-section);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .section-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--highlight), var(--accent));
+            transform: translateX(-100%);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card:hover::before {
+            transform: translateX(0);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--highlight), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .service-icon img {
+            width: 30px;
+            height: 30px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .service-card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .service-price {
+            font-size: 18px;
+            color: var(--highlight);
+            font-weight: 600;
+        }
+        
+        /* Portfolio Section */
+        .portfolio {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+        }
+        
+        .portfolio-item {
+            background: var(--bg-section);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .portfolio-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-content {
+            padding: 30px;
+        }
+        
+        .portfolio-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .portfolio-content p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tech-tag {
+            background: rgba(50, 130, 184, 0.1);
+            color: var(--highlight);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--bg-section);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&h=800&fit=crop') center/cover;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .testimonials .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 60px;
+            color: var(--highlight);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 18px;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .rating {
+            color: #ffc107;
+            margin-top: 15px;
+        }
+        
+        /* Process Section */
+        .process {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--highlight);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        
+        .process-step h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .process-step p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background: linear-gradient(rgba(248, 249, 250, 0.9), rgba(248, 249, 250, 0.9)),
+                        url('https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=1920&h=800&fit=crop') center/cover;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .faq-item {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .faq-question::before {
+            content: 'Q';
+            background: var(--highlight);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        
+        .faq-answer {
+            color: #666;
+            line-height: 1.8;
+            padding-left: 40px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1920&h=800&fit=crop') center/cover;
+            opacity: 0.1;
+            transform: rotate(-15deg);
+        }
+        
+        .cta .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border: 2px solid white;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        
+        .copyright {
+            opacity: 0.6;
+            font-size: 14px;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .mobile-menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 36px;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+            }
+            
+            .services-grid,
+            .portfolio-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">ZestFlow</div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <a href="#contact" class="contact-btn">Get Started</a>
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Technical Solutions<br>Delivered Fast</h1>
+                    <p>From bug fixes to full automation systems, I deliver quality code that works.</p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">200+</div>
+                            <div class="stat-label">Projects</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">24hr</div>
+                            <div class="stat-label">Avg Delivery</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">5.0</div>
+                            <div class="stat-label">Rating</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=600&h=400&fit=crop" alt="Developer working on code">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Services</h2>
+                <p>Specialized technical solutions for modern businesses</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828778.png" alt="Bug Fix Icon">
+                    </div>
+                    <h3>Bug Fixes & Debugging</h3>
+                    <p>Quick resolution of website errors, broken features, and JavaScript issues. I'll diagnose and fix problems that are blocking your business.</p>
+                    <div class="service-price">Starting at $30</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2920/2920322.png" alt="Automation Icon">
+                    </div>
+                    <h3>Automation Development</h3>
+                    <p>Custom Python scripts that eliminate repetitive tasks. From data processing to web scraping, I build tools that save you hours every week.</p>
+                    <div class="service-price">Starting at $50</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2875/2875438.png" alt="Data Icon">
+                    </div>
+                    <h3>Data & Excel Solutions</h3>
+                    <p>Complex spreadsheet formulas, VBA macros, and automated reporting systems. Transform your data chaos into organized insights.</p>
+                    <div class="service-price">Starting at $25</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4215/4215831.png" alt="Testing Icon">
+                    </div>
+                    <h3>Application Testing</h3>
+                    <p>Comprehensive testing with detailed bug reports, reproduction steps, and priority assessments. Ensure your app works flawlessly.</p>
+                    <div class="service-price">$35/hour</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1913/1913908.png" alt="API Icon">
+                    </div>
+                    <h3>API Integration</h3>
+                    <p>Connect your applications and automate data flow between platforms. From payment gateways to CRM systems, I handle the technical complexity.</p>
+                    <div class="service-price">Starting at $75</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1693/1693746.png" alt="AI Icon">
+                    </div>
+                    <h3>AI Implementation</h3>
+                    <p>Integrate ChatGPT and other AI models into your workflow. Custom prompts, automation, and intelligent systems that enhance your business.</p>
+                    <div class="service-price">Starting at $100</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2>Recent Work</h2>
+                <p>Solutions that delivered real results for real businesses</p>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop" alt="E-commerce project">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>E-commerce Payment Integration</h3>
+                        <p>Fixed critical checkout bug causing 30% cart abandonment. Implemented robust error handling and payment gateway integration. Delivered same-day solution.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Stripe API</span>
+                            <span class="tech-tag">React</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Financial automation">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Financial Report Automation</h3>
+                        <p>Developed Python system that generates weekly reports from multiple data sources. Reduced manual work from 10 hours to 10 minutes.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">Excel Automation</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop" alt="Mobile app testing">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Mobile App QA Testing</h3>
+                        <p>Conducted comprehensive testing for fintech application. Identified 47 critical bugs with detailed reproduction steps and severity ratings.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">iOS/Android</span>
+                            <span class="tech-tag">JIRA</span>
+                            <span class="tech-tag">Test Automation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Client Testimonials</h2>
+                <p>What clients say about working with me</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Weber fixed our payment processing bug in just 2 hours after our team struggled with it for days. His solution was clean, well-documented, and has worked flawlessly since.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Sarah Mitchell">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Mitchell</h4>
+                            <p>CTO, TechStart Inc.</p>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">The Excel automation script Weber built saves our team 15+ hours every week. Best ROI we've seen on any technical investment. Highly recommend!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" alt="James Davis">
+                        </div>
+                        <div class="author-info">
+                            <h4>James Davis</h4>
+                            <p>Operations Manager, DataFlow</p>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Professional, fast, and actually delivers when promised. Weber's bug testing revealed critical issues we never would have found. Worth every penny.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Lisa Kim">
+                        </div>
+                        <div class="author-info">
+                            <h4>Lisa Kim</h4>
+                            <p>Product Manager, AppVentures</p>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="process" id="process">
+        <div class="container">
+            <div class="section-header">
+                <h2>How I Work</h2>
+                <p>A streamlined process designed for speed and quality</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Quick Assessment</h3>
+                    <p>I review your requirements and provide a clear timeline and quote within hours</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Rapid Development</h3>
+                    <p>Work begins immediately with regular progress updates to keep you informed</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Testing & Review</h3>
+                    <p>Thorough testing ensures everything works perfectly before delivery</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Fast Delivery</h3>
+                    <p>Complete solution delivered with documentation and support included</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about my services</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">How quickly can you start on my project?</div>
+                    <div class="faq-answer">I typically start within 2-4 hours of receiving project details. For urgent fixes, I can often begin immediately. My goal is to deliver solutions as quickly as possible without compromising quality.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What if the solution doesn't work as expected?</div>
+                    <div class="faq-answer">I provide free revisions until the solution meets your requirements. My work comes with a satisfaction guarantee - if there are any issues, I'll fix them at no additional cost.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Do you work with clients outside the US?</div>
+                    <div class="faq-answer">Yes! I work with clients globally. All work is done remotely, and I'm flexible with communication across different time zones. Payment is accepted via PayPal, Wise, or bank transfer.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Can you sign an NDA?</div>
+                    <div class="faq-answer">Absolutely. I'm happy to sign NDAs and confidentiality agreements. Your code, data, and business information are always treated with complete confidentiality.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What technologies do you work with?</div>
+                    <div class="faq-answer">I specialize in Python, JavaScript, Excel/VBA, and various APIs. I also work with React, Node.js, SQL databases, and AI integrations. If you need something specific, just ask!</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How do you handle project communication?</div>
+                    <div class="faq-answer">I provide regular updates via your preferred method - email, Slack, Discord, or project management tools. You'll never wonder about progress, and I respond to messages within 2-4 hours during business hours.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Let's solve your technical challenges quickly and professionally</p>
+            <div class="cta-buttons">
+                <a href="mailto:contact@zestflowai.com" class="btn-primary">Start Your Project</a>
+                <a href="#portfolio" class="btn-secondary">View More Work</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">ZestFlow</div>
+                <ul class="footer-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="mailto:contact@zestflowai.com">Contact</a></li>
+                </ul>
+            </div>
+            <div class="copyright">
+                © 2024 ZestFlow. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle?.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
