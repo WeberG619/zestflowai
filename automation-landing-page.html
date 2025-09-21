@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/consistent-styles.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* Light Theme (default) */
         :root {
             --primary: #1a1a2e;
             --secondary: #16213e;
@@ -18,11 +19,37 @@
             --text-dark: #333;
             --bg-light: #ffffff;
             --bg-section: #f8f9fa;
+            --card-bg: #ffffff;
+            --border-color: rgba(0, 0, 0, 0.05);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --theme-transition: all 0.3s ease;
+            --code-bg: #2c3e50;
+            --code-text: #ecf0f1;
+        }
+        
+        /* Dark Theme */
+        body.dark-theme {
+            --primary: #f5f5f5;
+            --secondary: #e0e0e0;
+            --accent: #64b5f6;
+            --highlight: #90caf9;
+            --success: #4caf50;
+            --text-light: #1a1a2e;
+            --text-dark: #f5f5f5;
+            --bg-light: #1a1a2e;
+            --bg-section: #16213e;
+            --card-bg: #0f4c75;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --code-bg: #1a1a2e;
+            --code-text: #90caf9;
         }
         body {
             font-family: 'Inter', -apple-system, sans-serif;
             color: var(--text-dark);
             line-height: 1.6;
+            background: var(--bg-light);
+            transition: var(--theme-transition);
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         
@@ -61,7 +88,7 @@
         }
         .time-savings {
             padding: 80px 0;
-            background: white;
+            background: var(--bg-light);
         }
         .savings-calculator {
             background: var(--bg-section);
@@ -87,10 +114,11 @@
             margin-top: 50px;
         }
         .example-card {
-            background: white;
+            background: var(--card-bg);
             padding: 40px;
             border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px var(--shadow-color);
+            border: 1px solid var(--border-color);
         }
         .example-card h3 {
             font-size: 24px;
@@ -129,17 +157,18 @@
             border-radius: 5px;
         }
         .code-sample {
-            background: #2c3e50;
-            color: #ecf0f1;
+            background: var(--code-bg);
+            color: var(--code-text);
             padding: 30px;
             border-radius: 10px;
             margin: 40px 0;
             font-family: 'Monaco', monospace;
             overflow-x: auto;
+            border: 1px solid var(--border-color);
         }
         .features {
             padding: 80px 0;
-            background: white;
+            background: var(--bg-light);
         }
         .features-grid {
             display: grid;
@@ -178,11 +207,12 @@
             margin-right: auto;
         }
         .price-card {
-            background: white;
+            background: var(--card-bg);
             padding: 40px;
             border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px var(--shadow-color);
             transition: transform 0.3s;
+            border: 1px solid var(--border-color);
         }
         .price-card:hover {
             transform: translateY(-5px);
@@ -222,6 +252,12 @@
                 <li><a href="/pricing.html">Pricing</a></li>
                 <li><a href="/about.html">About</a></li>
                 <li><a href="/contact.html" class="contact-btn">Get Started</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <span class="sun-icon">☀️</span>
+                        <span class="moon-icon">🌙</span>
+                    </button>
+                </li>
             </ul>
         </nav>
     </header>
@@ -477,6 +513,73 @@ def generate_weekly_report():
                 text-align: center;
             }
         }
+        
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: var(--theme-transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+        }
+        
+        .theme-toggle:hover {
+            background: var(--bg-section);
+            transform: rotate(180deg);
+        }
+        
+        .sun-icon {
+            display: block;
+        }
+        
+        .moon-icon {
+            display: none;
+        }
+        
+        body.dark-theme .sun-icon {
+            display: none;
+        }
+        
+        body.dark-theme .moon-icon {
+            display: block;
+        }
+        
+        /* Dark theme specific adjustments */
+        body.dark-theme .before {
+            background: rgba(255, 107, 107, 0.2);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+        
+        body.dark-theme .after {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
     </style>
+    
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-theme');
+        }
+        
+        // Toggle theme
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            const isDark = body.classList.contains('dark-theme');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    </script>
 </body>
 </html>
