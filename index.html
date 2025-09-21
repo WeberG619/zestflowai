@@ -36,54 +36,6 @@
             padding: 0 20px;
         }
         
-        /* Announcement Bar */
-        .announcement-bar {
-            background: #ff6b35;
-            color: white;
-            padding: 12px 0;
-            text-align: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1100;
-            transition: all 0.3s ease;
-            transform: translateY(0);
-        }
-        
-        .announcement-bar.hidden {
-            transform: translateY(-100%);
-            visibility: hidden;
-            opacity: 0;
-        }
-        
-        .announcement-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            padding: 0 20px;
-        }
-        
-        .announcement-text {
-            font-weight: 500;
-            font-size: 16px;
-        }
-        
-        .close-announcement {
-            background: transparent;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 24px;
-            line-height: 1;
-            padding: 0 10px;
-            transition: opacity 0.3s;
-        }
-        
-        .close-announcement:hover {
-            opacity: 0.7;
-        }
-        
         /* Header */
         header {
             background: rgba(255, 255, 255, 0.98);
@@ -91,14 +43,10 @@
             padding: 20px 0;
             position: fixed;
             width: 100%;
-            top: 48px; /* Height of announcement bar */
+            top: 0;
             z-index: 1000;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            transition: top 0.3s ease;
-        }
-        
-        header.no-announcement {
-            top: 0;
+            transition: all 0.3s ease;
         }
         
         nav {
@@ -154,17 +102,12 @@
         
         /* Hero Section */
         .hero {
-            padding: 180px 0 80px; /* Increased padding to account for announcement + header */
+            padding: 120px 0 80px; /* Normal padding for fixed header */
             background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(22, 33, 62, 0.9)), 
                         url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1920&h=1080&fit=crop') center/cover;
             color: white;
             position: relative;
             overflow: hidden;
-            transition: padding-top 0.3s ease;
-        }
-        
-        .hero.no-announcement {
-            padding-top: 120px; /* Normal padding when announcement is hidden */
         }
         
         .hero-content {
@@ -740,10 +683,9 @@
             transition: 0.3s;
         }
         
-        /* Adjust all sections when announcement is hidden */
-        body.no-announcement .services,
-        body.no-announcement section {
-            scroll-margin-top: 80px; /* Height of header without announcement */
+        /* Scroll margin for sections */
+        section {
+            scroll-margin-top: 80px; /* Height of fixed header */
         }
         
         /* Quick Contact Widget */
@@ -972,16 +914,6 @@
     <link rel="stylesheet" href="/enhancement-styles.css">
 </head>
 <body>
-    <!-- Announcement Bar -->
-    <div class="announcement-bar" id="announcementBar">
-        <div class="announcement-content">
-            <span class="announcement-text">
-                <strong>Limited Availability</strong> - Only taking 3 new projects this month
-            </span>
-            <button class="close-announcement" onclick="dismissAnnouncement()">×</button>
-        </div>
-    </div>
-    
     <header id="mainHeader">
         <nav class="container">
             <a href="/" class="logo">ZestFlow AI</a>
@@ -1497,60 +1429,6 @@
     </script>
     
     <script>
-        // Handle announcement bar dismissal
-        function dismissAnnouncement() {
-            const announcementBar = document.getElementById('announcementBar');
-            const header = document.getElementById('mainHeader');
-            const hero = document.querySelector('.hero');
-            
-            // Add transition class to body
-            document.body.classList.add('no-announcement');
-            
-            // Hide announcement bar
-            announcementBar.classList.add('hidden');
-            
-            // Adjust header position
-            header.classList.add('no-announcement');
-            
-            // Adjust hero padding
-            if (hero) {
-                hero.classList.add('no-announcement');
-            }
-            
-            // Adjust all section paddings
-            document.querySelectorAll('section').forEach(section => {
-                if (section.classList.contains('hero')) return;
-                section.style.scrollMarginTop = '80px';
-            });
-            
-            // Save dismissal in localStorage
-            localStorage.setItem('announcementDismissed', 'true');
-        }
-        
-        // Check if announcement was previously dismissed
-        window.addEventListener('DOMContentLoaded', function() {
-            const wasDismissed = localStorage.getItem('announcementDismissed');
-            
-            if (wasDismissed === 'true') {
-                const announcementBar = document.getElementById('announcementBar');
-                const header = document.getElementById('mainHeader');
-                const hero = document.querySelector('.hero');
-                
-                document.body.classList.add('no-announcement');
-                announcementBar.classList.add('hidden');
-                header.classList.add('no-announcement');
-                if (hero) {
-                    hero.classList.add('no-announcement');
-                }
-                
-                // Adjust all section paddings
-                document.querySelectorAll('section').forEach(section => {
-                    if (section.classList.contains('hero')) return;
-                    section.style.scrollMarginTop = '80px';
-                });
-            }
-        });
-        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1558,8 +1436,7 @@
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     const headerHeight = document.getElementById('mainHeader').offsetHeight;
-                    const announcementHeight = document.getElementById('announcementBar').classList.contains('hidden') ? 0 : 48;
-                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - announcementHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
                     
                     window.scrollTo({
                         top: targetPosition,
@@ -1570,12 +1447,6 @@
         });
     </script>
     <script src="/website-enhancements.js"></script>
-    
-    <script>
-        // Clear old announcement dismissal for testing
-        // Remove this line after testing
-        // localStorage.removeItem('announcementDismissed');
-    </script>
     
     <!-- Quick Contact Widget -->
     <div class="quick-contact-widget" id="quickContactWidget">
