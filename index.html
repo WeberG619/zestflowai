@@ -454,6 +454,10 @@
             z-index: 0;
         }
         
+        body.dark-theme .testimonials::before {
+            opacity: 0.03; /* Even more subtle in dark mode */
+        }
+        
         .testimonial-card {
             position: relative;
             overflow: hidden;
@@ -594,6 +598,12 @@
                         url('https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=1920&h=800&fit=crop') center/cover;
         }
         
+        /* Dark mode FAQ */
+        body.dark-theme .faq {
+            background: linear-gradient(rgba(22, 22, 32, 0.95), rgba(26, 26, 38, 0.95)),
+                        url('https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=1920&h=800&fit=crop') center/cover;
+        }
+        
         .faq-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
@@ -646,6 +656,11 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+        }
+        
+        /* Dark mode CTA */
+        body.dark-theme .cta {
+            background: linear-gradient(135deg, #0a0a0f, #16161f);
         }
         
         .cta::before {
@@ -1114,7 +1129,7 @@
         </div>
     </section>
     
-    <section class="start-here" style="padding: 60px 0; background: linear-gradient(rgba(240, 244, 248, 0.9), rgba(240, 244, 248, 0.9)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&h=600&fit=crop') center/cover; text-align: center;">
+    <section class="start-here" style="padding: 60px 0; text-align: center;">
         <div class="container">
             <h2 style="font-size: 36px; color: var(--primary); margin-bottom: 40px;">Not Sure Where to Start?</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 900px; margin: 0 auto;">
@@ -1367,7 +1382,7 @@
         </div>
     </section>
     
-    <section class="trust-badges" style="background: linear-gradient(rgba(248, 249, 250, 0.95), rgba(248, 249, 250, 0.95)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&h=600&fit=crop') center/cover;">
+    <section class="trust-badges">
         <div class="container">
             <h2 style="text-align: center; font-size: 36px; margin-bottom: 50px; color: var(--primary);">Why Choose Me Over Others?</h2>
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 900px; margin: 0 auto;">
@@ -1414,7 +1429,7 @@
         </div>
     </section>
     
-    <section class="process" id="process" style="background: linear-gradient(rgba(248, 249, 250, 0.95), rgba(248, 249, 250, 0.95)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&h=800&fit=crop') center/cover;">
+    <section class="process" id="process">
         <div class="container">
             <div class="section-header">
                 <h2>How I Work</h2>
@@ -1490,7 +1505,7 @@
         </div>
     </section>
     
-    <section class="visual-stats" style="padding: 100px 0; background: linear-gradient(rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95)), url('https://images.unsplash.com/photo-1551434678-e076c223a692?w=1920&h=800&fit=crop') center/cover; color: white;">
+    <section class="visual-stats" style="padding: 100px 0; color: white;">
         <div class="container">
             <h2 style="text-align: center; font-size: 42px; margin-bottom: 60px;">Real Results That Matter</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
