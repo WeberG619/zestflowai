@@ -36,6 +36,51 @@
             padding: 0 20px;
         }
         
+        /* Announcement Bar */
+        .announcement-bar {
+            background: #ff6b35;
+            color: white;
+            padding: 12px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1100;
+            transition: transform 0.3s ease;
+        }
+        
+        .announcement-bar.hidden {
+            transform: translateY(-100%);
+        }
+        
+        .announcement-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 0 20px;
+        }
+        
+        .announcement-text {
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        .close-announcement {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 24px;
+            line-height: 1;
+            padding: 0 10px;
+            transition: opacity 0.3s;
+        }
+        
+        .close-announcement:hover {
+            opacity: 0.7;
+        }
+        
         /* Header */
         header {
             background: rgba(255, 255, 255, 0.98);
@@ -43,9 +88,14 @@
             padding: 20px 0;
             position: fixed;
             width: 100%;
-            top: 0;
+            top: 48px; /* Height of announcement bar */
             z-index: 1000;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: top 0.3s ease;
+        }
+        
+        header.no-announcement {
+            top: 0;
         }
         
         nav {
@@ -95,12 +145,17 @@
         
         /* Hero Section */
         .hero {
-            padding: 120px 0 80px;
+            padding: 180px 0 80px; /* Increased padding to account for announcement + header */
             background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(22, 33, 62, 0.9)), 
                         url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1920&h=1080&fit=crop') center/cover;
             color: white;
             position: relative;
             overflow: hidden;
+            transition: padding-top 0.3s ease;
+        }
+        
+        .hero.no-announcement {
+            padding-top: 120px; /* Normal padding when announcement is hidden */
         }
         
         .hero-content {
@@ -722,7 +777,17 @@
     <link rel="stylesheet" href="/enhancement-styles.css">
 </head>
 <body>
-    <header>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar" id="announcementBar">
+        <div class="announcement-content">
+            <span class="announcement-text">
+                <strong>Limited Availability</strong> - Only taking 3 new projects this month
+            </span>
+            <button class="close-announcement" onclick="dismissAnnouncement()">×</button>
+        </div>
+    </div>
+    
+    <header id="mainHeader">
         <nav class="container">
             <div class="logo">ZestFlow</div>
             <ul class="nav-links">
@@ -775,21 +840,21 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 900px; margin: 0 auto;">
                 <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); position: relative; overflow: hidden;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; height: 100px; background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=200&fit=crop') center/cover; opacity: 0.1;"></div>
-                    <div style="font-size: 48px; margin-bottom: 20px;">🚨</div>
+                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=100&h=100&fit=crop" alt="Bug Fix" style="width: 80px; height: 80px; margin-bottom: 20px; border-radius: 8px;">
                     <h3 style="font-size: 24px; margin-bottom: 15px; color: var(--primary);">Website Broken?</h3>
                     <p style="color: #666; margin-bottom: 20px;">If you need an urgent fix, I can help today.</p>
                     <a href="/bug-fixing-landing-page.html" style="display: inline-block; background: #e74c3c; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: 600;">Get Emergency Fix →</a>
                 </div>
                 <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); position: relative; overflow: hidden;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; height: 100px; background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=200&fit=crop') center/cover; opacity: 0.1;"></div>
-                    <div style="font-size: 48px; margin-bottom: 20px;">⏰</div>
+                    <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=100&h=100&fit=crop" alt="Automation" style="width: 80px; height: 80px; margin-bottom: 20px; border-radius: 8px;">
                     <h3 style="font-size: 24px; margin-bottom: 15px; color: var(--primary);">Wasting Time on Tasks?</h3>
                     <p style="color: #666; margin-bottom: 20px;">Let's automate it and save you hours every week.</p>
                     <a href="/automation-landing-page.html" style="display: inline-block; background: var(--highlight); color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: 600;">See Automation Options →</a>
                 </div>
                 <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); position: relative; overflow: hidden;">
                     <div style="position: absolute; top: 0; left: 0; right: 0; height: 100px; background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=200&fit=crop') center/cover; opacity: 0.1;"></div>
-                    <div style="font-size: 48px; margin-bottom: 20px;">💭</div>
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Portfolio" style="width: 80px; height: 80px; margin-bottom: 20px; border-radius: 8px;">
                     <h3 style="font-size: 24px; margin-bottom: 15px; color: var(--primary);">Just Browsing?</h3>
                     <p style="color: #666; margin-bottom: 20px;">Check out my work and see what's possible.</p>
                     <a href="#portfolio" style="display: inline-block; background: #27ae60; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: 600;">View My Work →</a>
@@ -999,24 +1064,24 @@
             <h2 style="text-align: center; font-size: 36px; margin-bottom: 50px; color: var(--primary);">Why Choose Me Over Others?</h2>
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 900px; margin: 0 auto;">
                 <div style="background: white; padding: 40px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-                    <h3 style="color: #e74c3c; font-size: 24px; margin-bottom: 20px;">❌ Other Developers</h3>
+                    <h3 style="color: #e74c3c; font-size: 24px; margin-bottom: 20px;">Other Developers</h3>
                     <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 10px 0; color: #666;">⏰ "I'll get back to you in 3-5 days"</li>
-                        <li style="padding: 10px 0; color: #666;">💸 Hidden fees and scope creep</li>
-                        <li style="padding: 10px 0; color: #666;">🎯 Focus on what looks good, not what works</li>
-                        <li style="padding: 10px 0; color: #666;">📚 Overwhelming tech jargon</li>
-                        <li style="padding: 10px 0; color: #666;">🚶 Disappear after payment</li>
+                        <li style="padding: 10px 0; color: #666; padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: #e74c3c;">✗</span> "I'll get back to you in 3-5 days"</li>
+                        <li style="padding: 10px 0; color: #666; padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: #e74c3c;">✗</span> Hidden fees and scope creep</li>
+                        <li style="padding: 10px 0; color: #666; padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: #e74c3c;">✗</span> Focus on what looks good, not what works</li>
+                        <li style="padding: 10px 0; color: #666; padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: #e74c3c;">✗</span> Overwhelming tech jargon</li>
+                        <li style="padding: 10px 0; color: #666; padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: #e74c3c;">✗</span> Disappear after payment</li>
                     </ul>
                 </div>
                 <div style="background: linear-gradient(135deg, #27ae60, #2ecc71); padding: 40px; border-radius: 10px; color: white; position: relative; overflow: hidden;">
                     <div style="position: absolute; top: -20px; right: -20px; background: #f39c12; color: white; padding: 10px 30px; border-radius: 20px; transform: rotate(15deg); font-weight: 600;">Your Choice</div>
-                    <h3 style="font-size: 24px; margin-bottom: 20px;">✅ Working With Me</h3>
+                    <h3 style="font-size: 24px; margin-bottom: 20px;">Working With Me</h3>
                     <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 10px 0;">⚡ Response within 2 hours</li>
-                        <li style="padding: 10px 0;">💰 Fixed price, no surprises</li>
-                        <li style="padding: 10px 0;">🎯 Focus on ROI and results</li>
-                        <li style="padding: 10px 0;">💬 Plain English explanations</li>
-                        <li style="padding: 10px 0;">🛡️ Support after delivery</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: white;">✓</span> Response within 2 hours</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: white;">✓</span> Fixed price, no surprises</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: white;">✓</span> Focus on ROI and results</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: white;">✓</span> Plain English explanations</li>
+                        <li style="padding: 10px 0; padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: white;">✓</span> Support after delivery</li>
                     </ul>
                 </div>
             </div>
@@ -1205,6 +1270,64 @@
         
         mobileMenuToggle?.addEventListener('click', function() {
             navLinks.classList.toggle('active');
+        });
+    </script>
+    
+    <script>
+        // Handle announcement bar dismissal
+        function dismissAnnouncement() {
+            const announcementBar = document.getElementById('announcementBar');
+            const header = document.getElementById('mainHeader');
+            const hero = document.querySelector('.hero');
+            
+            // Hide announcement bar
+            announcementBar.classList.add('hidden');
+            
+            // Adjust header position
+            header.classList.add('no-announcement');
+            
+            // Adjust hero padding
+            if (hero) {
+                hero.classList.add('no-announcement');
+            }
+            
+            // Save dismissal in localStorage
+            localStorage.setItem('announcementDismissed', 'true');
+        }
+        
+        // Check if announcement was previously dismissed
+        window.addEventListener('DOMContentLoaded', function() {
+            const wasDismissed = localStorage.getItem('announcementDismissed');
+            
+            if (wasDismissed === 'true') {
+                const announcementBar = document.getElementById('announcementBar');
+                const header = document.getElementById('mainHeader');
+                const hero = document.querySelector('.hero');
+                
+                announcementBar.classList.add('hidden');
+                header.classList.add('no-announcement');
+                if (hero) {
+                    hero.classList.add('no-announcement');
+                }
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.getElementById('mainHeader').offsetHeight;
+                    const announcementHeight = document.getElementById('announcementBar').classList.contains('hidden') ? 0 : 48;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - announcementHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
     </script>
     <script src="/website-enhancements.js"></script>

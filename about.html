@@ -222,9 +222,7 @@
         }
         
         .skill-icon {
-            font-size: 48px;
             margin-bottom: 20px;
-            color: var(--highlight);
         }
         
         .skill-name {
@@ -368,6 +366,7 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="/consistent-styles.css">
 </head>
 <body>
     <header>
@@ -453,37 +452,37 @@
             
             <div class="skills-grid">
                 <div class="skill-card">
-                    <div class="skill-icon">🐍</div>
+                    <div class="skill-icon" style="background: var(--highlight); color: white; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-weight: bold; font-size: 36px;">P</div>
                     <div class="skill-name">Python</div>
                     <div class="skill-desc">Automation, web scraping, data processing</div>
                 </div>
                 
                 <div class="skill-card">
-                    <div class="skill-icon">🌐</div>
+                    <div class="skill-icon" style="background: var(--highlight); color: white; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-weight: bold; font-size: 36px;">JS</div>
                     <div class="skill-name">JavaScript</div>
                     <div class="skill-desc">Frontend fixes, Node.js, React</div>
                 </div>
                 
                 <div class="skill-card">
-                    <div class="skill-icon">🔗</div>
+                    <div class="skill-icon" style="background: var(--highlight); color: white; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-weight: bold; font-size: 28px;">API</div>
                     <div class="skill-name">APIs</div>
                     <div class="skill-desc">REST, webhooks, integrations</div>
                 </div>
                 
                 <div class="skill-card">
-                    <div class="skill-icon">📊</div>
+                    <div class="skill-icon" style="background: var(--highlight); color: white; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-weight: bold; font-size: 36px;">E</div>
                     <div class="skill-name">Excel/VBA</div>
                     <div class="skill-desc">Macros, formulas, automation</div>
                 </div>
                 
                 <div class="skill-card">
-                    <div class="skill-icon">🤖</div>
+                    <div class="skill-icon" style="background: var(--highlight); color: white; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-weight: bold; font-size: 28px;">AI</div>
                     <div class="skill-name">AI Tools</div>
                     <div class="skill-desc">ChatGPT, Claude, custom implementations</div>
                 </div>
                 
                 <div class="skill-card">
-                    <div class="skill-icon">🛠️</div>
+                    <div class="skill-icon" style="background: var(--highlight); color: white; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-weight: bold; font-size: 36px;">S</div>
                     <div class="skill-name">Problem Solving</div>
                     <div class="skill-desc">Finding simple solutions to complex problems</div>
                 </div>
@@ -500,25 +499,25 @@
             
             <div class="values-grid">
                 <div class="value-item">
-                    <div class="value-icon">⚡</div>
+                    <div class="value-icon" style="font-weight: bold; font-size: 36px;">F</div>
                     <div class="value-title">Speed Matters</div>
                     <div class="value-desc">Every hour your problem exists costs you money. I work fast to minimize that cost.</div>
                 </div>
                 
                 <div class="value-item">
-                    <div class="value-icon">💬</div>
+                    <div class="value-icon" style="font-weight: bold; font-size: 36px;">C</div>
                     <div class="value-title">Clear Communication</div>
                     <div class="value-desc">No tech jargon. I explain what I'm doing and why in plain English.</div>
                 </div>
                 
                 <div class="value-item">
-                    <div class="value-icon">🎯</div>
+                    <div class="value-icon" style="font-weight: bold; font-size: 36px;">R</div>
                     <div class="value-title">Results First</div>
                     <div class="value-desc">I focus on what actually moves the needle for your business, not what looks fancy.</div>
                 </div>
                 
                 <div class="value-item">
-                    <div class="value-icon">🤝</div>
+                    <div class="value-icon" style="font-weight: bold; font-size: 36px;">Y</div>
                     <div class="value-title">Your Success</div>
                     <div class="value-desc">When you win, I win. Your recommendation is worth more than any single payment.</div>
                 </div>
@@ -536,5 +535,57 @@
             </div>
         </div>
     </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p>&copy; 2024 ZestFlow. All rights reserved.</p>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/pricing.html">Pricing</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Footer styles */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 40px 0;
+            margin-top: 0;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
 </body>
 </html>

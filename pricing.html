@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing - Transparent Rates for Quality Work | ZestFlow</title>
     <meta name="description" content="Clear, honest pricing for bug fixes, automation, and development services. No hidden fees, satisfaction guaranteed.">
+    <link rel="stylesheet" href="/consistent-styles.css">
     <style>
         * {
             margin: 0;
@@ -81,6 +82,7 @@
         }
         
         /* Pricing Hero */
+        /* Use consistent page-hero class */
         .pricing-hero {
             padding: 120px 0 60px;
             background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(22, 33, 62, 0.9)), 
@@ -416,7 +418,7 @@
                 <li><a href="/#services">Services</a></li>
                 <li><a href="/pricing.html">Pricing</a></li>
                 <li><a href="/about.html">About</a></li>
-                <li><a href="/contact.html">Contact</a></li>
+                <li><a href="/contact.html" class="contact-btn">Get Started</a></li>
             </ul>
         </nav>
     </header>
@@ -559,7 +561,7 @@
     <section class="guarantee-section">
         <div class="container">
             <div class="guarantee-content">
-                <div class="guarantee-icon">🛡️</div>
+                <div class="guarantee-icon" style="font-size: 60px; font-weight: bold;">100%</div>
                 <div class="guarantee-text">
                     <h3>100% Satisfaction Guarantee</h3>
                     <p>If you're not happy with the work, I'll fix it free or refund your payment. No questions asked.</p>
@@ -567,6 +569,58 @@
             </div>
         </div>
     </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p>&copy; 2024 ZestFlow. All rights reserved.</p>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/pricing.html">Pricing</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Footer styles */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 40px 0;
+            margin-top: 0;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
     
     <script>
         function togglePricing() {

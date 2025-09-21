@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emergency Bug Fixes - Get Your Website Working in Hours | ZestFlow</title>
     <meta name="description" content="Website broken? JavaScript errors? I fix critical bugs fast. Same-day service, starting at $30. Available now.">
+    <link rel="stylesheet" href="/consistent-styles.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -18,17 +19,15 @@
             color: var(--dark);
             line-height: 1.6;
         }
+        /* Remove emergency header - use consistent navigation */
         .emergency-header {
-            background: var(--primary);
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            font-weight: 600;
+            display: none;
         }
         .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
         .hero {
-            padding: 60px 0;
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            padding: 120px 0 60px;
+            background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(22, 33, 62, 0.9)), 
+                        url('https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=1920&h=600&fit=crop') center/cover;
             color: white;
             text-align: center;
         }
@@ -70,9 +69,7 @@
             border-radius: 10px;
         }
         .problem-icon {
-            font-size: 48px;
             margin-bottom: 20px;
-            color: var(--primary);
         }
         .fix-process {
             padding: 80px 0;
@@ -132,16 +129,25 @@
     </style>
 </head>
 <body>
-    <div class="emergency-header">
-        ⚡ Emergency Bug Fix Service - Available Now - Response Within 2 Hours
-    </div>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">ZestFlow</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/contact.html" class="contact-btn">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
     
     <section class="hero">
         <div class="container">
             <h1>Website Broken? I'll Fix It Today.</h1>
             <p>Fast bug fixes for JavaScript, CSS, and backend errors</p>
             <a href="mailto:weber@zestflowai.com?subject=Emergency Bug Fix Needed" class="cta-button">
-                Get Emergency Help →
+                Get Emergency Help
             </a>
         </div>
     </section>
@@ -151,32 +157,32 @@
             <h2>Common Problems I Fix</h2>
             <div class="problem-grid">
                 <div class="problem-card">
-                    <div class="problem-icon">❌</div>
+                    <div class="problem-icon" style="background: #e74c3c; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; margin: 0 auto 20px; font-weight: bold;">X</div>
                     <h3>JavaScript Errors</h3>
                     <p>Console full of red? Functions not working? I'll debug and fix it fast.</p>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon">📱</div>
+                    <div class="problem-icon" style="background: #3498db; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; margin: 0 auto 20px; font-weight: bold;">M</div>
                     <h3>Mobile Issues</h3>
                     <p>Site broken on phones? Layout problems? Responsive fixes delivered quickly.</p>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon">🛒</div>
+                    <div class="problem-icon" style="background: #27ae60; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; margin: 0 auto 20px; font-weight: bold;">$</div>
                     <h3>Checkout Broken</h3>
                     <p>Losing sales? Payment errors? I'll get your revenue flowing again.</p>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon">📧</div>
+                    <div class="problem-icon" style="background: #9b59b6; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; margin: 0 auto 20px; font-weight: bold;">@</div>
                     <h3>Forms Not Working</h3>
                     <p>Contact forms failing? Not receiving emails? Quick diagnosis and repair.</p>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon">🔗</div>
+                    <div class="problem-icon" style="background: #f39c12; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; margin: 0 auto 20px; font-weight: bold;">API</div>
                     <h3>API Errors</h3>
                     <p>Third-party integrations failing? API timeouts? I'll restore connections.</p>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon">⚡</div>
+                    <div class="problem-icon" style="background: #e74c3c; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; margin: 0 auto 20px; font-weight: bold;">!</div>
                     <h3>Site Down</h3>
                     <p>500 errors? White screen? I'll get you back online ASAP.</p>
                 </div>
@@ -228,11 +234,11 @@
                 <div class="price">$30-150</div>
                 <p style="font-size: 18px; margin-bottom: 20px;">Based on complexity</p>
                 <ul style="text-align: left; list-style: none; padding: 0;">
-                    <li>✓ Simple CSS/HTML fixes: $30</li>
-                    <li>✓ JavaScript debugging: $50-75</li>
-                    <li>✓ Complex backend issues: $100-150</li>
-                    <li>✓ Same-day service included</li>
-                    <li>✓ Free re-fix if needed</li>
+                    <li style="margin-bottom: 10px;"><span style="color: #27ae60; font-weight: bold; font-size: 18px;">✓</span> Simple CSS/HTML fixes: $30</li>
+                    <li style="margin-bottom: 10px;"><span style="color: #27ae60; font-weight: bold; font-size: 18px;">✓</span> JavaScript debugging: $50-75</li>
+                    <li style="margin-bottom: 10px;"><span style="color: #27ae60; font-weight: bold; font-size: 18px;">✓</span> Complex backend issues: $100-150</li>
+                    <li style="margin-bottom: 10px;"><span style="color: #27ae60; font-weight: bold; font-size: 18px;">✓</span> Same-day service included</li>
+                    <li style="margin-bottom: 10px;"><span style="color: #27ae60; font-weight: bold; font-size: 18px;">✓</span> Free re-fix if needed</li>
                 </ul>
             </div>
         </div>
@@ -252,10 +258,62 @@
             <h2 style="font-size: 42px; margin-bottom: 20px;">Stop Losing Money to Bugs</h2>
             <p style="font-size: 20px; margin-bottom: 40px;">Every hour your site is broken costs you customers</p>
             <a href="mailto:weber@zestflowai.com?subject=Emergency Bug Fix Needed" class="cta-button">
-                Fix My Site Now →
+                Fix My Site Now
             </a>
             <p style="margin-top: 30px; opacity: 0.8;">Average response time: Under 2 hours</p>
         </div>
     </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p>&copy; 2024 ZestFlow. All rights reserved.</p>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/pricing.html">Pricing</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Footer styles */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0;
+            margin-top: 0;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
 </body>
 </html>

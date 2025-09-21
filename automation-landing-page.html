@@ -5,25 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python Automation Scripts - Save 10+ Hours Every Week | ZestFlow</title>
     <meta name="description" content="Custom Python scripts that automate your repetitive tasks. Data processing, web scraping, report generation. Starting at $50.">
+    <link rel="stylesheet" href="/consistent-styles.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --primary: #3498db;
-            --secondary: #2980b9;
-            --accent: #e74c3c;
-            --dark: #2c3e50;
-            --light: #ecf0f1;
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f4c75;
+            --highlight: #3282b8;
+            --success: #27ae60;
+            --text-light: #f5f5f5;
+            --text-dark: #333;
+            --bg-light: #ffffff;
+            --bg-section: #f8f9fa;
         }
         body {
-            font-family: -apple-system, sans-serif;
-            color: var(--dark);
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--text-dark);
             line-height: 1.6;
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 120px 0 60px;
+            background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(22, 33, 62, 0.9)), 
+                        url('https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=1920&h=600&fit=crop') center/cover;
             color: white;
-            padding: 100px 0;
             text-align: center;
         }
         .hero h1 {
@@ -38,8 +45,8 @@
         }
         .cta-button {
             display: inline-block;
-            background: white;
-            color: var(--primary);
+            background: var(--highlight);
+            color: white;
             padding: 20px 40px;
             text-decoration: none;
             border-radius: 5px;
@@ -48,6 +55,7 @@
             transition: all 0.3s;
         }
         .cta-button:hover {
+            background: var(--accent);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
@@ -56,7 +64,7 @@
             background: white;
         }
         .savings-calculator {
-            background: var(--light);
+            background: var(--bg-section);
             padding: 40px;
             border-radius: 10px;
             max-width: 600px;
@@ -65,12 +73,12 @@
         }
         .big-number {
             font-size: 72px;
-            color: var(--primary);
+            color: var(--highlight);
             font-weight: bold;
         }
         .automation-examples {
             padding: 80px 0;
-            background: #f8f9fa;
+            background: var(--bg-section);
         }
         .examples-grid {
             display: grid;
@@ -88,6 +96,21 @@
             font-size: 24px;
             margin-bottom: 20px;
             color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .card-icon {
+            background: var(--highlight);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
         }
         .before-after {
             display: grid;
@@ -128,13 +151,21 @@
             text-align: center;
         }
         .feature-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: var(--primary);
+            background: var(--highlight);
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin: 0 auto 20px;
+            font-weight: bold;
         }
         .pricing-section {
             padding: 80px 0;
-            background: var(--light);
+            background: var(--bg-section);
             text-align: center;
         }
         .pricing-grid {
@@ -151,20 +182,25 @@
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .price-card:hover {
+            transform: translateY(-5px);
         }
         .price-amount {
             font-size: 48px;
-            color: var(--primary);
+            color: var(--highlight);
             margin: 20px 0;
+            font-weight: 700;
         }
         .guarantee {
-            background: var(--primary);
+            background: var(--success);
             color: white;
             padding: 60px 0;
             text-align: center;
         }
         .final-cta {
-            background: var(--dark);
+            background: var(--primary);
             color: white;
             padding: 80px 0;
             text-align: center;
@@ -177,11 +213,24 @@
     </style>
 </head>
 <body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">ZestFlow</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/contact.html" class="contact-btn">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+    
     <section class="hero">
         <div class="container">
             <h1>Stop Wasting Hours on Repetitive Tasks</h1>
             <p>Custom Python scripts that automate your work and save you 10+ hours every week</p>
-            <a href="#get-started" class="cta-button">Automate My Work →</a>
+            <a href="#get-started" class="cta-button">Automate My Work</a>
         </div>
     </section>
     
@@ -191,7 +240,7 @@
             <div class="savings-calculator">
                 <p style="font-size: 20px; margin-bottom: 20px;">If you spend just 2 hours/day on repetitive tasks:</p>
                 <div class="big-number">520</div>
-                <p style="font-size: 24px; color: var(--primary);">Hours Saved Per Year</p>
+                <p style="font-size: 24px; color: var(--highlight);">Hours Saved Per Year</p>
                 <p style="margin-top: 20px;">That's 13 work weeks you could get back!</p>
             </div>
         </div>
@@ -204,7 +253,7 @@
             
             <div class="examples-grid">
                 <div class="example-card">
-                    <h3>📊 Sales Report Automation</h3>
+                    <h3><span class="card-icon">R</span> Sales Report Automation</h3>
                     <p>Auto-generate weekly reports from multiple data sources</p>
                     <div class="before-after">
                         <div class="before">
@@ -223,7 +272,7 @@
                 </div>
                 
                 <div class="example-card">
-                    <h3>🌐 Web Data Scraper</h3>
+                    <h3><span class="card-icon">W</span> Web Data Scraper</h3>
                     <p>Collect competitor prices and market data automatically</p>
                     <div class="before-after">
                         <div class="before">
@@ -242,7 +291,7 @@
                 </div>
                 
                 <div class="example-card">
-                    <h3>📧 Email Processor</h3>
+                    <h3><span class="card-icon">E</span> Email Processor</h3>
                     <p>Auto-sort, respond, and extract data from emails</p>
                     <div class="before-after">
                         <div class="before">
@@ -296,17 +345,17 @@ def generate_weekly_report():
                     <p>Most scripts delivered within 48 hours</p>
                 </div>
                 <div class="feature">
-                    <div class="feature-icon">📚</div>
+                    <div class="feature-icon">D</div>
                     <h3>Full Documentation</h3>
                     <p>Clear instructions on how to use and modify</p>
                 </div>
                 <div class="feature">
-                    <div class="feature-icon">🔧</div>
+                    <div class="feature-icon">U</div>
                     <h3>Free Updates</h3>
                     <p>30 days of tweaks and improvements included</p>
                 </div>
                 <div class="feature">
-                    <div class="feature-icon">💻</div>
+                    <div class="feature-icon">C</div>
                     <h3>Clean Code</h3>
                     <p>Well-commented, maintainable Python code</p>
                 </div>
@@ -324,22 +373,22 @@ def generate_weekly_report():
                     <h3>Simple Script</h3>
                     <div class="price-amount">$50</div>
                     <ul style="list-style: none; padding: 0; text-align: left;">
-                        <li>✓ Basic automation task</li>
-                        <li>✓ Single data source</li>
-                        <li>✓ 1-2 day delivery</li>
-                        <li>✓ Documentation included</li>
+                        <li style="margin-bottom: 10px;"><span style="color: #27ae60; font-weight: bold; font-size: 18px;">✓</span> Basic automation task</li>
+                        <li style="margin-bottom: 10px;"><span style="color: #27ae60; font-weight: bold; font-size: 18px;">✓</span> Single data source</li>
+                        <li style="margin-bottom: 10px;"><span style="color: #27ae60; font-weight: bold; font-size: 18px;">✓</span> 1-2 day delivery</li>
+                        <li style="margin-bottom: 10px;"><span style="color: #27ae60; font-weight: bold; font-size: 18px;">✓</span> Documentation included</li>
                     </ul>
                 </div>
                 
-                <div class="price-card" style="border: 3px solid var(--primary);">
+                <div class="price-card" style="border: 3px solid var(--highlight);">
                     <h3>Complex Automation</h3>
                     <div class="price-amount">$150</div>
                     <ul style="list-style: none; padding: 0; text-align: left;">
-                        <li>✓ Multiple data sources</li>
-                        <li>✓ Advanced processing</li>
-                        <li>✓ Error handling</li>
-                        <li>✓ 3-5 day delivery</li>
-                        <li>✓ 30 days support</li>
+                        <li style="margin-bottom: 10px;"><span style="color: #27ae60; font-weight: bold; font-size: 18px;">✓</span> Multiple data sources</li>
+                        <li style="margin-bottom: 10px;"><span style="color: #27ae60; font-weight: bold; font-size: 18px;">✓</span> Advanced processing</li>
+                        <li style="margin-bottom: 10px;"><span style="color: #27ae60; font-weight: bold; font-size: 18px;">✓</span> Error handling</li>
+                        <li style="margin-bottom: 10px;"><span style="color: #27ae60; font-weight: bold; font-size: 18px;">✓</span> 3-5 day delivery</li>
+                        <li style="margin-bottom: 10px;"><span style="color: #27ae60; font-weight: bold; font-size: 18px;">✓</span> 30 days support</li>
                     </ul>
                 </div>
                 
@@ -347,11 +396,11 @@ def generate_weekly_report():
                     <h3>Enterprise System</h3>
                     <div class="price-amount">$500+</div>
                     <ul style="list-style: none; padding: 0; text-align: left;">
-                        <li>✓ Full workflow automation</li>
-                        <li>✓ Database integration</li>
-                        <li>✓ API connections</li>
-                        <li>✓ Custom timeline</li>
-                        <li>✓ 60 days support</li>
+                        <li style="margin-bottom: 10px;"><span style="color: #27ae60; font-weight: bold; font-size: 18px;">✓</span> Full workflow automation</li>
+                        <li style="margin-bottom: 10px;"><span style="color: #27ae60; font-weight: bold; font-size: 18px;">✓</span> Database integration</li>
+                        <li style="margin-bottom: 10px;"><span style="color: #27ae60; font-weight: bold; font-size: 18px;">✓</span> API connections</li>
+                        <li style="margin-bottom: 10px;"><span style="color: #27ae60; font-weight: bold; font-size: 18px;">✓</span> Custom timeline</li>
+                        <li style="margin-bottom: 10px;"><span style="color: #27ae60; font-weight: bold; font-size: 18px;">✓</span> 60 days support</li>
                     </ul>
                 </div>
             </div>
@@ -372,10 +421,62 @@ def generate_weekly_report():
             <h2 style="font-size: 42px; margin-bottom: 20px;">Ready to Get Your Time Back?</h2>
             <p style="font-size: 20px; margin-bottom: 40px;">Let's automate your repetitive tasks this week</p>
             <a href="mailto:weber@zestflowai.com?subject=Python Automation Needed" class="cta-button">
-                Start Automating →
+                Start Automating
             </a>
             <p style="margin-top: 30px; opacity: 0.8;">Most projects start within 24 hours</p>
         </div>
     </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p>&copy; 2024 ZestFlow. All rights reserved.</p>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/pricing.html">Pricing</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Footer styles */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 40px 0;
+            margin-top: 0;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
 </body>
 </html>
