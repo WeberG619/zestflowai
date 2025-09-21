@@ -1,6 +1,10 @@
 /* Business-driving enhancement styles */
 
-/* Notification Bar */
+/* Notification Bar - REMOVED
+   These styles were causing header positioning issues
+   and have been commented out per client request */
+
+/*
 .notification-bar {
     background: linear-gradient(90deg, #e74c3c, #c0392b);
     color: white;
@@ -31,15 +35,11 @@
     cursor: pointer;
     padding: 0 10px;
 }
+*/
 
-/* Adjust header for notification bar */
-header {
-    top: 48px !important;
-}
-
-.hero {
-    margin-top: 48px;
-}
+/* Header positioning fix - removed the forced 48px offset */
+/* header { top: 48px !important; } - REMOVED */
+/* .hero { margin-top: 48px; } - REMOVED */
 
 /* Exit Intent Popup */
 .exit-popup {

@@ -66,18 +66,9 @@ function toggleChat() {
     window.style.display = window.style.display === 'none' ? 'block' : 'none';
 }
 
-// 4. Notification Bar
-const notificationBar = document.createElement('div');
-notificationBar.className = 'notification-bar';
-notificationBar.innerHTML = `
-    <p>⚡ <strong>Limited Availability:</strong> Only taking 3 new projects this week. <a href="/contact.html">Reserve your spot →</a></p>
-    <button class="close-notification">&times;</button>
-`;
-document.body.insertBefore(notificationBar, document.body.firstChild);
-
-notificationBar.querySelector('.close-notification').onclick = () => {
-    notificationBar.style.display = 'none';
-};
+// 4. Notification Bar - REMOVED per client request
+// The notification bar was causing header positioning issues
+// and has been completely removed
 
 // 5. Social Proof Toasts
 const testimonials = [
