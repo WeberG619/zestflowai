@@ -116,6 +116,12 @@ nav {
     background: var(--bg-section);
 }
 
+.nav-links a.active {
+    color: var(--highlight);
+    font-weight: 600;
+    background: var(--bg-section);
+}
+
 .contact-btn {
     background: var(--highlight);
     color: white !important;
