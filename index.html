@@ -153,6 +153,14 @@
             color: var(--highlight);
         }
         
+        .nav-links a.active {
+            color: var(--highlight);
+            font-weight: 600;
+            background: var(--bg-section);
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+        
         .contact-btn {
             background: var(--highlight);
             color: white;
@@ -1078,9 +1086,9 @@
         <nav class="container">
             <a href="/" class="logo">ZestFlow AI</a>
             <ul class="nav-links">
+                <li><a href="/" class="active">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="/pricing.html">Pricing</a></li>
-                <li><a href="#portfolio">Work</a></li>
                 <li><a href="/about.html">About</a></li>
                 <li><a href="/contact.html">Contact</a></li>
             </ul>
@@ -1561,9 +1569,8 @@
             <div class="footer-content">
                 <div class="logo">ZestFlow</div>
                 <ul class="footer-links">
-                    <li><a href="#services">Services</a></li>
+                    <li><a href="/">Home</a></li>
                     <li><a href="/pricing.html">Pricing</a></li>
-                    <li><a href="#portfolio">Work</a></li>
                     <li><a href="/about.html">About</a></li>
                     <li><a href="/contact.html">Contact</a></li>
                 </ul>
