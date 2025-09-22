@@ -282,8 +282,8 @@
         
         .service-card {
             background: var(--card-bg);
-            padding: 40px;
-            border-radius: 8px;
+            padding: 0;
+            border-radius: 12px;
             box-shadow: 0 2px 20px var(--shadow-color);
             transition: all 0.3s;
             position: relative;
@@ -314,9 +314,9 @@
         
         .service-icon {
             width: 100%;
-            height: 240px;
-            border-radius: 12px 12px 0 0;
-            margin: -40px -40px 20px -40px;
+            height: 200px;
+            border-radius: 0;
+            margin: 0;
             overflow: hidden;
             position: relative;
         }
@@ -334,15 +334,19 @@
         
         .service-badge {
             position: absolute;
-            bottom: 20px;
-            right: 20px;
-            background: var(--highlight);
+            bottom: 15px;
+            left: 15px;
+            background: rgba(0, 0, 0, 0.7);
             color: white;
             padding: 8px 16px;
             border-radius: 20px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .service-content {
+            padding: 30px;
         }
         
         .service-card h3 {
@@ -1171,59 +1175,71 @@
                 <div class="service-card">
                     <div class="service-icon">
                         <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop" alt="Bug Fixing">
-                        <span class="service-badge">Most Popular</span>
+                        <!-- Badge removed for cleaner look -->
                     </div>
-                    <h3>Bug Fixes & Debugging</h3>
-                    <p>Quick resolution of website errors, broken features, and JavaScript issues. I'll diagnose and fix problems that are blocking your business.</p>
-                    <div class="service-price">Starting at $30</div>
+                    <div class="service-content">
+                        <h3>Bug Fixes & Debugging</h3>
+                        <p>Quick resolution of website errors, broken features, and JavaScript issues. I'll diagnose and fix problems that are blocking your business.</p>
+                        <div class="service-price">Starting at $30</div>
+                    </div>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon">
                         <img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=600&h=400&fit=crop" alt="Python Automation">
-                        <span class="service-badge">Save 10+ hrs/week</span>
+                        <!-- Badge removed for cleaner look -->
                     </div>
-                    <h3>Automation Development</h3>
-                    <p>Custom Python scripts that eliminate repetitive tasks. From data processing to web scraping, I build tools that save you hours every week.</p>
-                    <div class="service-price">Starting at $50</div>
+                    <div class="service-content">
+                        <h3>Automation Development</h3>
+                        <p>Custom Python scripts that eliminate repetitive tasks. From data processing to web scraping, I build tools that save you hours every week.</p>
+                        <div class="service-price">Starting at $50</div>
+                    </div>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon">
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Data Solutions">
                     </div>
-                    <h3>Data & Excel Solutions</h3>
-                    <p>Complex spreadsheet formulas, VBA macros, and automated reporting systems. Transform your data chaos into organized insights.</p>
-                    <div class="service-price">Starting at $25</div>
+                    <div class="service-content">
+                        <h3>Data & Excel Solutions</h3>
+                        <p>Complex spreadsheet formulas, VBA macros, and automated reporting systems. Transform your data chaos into organized insights.</p>
+                        <div class="service-price">Starting at $25</div>
+                    </div>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon">
                         <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?w=600&h=400&fit=crop" alt="App Testing">
                     </div>
-                    <h3>Application Testing</h3>
-                    <p>Comprehensive testing with detailed bug reports, reproduction steps, and priority assessments. Ensure your app works flawlessly.</p>
-                    <div class="service-price">$35/hour</div>
+                    <div class="service-content">
+                        <h3>Application Testing</h3>
+                        <p>Comprehensive testing with detailed bug reports, reproduction steps, and priority assessments. Ensure your app works flawlessly.</p>
+                        <div class="service-price">$35/hour</div>
+                    </div>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon">
                         <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop" alt="API Integration">
-                        <span class="service-badge">Fast Setup</span>
+                        <!-- Badge removed for cleaner look -->
                     </div>
-                    <h3>API Integration</h3>
-                    <p>Connect your applications and automate data flow between platforms. From payment gateways to CRM systems, I handle the technical complexity.</p>
-                    <div class="service-price">Starting at $75</div>
+                    <div class="service-content">
+                        <h3>API Integration</h3>
+                        <p>Connect your applications and automate data flow between platforms. From payment gateways to CRM systems, I handle the technical complexity.</p>
+                        <div class="service-price">Starting at $75</div>
+                    </div>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon">
                         <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop" alt="AI Implementation">
-                        <span class="service-badge">Latest Tech</span>
+                        <!-- Badge removed for cleaner look -->
                     </div>
-                    <h3>AI Implementation</h3>
-                    <p>Integrate ChatGPT and other AI models into your workflow. Custom prompts, automation, and intelligent systems that enhance your business.</p>
-                    <div class="service-price">Starting at $100</div>
+                    <div class="service-content">
+                        <h3>AI Implementation</h3>
+                        <p>Integrate ChatGPT and other AI models into your workflow. Custom prompts, automation, and intelligent systems that enhance your business.</p>
+                        <div class="service-price">Starting at $100</div>
+                    </div>
                 </div>
             </div>
         </div>
