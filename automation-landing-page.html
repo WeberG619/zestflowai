@@ -34,8 +34,8 @@
             --accent: #64b5f6;
             --highlight: #90caf9;
             --success: #4caf50;
-            --text-light: #1a1a2e;
-            --text-dark: #f5f5f5;
+            --text-light: #f5f5f5;  /* Keep light text light in dark mode */
+            --text-dark: #f5f5f5;   /* Main text should be light in dark mode */
             --bg-light: #1a1a2e;
             --bg-section: #16213e;
             --card-bg: #0f4c75;
@@ -43,6 +43,7 @@
             --shadow-color: rgba(0, 0, 0, 0.5);
             --code-bg: #1a1a2e;
             --code-text: #90caf9;
+            --text-muted: #b8b8b8;  /* For less prominent text */
         }
         body {
             font-family: 'Inter', -apple-system, sans-serif;
@@ -303,7 +304,7 @@
     <section class="automation-examples">
         <div class="container">
             <h2 style="text-align: center; font-size: 36px; margin-bottom: 20px;">Real Automation Examples</h2>
-            <p style="text-align: center; font-size: 20px; color: #666;">Scripts I've built that transform businesses</p>
+            <p style="text-align: center; font-size: 20px; color: var(--text-muted, #666);">Scripts I've built that transform businesses</p>
             
             <div class="examples-grid">
                 <div class="example-card">
@@ -420,7 +421,7 @@ def generate_weekly_report():
     <section class="pricing-section">
         <div class="container">
             <h2 style="font-size: 36px; margin-bottom: 20px;">Investment Options</h2>
-            <p style="font-size: 20px; color: #666;">Choose based on your automation needs</p>
+            <p style="font-size: 20px; color: var(--text-muted, #666);">Choose based on your automation needs</p>
             
             <div class="pricing-grid">
                 <div class="price-card">
@@ -477,7 +478,7 @@ def generate_weekly_report():
             <a href="mailto:weber@zestflowai.com?subject=Python Automation Needed" class="cta-button">
                 Start Automating
             </a>
-            <p style="margin-top: 30px; opacity: 0.8;">Most projects start within 24 hours</p>
+            <p style="margin-top: 30px; color: rgba(255,255,255,0.8);">Most projects start within 24 hours</p>
         </div>
     </section>
 

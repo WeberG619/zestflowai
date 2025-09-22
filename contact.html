@@ -37,8 +37,8 @@
             --secondary: #e0e0e0;
             --accent: #64b5f6;
             --highlight: #90caf9;
-            --text-light: #1a1a2e;
-            --text-dark: #f5f5f5;
+            --text-light: #f5f5f5;  /* Keep light text light in dark mode */
+            --text-dark: #f5f5f5;   /* Main text should be light in dark mode */
             --bg-light: #1a1a2e;
             --bg-section: #16213e;
             --card-bg: #0f4c75;
@@ -46,6 +46,7 @@
             --shadow-color: rgba(0, 0, 0, 0.5);
             --input-bg: #16213e;
             --input-border: #3282b8;
+            --text-muted: #b8b8b8;  /* For less prominent text */
         }
         
         body {
@@ -191,7 +192,7 @@
         }
         
         .contact-details p {
-            color: #666;
+            color: var(--text-muted, #666);
             font-size: 16px;
         }
         
@@ -263,6 +264,13 @@
             padding: 15px;
             margin-bottom: 20px;
             border-radius: 4px;
+            color: #333;  /* Ensure text is always dark in urgency note */
+        }
+        
+        body.dark-theme .urgency-note {
+            background: rgba(255, 193, 7, 0.2);
+            border-left-color: #ffc107;
+            color: #ffc107;
         }
         
         .submit-btn {
@@ -526,7 +534,7 @@
     <section class="availability">
         <div class="container">
             <h2 style="font-size: 32px; margin-bottom: 20px;">Current Availability</h2>
-            <p style="font-size: 18px; color: #666;">Updated regularly to help you plan</p>
+            <p style="font-size: 18px; color: var(--text-muted, #666);">Updated regularly to help you plan</p>
             
             <div class="availability-grid">
                 <div class="availability-item">
@@ -551,7 +559,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 ZestFlow AI. All rights reserved.</p>
-            <p style="margin-top: 10px; opacity: 0.8;">Fast, reliable technical solutions</p>
+            <p style="margin-top: 10px; color: var(--text-muted, rgba(255,255,255,0.8));">Fast, reliable technical solutions</p>
         </div>
     </footer>
     <script>

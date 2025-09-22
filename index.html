@@ -34,13 +34,14 @@
             --secondary: #e0e0e0;
             --accent: #64b5f6;
             --highlight: #90caf9;
-            --text-light: #1a1a2e;
-            --text-dark: #f5f5f5;
+            --text-light: #f5f5f5;  /* Keep light text light in dark mode */
+            --text-dark: #f5f5f5;   /* Main text should be light in dark mode */
             --bg-light: #1a1a2e;
             --bg-section: #16213e;
             --card-bg: #0f4c75;
             --border-color: rgba(255, 255, 255, 0.1);
             --shadow-color: rgba(0, 0, 0, 0.5);
+            --text-muted: #b8b8b8;  /* For less prominent text */
         }
         
         /* Smooth transitions for theme switching */
@@ -268,7 +269,7 @@
         
         .section-header p {
             font-size: 18px;
-            color: #666;
+            color: var(--text-muted, #666);
             max-width: 600px;
             margin: 0 auto;
         }
@@ -350,7 +351,7 @@
         }
         
         .service-card p {
-            color: #666;
+            color: var(--text-muted, #666);
             margin-bottom: 20px;
             line-height: 1.8;
         }
@@ -414,7 +415,7 @@
         }
         
         .portfolio-content p {
-            color: #666;
+            color: var(--text-muted, #666);
             margin-bottom: 20px;
             line-height: 1.6;
         }
@@ -508,7 +509,7 @@
         .testimonial-text {
             font-size: 16px;
             line-height: 1.8;
-            color: #555;
+            color: var(--text-muted, #666);
             margin-bottom: 20px;
             font-style: italic;
         }
@@ -540,7 +541,7 @@
         
         .author-info p {
             font-size: 14px;
-            color: #666;
+            color: var(--text-muted, #666);
         }
         
         .rating {
@@ -587,7 +588,7 @@
         }
         
         .process-step p {
-            color: #666;
+            color: var(--text-muted, #666);
             line-height: 1.6;
         }
         
@@ -643,7 +644,7 @@
         }
         
         .faq-answer {
-            color: #666;
+            color: var(--text-muted, #666);
             line-height: 1.8;
             padding-left: 40px;
         }
@@ -884,7 +885,7 @@
             background: none;
             border: none;
             font-size: 24px;
-            color: #999;
+            color: var(--text-muted, #999);
             cursor: pointer;
             padding: 0;
             width: 30px;
@@ -999,7 +1000,7 @@
         
         .badge-text {
             font-size: 14px;
-            color: #666;
+            color: var(--text-muted, #666);
             text-align: center;
         }
         
@@ -1137,21 +1138,21 @@
                     <div style="position: absolute; top: 0; left: 0; right: 0; height: 100px; background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=200&fit=crop') center/cover; opacity: 0.1;"></div>
                     <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=100&h=100&fit=crop" alt="Bug Fix" style="width: 80px; height: 80px; margin-bottom: 20px; border-radius: 8px;">
                     <h3 style="font-size: 24px; margin-bottom: 15px; color: var(--primary);">Website Broken?</h3>
-                    <p style="color: #666; margin-bottom: 20px;">If you need an urgent fix, I can help today.</p>
+                    <p style="color: var(--text-muted, #666); margin-bottom: 20px;">If you need an urgent fix, I can help today.</p>
                     <a href="/bug-fixing-landing-page.html" style="display: inline-block; background: #e74c3c; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: 600;">Get Emergency Fix →</a>
                 </div>
                 <div class="service-card">
                     <div style="position: absolute; top: 0; left: 0; right: 0; height: 100px; background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=200&fit=crop') center/cover; opacity: 0.1;"></div>
                     <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=100&h=100&fit=crop" alt="Automation" style="width: 80px; height: 80px; margin-bottom: 20px; border-radius: 8px;">
                     <h3 style="font-size: 24px; margin-bottom: 15px; color: var(--primary);">Wasting Time on Tasks?</h3>
-                    <p style="color: #666; margin-bottom: 20px;">Let's automate it and save you hours every week.</p>
+                    <p style="color: var(--text-muted, #666); margin-bottom: 20px;">Let's automate it and save you hours every week.</p>
                     <a href="/automation-landing-page.html" style="display: inline-block; background: var(--highlight); color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: 600;">See Automation Options →</a>
                 </div>
                 <div class="service-card">
                     <div style="position: absolute; top: 0; left: 0; right: 0; height: 100px; background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=200&fit=crop') center/cover; opacity: 0.1;"></div>
                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Portfolio" style="width: 80px; height: 80px; margin-bottom: 20px; border-radius: 8px;">
                     <h3 style="font-size: 24px; margin-bottom: 15px; color: var(--primary);">Just Browsing?</h3>
-                    <p style="color: #666; margin-bottom: 20px;">Check out my work and see what's possible.</p>
+                    <p style="color: var(--text-muted, #666); margin-bottom: 20px;">Check out my work and see what's possible.</p>
                     <a href="#portfolio" style="display: inline-block; background: #27ae60; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: 600;">View My Work →</a>
                 </div>
             </div>
@@ -1389,11 +1390,11 @@
                 <div class="contact-form-box">
                     <h3 style="color: #e74c3c; font-size: 24px; margin-bottom: 20px;">Other Developers</h3>
                     <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 10px 0; color: #666; padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: #e74c3c;">✗</span> "I'll get back to you in 3-5 days"</li>
-                        <li style="padding: 10px 0; color: #666; padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: #e74c3c;">✗</span> Hidden fees and scope creep</li>
-                        <li style="padding: 10px 0; color: #666; padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: #e74c3c;">✗</span> Focus on what looks good, not what works</li>
-                        <li style="padding: 10px 0; color: #666; padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: #e74c3c;">✗</span> Overwhelming tech jargon</li>
-                        <li style="padding: 10px 0; color: #666; padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: #e74c3c;">✗</span> Disappear after payment</li>
+                        <li style="padding: 10px 0; color: var(--text-muted, #666); padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: #e74c3c;">✗</span> "I'll get back to you in 3-5 days"</li>
+                        <li style="padding: 10px 0; color: var(--text-muted, #666); padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: #e74c3c;">✗</span> Hidden fees and scope creep</li>
+                        <li style="padding: 10px 0; color: var(--text-muted, #666); padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: #e74c3c;">✗</span> Focus on what looks good, not what works</li>
+                        <li style="padding: 10px 0; color: var(--text-muted, #666); padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: #e74c3c;">✗</span> Overwhelming tech jargon</li>
+                        <li style="padding: 10px 0; color: var(--text-muted, #666); padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: #e74c3c;">✗</span> Disappear after payment</li>
                     </ul>
                 </div>
                 <div style="background: linear-gradient(135deg, #27ae60, #2ecc71); padding: 40px; border-radius: 10px; color: white; position: relative; overflow: hidden;">
@@ -1512,22 +1513,22 @@
                 <div style="text-align: center;">
                     <div style="font-size: 64px; font-weight: 700; color: #3282b8; margin-bottom: 10px;">520</div>
                     <p style="font-size: 18px; opacity: 0.9;">Hours Saved Per Year</p>
-                    <p style="font-size: 14px; opacity: 0.7;">For a single client's reporting</p>
+                    <p style="font-size: 14px; color: var(--text-muted, #666);">For a single client's reporting</p>
                 </div>
                 <div style="text-align: center;">
                     <div style="font-size: 64px; font-weight: 700; color: #27ae60; margin-bottom: 10px;">$47K</div>
                     <p style="font-size: 18px; opacity: 0.9;">Revenue Recovered</p>
-                    <p style="font-size: 14px; opacity: 0.7;">From a 2-hour checkout fix</p>
+                    <p style="font-size: 14px; color: var(--text-muted, #666);">From a 2-hour checkout fix</p>
                 </div>
                 <div style="text-align: center;">
                     <div style="font-size: 64px; font-weight: 700; color: #e74c3c; margin-bottom: 10px;">2hrs</div>
                     <p style="font-size: 18px; opacity: 0.9;">Average Fix Time</p>
-                    <p style="font-size: 14px; opacity: 0.7;">For emergency repairs</p>
+                    <p style="font-size: 14px; color: var(--text-muted, #666);">For emergency repairs</p>
                 </div>
                 <div style="text-align: center;">
                     <div style="font-size: 64px; font-weight: 700; color: #f39c12; margin-bottom: 10px;">100%</div>
                     <p style="font-size: 18px; opacity: 0.9;">Satisfaction Rate</p>
-                    <p style="font-size: 14px; opacity: 0.7;">Money back guarantee</p>
+                    <p style="font-size: 14px; color: var(--text-muted, #666);">Money back guarantee</p>
                 </div>
             </div>
         </div>
@@ -1628,7 +1629,7 @@
             <span>Available for new projects</span>
         </div>
         
-        <p style="font-size: 14px; color: #666; margin-bottom: 15px;">
+        <p style="font-size: 14px; color: var(--text-muted, #666); margin-bottom: 15px;">
             Quick response guaranteed. Let's discuss your project!
         </p>
         
