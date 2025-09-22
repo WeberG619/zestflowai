@@ -83,11 +83,16 @@ nav {
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 700;
     color: var(--primary);
     letter-spacing: -0.5px;
     text-decoration: none;
+    transition: color 0.3s;
+}
+
+.logo:hover {
+    color: var(--highlight);
 }
 
 .nav-links {
