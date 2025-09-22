@@ -46,7 +46,7 @@
             --shadow-color: rgba(0, 0, 0, 0.5);
             --input-bg: #16213e;
             --input-border: #3282b8;
-            --text-muted: #b8b8b8;  /* For less prominent text */
+            --text-muted: #f5f5f5;  /* All text should be white in dark mode */
         }
         
         body {
@@ -559,7 +559,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 ZestFlow AI. All rights reserved.</p>
-            <p style="margin-top: 10px; color: var(--text-muted, rgba(255,255,255,0.8));">Fast, reliable technical solutions</p>
+            <p style="margin-top: 10px; color: var(--text-light);">Fast, reliable technical solutions</p>
         </div>
     </footer>
     <script>
@@ -567,11 +567,8 @@
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
         
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            body.classList.add('dark-theme');
-        }
+        // Always start in light mode
+        // Users can toggle to dark mode if they prefer
         
         // Toggle theme
         themeToggle.addEventListener('click', () => {
