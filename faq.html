@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - After-Hours Job Booker | ZestFlow AI</title>
+    <meta name="description" content="Common questions about the after-hours job booking system for contractors. Setup, pricing, and how it works.">
+    <link rel="stylesheet" href="/consistent-styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Light Theme Colors */
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f4c75;
+            --highlight: #3282b8;
+            --text-light: #f5f5f5;
+            --text-dark: #333;
+            --bg-light: #ffffff;
+            --bg-section: #f8f9fa;
+            --card-bg: #ffffff;
+            --border-color: rgba(0, 0, 0, 0.05);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--bg-light);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--highlight);
+        }
+        
+        .contact-btn {
+            background: var(--highlight);
+            color: white;
+            padding: 10px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .contact-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        /* FAQ Hero */
+        .faq-hero {
+            padding: 120px 0 60px;
+            background: linear-gradient(to bottom, var(--bg-light), var(--bg-section));
+            text-align: center;
+        }
+        
+        .faq-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .faq-hero p {
+            font-size: 20px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* FAQ Categories */
+        .faq-categories {
+            padding: 40px 0;
+            background: white;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            padding: 12px 24px;
+            background: var(--bg-section);
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--highlight);
+            color: white;
+            border-color: var(--highlight);
+        }
+        
+        /* FAQ Content */
+        .faq-content {
+            padding: 80px 0;
+            background: var(--bg-section);
+        }
+        
+        .faq-section {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-section h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: var(--primary);
+            text-align: center;
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        
+        .faq-question {
+            padding: 25px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .faq-question:hover {
+            background: var(--bg-section);
+        }
+        
+        .faq-toggle {
+            font-size: 24px;
+            color: var(--highlight);
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px 30px 30px;
+            max-height: 500px;
+        }
+        
+        .faq-answer p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .faq-answer p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .faq-answer ul {
+            margin: 15px 0;
+            padding-left: 20px;
+            color: #666;
+        }
+        
+        .faq-answer li {
+            margin-bottom: 10px;
+        }
+        
+        /* Contact Section */
+        .still-questions {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .question-box {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 60px;
+            border-radius: 12px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .question-box h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .question-box p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .contact-methods {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .contact-method img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+        }
+        
+        .contact-method span {
+            font-size: 18px;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .faq-hero h1 {
+                font-size: 36px;
+            }
+            
+            .category-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .faq-question {
+                font-size: 16px;
+                padding: 20px;
+            }
+            
+            .question-box {
+                padding: 40px 30px;
+            }
+            
+            .contact-methods {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">ZestFlow AI</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/demo">Demo</a></li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li><a href="/faq.html" class="active">FAQ</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+            <a href="/book-install" class="contact-btn">Book Install</a>
+        </nav>
+    </header>
+    
+    <section class="faq-hero">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <p>Everything you need to know about the after-hours job booking system</p>
+        </div>
+    </section>
+    
+    <section class="faq-categories">
+        <div class="container">
+            <nav class="category-nav">
+                <a href="#general" class="category-btn active">General</a>
+                <a href="#technical" class="category-btn">Technical Setup</a>
+                <a href="#pricing" class="category-btn">Pricing & Billing</a>
+                <a href="#compliance" class="category-btn">Compliance</a>
+            </nav>
+        </div>
+    </section>
+    
+    <section class="faq-content">
+        <div class="container">
+            <!-- General Questions -->
+            <div class="faq-section" id="general">
+                <h2>General Questions</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What types of businesses does this work for?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Perfect for any service business that gets emergency or after-hours calls:</p>
+                        <ul>
+                            <li>Plumbers</li>
+                            <li>HVAC technicians</li>
+                            <li>Electricians</li>
+                            <li>Locksmiths</li>
+                            <li>Garage door repair</li>
+                            <li>Restoration services</li>
+                            <li>Appliance repair</li>
+                        </ul>
+                        <p>If customers need you after hours, this system will capture them before they call your competitor.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Will this work with my current site?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We integrate with any website platform:</p>
+                        <ul>
+                            <li>Squarespace</li>
+                            <li>WordPress</li>
+                            <li>Wix</li>
+                            <li>Custom HTML sites</li>
+                            <li>Any platform with a contact form</li>
+                        </ul>
+                        <p>We connect to your existing form - no website changes needed.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do I need new software?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No new software required. The system uses:</p>
+                        <ul>
+                            <li>SMS (text messages to your phone)</li>
+                            <li>Your existing calendar (Google, Outlook, etc.)</li>
+                            <li>Optional: Google Sheets for lead tracking</li>
+                        </ul>
+                        <p>Everything works through tools you already use daily.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What if it doesn't book a job?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We remove it. No charge.</p>
+                        <p>If you don't get at least one booked job in the first 7 days, we'll uninstall everything and refund your setup fee. No questions asked.</p>
+                        <p>We only succeed when you book jobs. That's why we're confident in our guarantee.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Technical Setup -->
+            <div class="faq-section" id="technical">
+                <h2>Technical Setup Questions</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do I need to change my phone number?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No! You have two options:</p>
+                        <ul>
+                            <li><strong>Keep your current number:</strong> Use call forwarding after hours</li>
+                            <li><strong>Dedicated line:</strong> Set up a new after-hours number</li>
+                        </ul>
+                        <p>Most contractors forward their existing number after hours - it takes 30 seconds to set up.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How long does installation take?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>48 hours from start to finish:</p>
+                        <ul>
+                            <li><strong>Day 1:</strong> Technical setup (2-3 hours)</li>
+                            <li><strong>Day 2:</strong> Testing and training (1 hour)</li>
+                            <li><strong>Day 3:</strong> You're live and booking jobs!</li>
+                        </ul>
+                        <p>We handle all the technical work. You just need to be available for a 30-minute training call.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What if I'm already booked when someone tries to schedule?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Your calendar shows only available time slots. The system:</p>
+                        <ul>
+                            <li>Syncs with your calendar in real-time</li>
+                            <li>Only shows times you've marked as available</li>
+                            <li>Blocks out times when you're already booked</li>
+                            <li>Respects your business hours and days off</li>
+                        </ul>
+                        <p>You stay in complete control of your schedule.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What about spam?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We filter obvious spam automatically. The system:</p>
+                        <ul>
+                            <li>Blocks known spam numbers</li>
+                            <li>Filters nonsense messages</li>
+                            <li>Requires valid phone numbers</li>
+                            <li>Flags suspicious patterns</li>
+                        </ul>
+                        <p>Odd messages trigger human handoff - you decide how to respond.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pricing & Billing -->
+            <div class="faq-section" id="pricing">
+                <h2>Pricing & Billing Questions</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        When do I start paying the monthly fee?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Only after the system books your first job.</p>
+                        <p>You pay the one-time setup fee ($499 or $699), then nothing else until we prove it works by booking an actual job.</p>
+                        <p>This usually happens within the first week, but we don't charge monthly fees until it does.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Are there any hidden fees?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No hidden fees. You only pay:</p>
+                        <ul>
+                            <li>Setup fee (one-time)</li>
+                            <li>Monthly service fee (after first job)</li>
+                            <li>Standard SMS costs (about 1¢ per text)</li>
+                            <li>Payment processing if you take deposits (2.9% + 30¢)</li>
+                        </ul>
+                        <p>That's it. No surprises, no contracts, no cancellation fees.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can customers pay the deposit with a credit card?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! With the Pro plan, we integrate with:</p>
+                        <ul>
+                            <li>Stripe</li>
+                            <li>Square</li>
+                            <li>Your existing payment processor</li>
+                        </ul>
+                        <p>Deposits go straight to your account minus standard processing fees. Customers get a receipt, you get paid upfront.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What if I want to cancel?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Cancel anytime with no penalties:</p>
+                        <ul>
+                            <li>Email us at support@zestflowai.com</li>
+                            <li>We stop billing immediately</li>
+                            <li>No contracts or termination fees</li>
+                            <li>You keep all your lead data</li>
+                        </ul>
+                        <p>We believe in earning your business every month.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Compliance -->
+            <div class="faq-section" id="compliance">
+                <h2>Compliance Questions</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is it compliant?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. The system follows all SMS regulations:</p>
+                        <ul>
+                            <li>Includes opt-out language (Reply STOP to end)</li>
+                            <li>Only texts people who contact you first</li>
+                            <li>Stores consent records</li>
+                            <li>Complies with TCPA regulations</li>
+                        </ul>
+                        <p>We handle compliance so you don't have to worry about it.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What about customer privacy?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Customer data is protected with:</p>
+                        <ul>
+                            <li>Encrypted transmission</li>
+                            <li>Secure storage</li>
+                            <li>No sharing with third parties</li>
+                            <li>Automatic data deletion options</li>
+                        </ul>
+                        <p>You own all customer data. We're just the technology provider.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="still-questions">
+        <div class="container">
+            <div class="question-box">
+                <h2>Still Have Questions?</h2>
+                <p>We're here to help. Reach out anytime.</p>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <img src="https://images.unsplash.com/photo-1596524430615-b46475ddff6e?w=60&h=60&fit=crop" alt="Email">
+                        <span>support@zestflowai.com</span>
+                    </div>
+                    <div class="contact-method">
+                        <img src="https://images.unsplash.com/photo-1523966211575-eb4a01e7dd51?w=60&h=60&fit=crop" alt="Phone">
+                        <span>Text: (XXX) XXX-XXXX</span>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 40px; font-size: 16px; opacity: 0.9;">
+                    Or book a call to discuss your specific situation
+                </p>
+                <a href="/book-install" style="display: inline-block; margin-top: 20px; background: white; color: var(--primary); padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: 600;">Schedule a Call</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer style="background: var(--primary); color: white; padding: 40px 0; text-align: center;">
+        <div class="container">
+            <p>&copy; 2025 ZestFlow AI. All rights reserved. | Book one job in 7 days or pay $0.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all items
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+        
+        // Category Navigation
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Update active button
+                document.querySelectorAll('.category-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                btn.classList.add('active');
+                
+                // Scroll to section
+                const target = btn.getAttribute('href');
+                const section = document.querySelector(target);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

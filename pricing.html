@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing - Transparent Rates for Quality Work | ZestFlow</title>
-    <meta name="description" content="Clear, honest pricing for bug fixes, automation, and development services. No hidden fees, satisfaction guaranteed.">
+    <title>Pricing - After-Hours Job Booker | ZestFlow AI</title>
+    <meta name="description" content="Simple pricing for contractors. $499 setup + $149/mo after first booked job. No contracts. Cancel anytime.">
     <link rel="stylesheet" href="/consistent-styles.css">
     <style>
         * {
@@ -13,13 +13,12 @@
             box-sizing: border-box;
         }
         
-        /* Light Theme (default) */
+        /* Light Theme Colors */
         :root {
             --primary: #1a1a2e;
             --secondary: #16213e;
             --accent: #0f4c75;
             --highlight: #3282b8;
-            --success: #27ae60;
             --text-light: #f5f5f5;
             --text-dark: #333;
             --bg-light: #ffffff;
@@ -27,24 +26,6 @@
             --card-bg: #ffffff;
             --border-color: rgba(0, 0, 0, 0.05);
             --shadow-color: rgba(0, 0, 0, 0.1);
-            --theme-transition: all 0.3s ease;
-        }
-        
-        /* Dark Theme */
-        body.dark-theme {
-            --primary: #f5f5f5;
-            --secondary: #e0e0e0;
-            --accent: #64b5f6;
-            --highlight: #90caf9;
-            --success: #4caf50;
-            --text-light: #f5f5f5;  /* Keep light text light in dark mode */
-            --text-dark: #f5f5f5;   /* Main text should be light in dark mode */
-            --bg-light: #1a1a2e;
-            --bg-section: #16213e;
-            --card-bg: #0f4c75;
-            --border-color: rgba(255, 255, 255, 0.1);
-            --shadow-color: rgba(0, 0, 0, 0.5);
-            --text-muted: #f5f5f5;  /* All text should be white in dark mode */
         }
         
         body {
@@ -52,225 +33,204 @@
             line-height: 1.6;
             color: var(--text-dark);
             background: var(--bg-light);
-            transition: var(--theme-transition);
         }
         
-        /* Container styles are in consistent-styles.css */
-        
-        /* Header styles are in consistent-styles.css */
-        
-        /* Nav styles are in consistent-styles.css */
-        
-        /* Logo styles are in consistent-styles.css */
-        
-        /* Nav-links styles are in consistent-styles.css */
-        
-        /* Pricing Hero */
-        /* Use consistent page-hero class */
-        .pricing-hero {
-            padding: 120px 0 60px;
-            background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(22, 33, 62, 0.9)), 
-                        url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1920&h=600&fit=crop') center/cover;
-            color: white;
-            text-align: center;
-        }
-        
-        /* Dark mode hero */
-        body.dark-theme .pricing-hero {
-            background: linear-gradient(rgba(10, 10, 15, 0.95), rgba(16, 16, 24, 0.95)), 
-                        url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1920&h=600&fit=crop') center/cover;
-        }
-        
-        .pricing-hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        
-        .pricing-hero p {
-            font-size: 20px;
-            opacity: 0.9;
-            max-width: 600px;
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
         
-        /* Pricing Toggle */
-        .pricing-toggle {
-            text-align: center;
-            margin: 40px 0;
+        /* Header */
+        header {
+            background: var(--bg-light);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        nav {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            gap: 20px;
         }
         
-        .toggle-option {
-            font-size: 18px;
-            color: var(--text-muted, #666);
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
             transition: color 0.3s;
         }
         
-        .toggle-option.active {
-            color: var(--primary);
-            font-weight: 600;
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--highlight);
         }
         
-        .toggle-switch {
-            position: relative;
-            width: 60px;
-            height: 30px;
-            background: var(--bg-section);
-            border-radius: 30px;
-            cursor: pointer;
-            transition: background 0.3s;
-            border: 1px solid var(--border-color);
-        }
-        
-        .toggle-switch.active {
+        .contact-btn {
             background: var(--highlight);
+            color: white;
+            padding: 10px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s;
         }
         
-        .toggle-slider {
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 24px;
-            height: 24px;
-            background: white;
-            border-radius: 50%;
-            transition: transform 0.3s;
+        .contact-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
         }
         
-        .toggle-switch.active .toggle-slider {
-            transform: translateX(30px);
+        /* Pricing Section */
+        .pricing-hero {
+            padding: 120px 0 80px;
+            background: linear-gradient(to bottom, var(--bg-light), var(--bg-section));
         }
         
-        /* Pricing Cards */
-        .pricing-section {
-            padding: 80px 0;
-            background: var(--bg-section);
+        .pricing-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
+        .pricing-header h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .pricing-header p {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .guarantee-banner {
+            background: #27ae60;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+        
+        /* Pricing Grid */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
-            margin-top: 60px;
+            margin: 80px 0;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .pricing-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px var(--shadow-color);
-            transition: all 0.3s;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             position: relative;
-            border: 1px solid var(--border-color);
+            transition: all 0.3s;
         }
         
         .pricing-card.featured {
+            border: 2px solid var(--highlight);
             transform: scale(1.05);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px var(--shadow-color);
-        }
-        
-        .pricing-card.featured:hover {
-            transform: scale(1.05) translateY(-10px);
         }
         
         .popular-badge {
             position: absolute;
-            top: 20px;
-            right: -30px;
-            background: var(--success);
+            top: -15px;
+            right: 30px;
+            background: var(--highlight);
             color: white;
-            padding: 5px 40px;
-            transform: rotate(45deg);
-            font-size: 12px;
+            padding: 5px 20px;
+            border-radius: 20px;
             font-weight: 600;
-            text-transform: uppercase;
+            font-size: 14px;
         }
         
-        .pricing-header {
-            padding: 40px;
-            text-align: center;
-            background: var(--bg-section);
-        }
-        
-        .service-name {
+        .pricing-card h2 {
             font-size: 28px;
-            color: var(--primary);
             margin-bottom: 10px;
+            color: var(--primary);
         }
         
-        .service-tagline {
-            color: var(--text-muted, #666);
-            font-size: 16px;
-        }
-        
-        .pricing-price {
-            padding: 30px 40px;
+        .price-box {
+            margin: 30px 0;
+            padding: 20px;
+            background: var(--bg-section);
+            border-radius: 8px;
             text-align: center;
-            background: var(--card-bg);
         }
         
-        .price-amount {
-            font-size: 48px;
-            color: var(--highlight);
+        .setup-fee {
+            font-size: 36px;
             font-weight: 700;
+            color: var(--primary);
         }
         
-        .price-amount span {
-            font-size: 20px;
-            color: var(--text-muted, #666);
-            font-weight: 400;
+        .monthly-fee {
+            font-size: 18px;
+            color: #666;
+            margin-top: 10px;
         }
         
-        .price-period {
-            color: var(--text-muted, #666);
-            font-size: 16px;
-            margin-top: 5px;
+        .price-note {
+            font-size: 14px;
+            color: #27ae60;
+            font-weight: 600;
+            margin-top: 10px;
         }
         
-        .pricing-features {
-            padding: 0 40px 40px;
-        }
-        
-        .feature-list {
+        .features-list {
             list-style: none;
+            margin: 30px 0;
         }
         
-        .feature-list li {
+        .features-list li {
             padding: 15px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #f0f0f0;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 15px;
         }
         
-        .feature-list li:last-child {
+        .features-list li:last-child {
             border-bottom: none;
         }
         
-        .feature-check {
-            color: var(--success);
-            font-size: 20px;
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: #27ae60;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             flex-shrink: 0;
         }
         
-        .pricing-cta {
-            padding: 0 40px 40px;
-        }
-        
-        .pricing-btn {
+        .cta-button {
             display: block;
             width: 100%;
+            padding: 18px;
             background: var(--highlight);
             color: white;
-            padding: 15px;
             text-align: center;
             text-decoration: none;
             border-radius: 5px;
@@ -279,122 +239,57 @@
             transition: all 0.3s;
         }
         
-        .pricing-btn:hover {
+        .cta-button:hover {
             background: var(--accent);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         
-        .pricing-card.featured .pricing-btn {
-            background: var(--success);
-        }
-        
-        .pricing-card.featured .pricing-btn:hover {
-            background: #219a52;
-        }
-        
-        /* Custom Quote Section */
-        .custom-quote {
-            padding: 80px 0;
-            background: var(--bg-light);
-            text-align: center;
-        }
-        
-        .quote-box {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 60px;
-            border-radius: 10px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        body.dark-theme .quote-box {
-            background: linear-gradient(135deg, #0a0a0f, #16161f);
-            color: #f5f5f5;
-        }
-        
-        .quote-box h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        
-        .quote-box p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-        
-        /* FAQ Section */
-        .pricing-faq {
-            padding: 80px 0;
+        /* Additional Info */
+        .additional-info {
             background: var(--bg-section);
-        }
-        
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .pricing-faq h2 {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 50px;
-            color: var(--primary);
-        }
-        
-        .faq-item {
-            background: var(--card-bg);
-            margin-bottom: 20px;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px var(--shadow-color);
-            border: 1px solid var(--border-color);
-        }
-        
-        .faq-question {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .faq-answer {
-            color: var(--text-muted, #666);
-            line-height: 1.8;
-        }
-        
-        /* Money Back Guarantee */
-        .guarantee-section {
-            padding: 60px 0;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
+            padding: 80px 0;
             text-align: center;
         }
         
-        body.dark-theme .guarantee-section {
-            background: linear-gradient(135deg, #0a0a0f, #16161f);
-            color: #ffffff;
-        }
-        
-        .guarantee-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
-            flex-wrap: wrap;
+            margin-top: 40px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .guarantee-icon {
-            font-size: 80px;
+        .info-item {
+            padding: 30px;
         }
         
-        .guarantee-text h3 {
-            font-size: 32px;
+        .info-item img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        
+        .info-item h3 {
+            font-size: 20px;
             margin-bottom: 10px;
+            color: var(--primary);
         }
         
+        .info-item p {
+            color: #666;
+        }
+        
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .pricing-hero h1 {
+            .nav-links {
+                display: none;
+            }
+            
+            .pricing-header h1 {
                 font-size: 36px;
             }
             
@@ -403,11 +298,7 @@
             }
             
             .pricing-card.featured {
-                transform: none;
-            }
-            
-            .quote-box {
-                padding: 40px 20px;
+                transform: scale(1);
             }
         }
     </style>
@@ -418,327 +309,189 @@
             <a href="/" class="logo">ZestFlow AI</a>
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
-                <li><a href="/#services">Services</a></li>
+                <li><a href="/demo">Demo</a></li>
+                <li><a href="/book-install">Book Install</a></li>
                 <li><a href="/pricing.html" class="active">Pricing</a></li>
-                <li><a href="/about.html">About</a></li>
                 <li><a href="/contact.html">Contact</a></li>
             </ul>
-            <a href="/contact.html" class="contact-btn">Get Started</a>
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                <svg class="sun-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 17.5C9.5 17.5 7.5 15.5 7.5 13S9.5 8.5 12 8.5 16.5 10.5 16.5 13 14.5 17.5 12 17.5M12 7C8.7 7 6 9.7 6 13S8.7 19 12 19 18 16.3 18 13 15.3 7 12 7M12 2L14.4 6.4L19 5.7L15.8 9.2L17.3 13.6L12.9 11.1L8.6 13.7L10 9.2L6.8 5.6L11.5 6.3L12 2M3.3 7L7.8 5.5L5.5 1M18.5 1L16.2 5.5L20.7 7M1 13H5.5V11H1M18.5 11V13H23V11M3.3 19L5.6 14.5L1 13M23 13L18.4 14.5L20.7 19"/>
-                </svg>
-                <svg class="moon-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"/>
-                </svg>
-            </button>
+            <a href="/book-install" class="contact-btn">Book Install</a>
         </nav>
     </header>
     
     <section class="pricing-hero">
         <div class="container">
-            <h1>Simple, Transparent Pricing</h1>
-            <p>No hidden fees. No surprises. Just honest pricing for quality work that delivers results.</p>
-        </div>
-    </section>
-    
-    <section class="pricing-section">
-        <div class="container">
-            <div class="pricing-toggle">
-                <span class="toggle-option active">One-Time Projects</span>
-                <div class="toggle-switch" onclick="togglePricing()">
-                    <div class="toggle-slider"></div>
+            <div class="pricing-header">
+                <h1>Simple, Transparent Pricing</h1>
+                <p>Pay nothing until it books your first job</p>
+                <div class="guarantee-banner">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=30&h=30&fit=crop" alt="Guarantee" style="width: 24px; height: 24px; display: inline-block; vertical-align: middle; margin-right: 10px; border-radius: 4px;">
+                    7-Day Guarantee: Book one job or pay $0
                 </div>
-                <span class="toggle-option">Monthly Retainer</span>
             </div>
             
             <div class="pricing-grid">
+                <!-- Starter Plan -->
                 <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="service-name">Quick Fix</h3>
-                        <p class="service-tagline">For urgent bug fixes & small tasks</p>
+                    <h2>Starter</h2>
+                    <div class="price-box">
+                        <div class="setup-fee">$499</div>
+                        <div class="monthly-fee">then $149/month</div>
+                        <div class="price-note">After first booked job</div>
                     </div>
-                    <div class="pricing-price">
-                        <div class="price-amount">$50<span>/fix</span></div>
-                        <p class="price-period">Usually delivered same day</p>
-                    </div>
-                    <div class="pricing-features">
-                        <ul class="feature-list">
-                            <li><span class="feature-check">✓</span> Bug fixes & debugging</li>
-                            <li><span class="feature-check">✓</span> Small CSS/HTML changes</li>
-                            <li><span class="feature-check">✓</span> JavaScript error fixes</li>
-                            <li><span class="feature-check">✓</span> 2-4 hour turnaround</li>
-                            <li><span class="feature-check">✓</span> 7-day warranty</li>
-                        </ul>
-                    </div>
-                    <div class="pricing-cta">
-                        <a href="/contact.html" class="pricing-btn">Get Quick Fix</a>
-                    </div>
+                    
+                    <ul class="features-list">
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Instant SMS reply (under 60 seconds)</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Calendar booking integration</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Google Sheets lead tracking</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Basic spam filtering</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>48-hour installation</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Email support</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="/book-install" class="cta-button">Get Started</a>
                 </div>
                 
+                <!-- Pro Plan -->
                 <div class="pricing-card featured">
-                    <div class="popular-badge">Popular</div>
-                    <div class="pricing-header">
-                        <h3 class="service-name">Automation Pro</h3>
-                        <p class="service-tagline">Custom scripts that save hours</p>
+                    <div class="popular-badge">Most Popular</div>
+                    <h2>Pro</h2>
+                    <div class="price-box">
+                        <div class="setup-fee">$699</div>
+                        <div class="monthly-fee">then $199/month</div>
+                        <div class="price-note">After first booked job</div>
                     </div>
-                    <div class="pricing-price">
-                        <div class="price-amount">$150<span>/project</span></div>
-                        <p class="price-period">2-5 day delivery</p>
-                    </div>
-                    <div class="pricing-features">
-                        <ul class="feature-list">
-                            <li><span class="feature-check">✓</span> Custom Python scripts</li>
-                            <li><span class="feature-check">✓</span> Data processing automation</li>
-                            <li><span class="feature-check">✓</span> Web scraping tools</li>
-                            <li><span class="feature-check">✓</span> Full documentation</li>
-                            <li><span class="feature-check">✓</span> 30 days of updates</li>
-                            <li><span class="feature-check">✓</span> Video walkthrough</li>
-                        </ul>
-                    </div>
-                    <div class="pricing-cta">
-                        <a href="/contact.html" class="pricing-btn">Start Automating</a>
-                    </div>
+                    
+                    <ul class="features-list">
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span><strong>Everything in Starter, plus:</strong></span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Missed-call text-back (10 seconds)</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Deposit collection (Stripe/Square)</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Rush job routing (emergency rates)</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Advanced spam protection</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Priority phone support</span>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <span>Custom SMS templates</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="/book-install" class="cta-button">Get Pro</a>
                 </div>
-                
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="service-name">Full Stack</h3>
-                        <p class="service-tagline">Complete features & integrations</p>
-                    </div>
-                    <div class="pricing-price">
-                        <div class="price-amount">$500<span>/week</span></div>
-                        <p class="price-period">For larger projects</p>
-                    </div>
-                    <div class="pricing-features">
-                        <ul class="feature-list">
-                            <li><span class="feature-check">✓</span> API integrations</li>
-                            <li><span class="feature-check">✓</span> Database design</li>
-                            <li><span class="feature-check">✓</span> Full feature development</li>
-                            <li><span class="feature-check">✓</span> Testing & deployment</li>
-                            <li><span class="feature-check">✓</span> 60 days support</li>
-                            <li><span class="feature-check">✓</span> Daily updates</li>
-                        </ul>
-                    </div>
-                    <div class="pricing-cta">
-                        <a href="/contact.html" class="pricing-btn">Discuss Project</a>
-                    </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="font-size: 18px; color: #666;">
+                    <img src="https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=30&h=30&fit=crop" alt="No contracts" style="width: 24px; height: 24px; display: inline-block; vertical-align: middle; margin-right: 8px; border-radius: 4px;">
+                    <strong>No contracts.</strong> Pause or cancel anytime. We only succeed when you do.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="additional-info">
+        <div class="container">
+            <h2 style="font-size: 36px; margin-bottom: 20px;">What's Included in Setup</h2>
+            <p style="font-size: 18px; color: #666; max-width: 600px; margin: 0 auto;">We handle everything so you can focus on the jobs</p>
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=80&h=80&fit=crop" alt="Technical Setup">
+                    <h3>Technical Setup</h3>
+                    <p>Connect your website form, phone system, calendar, and payment processor</p>
+                </div>
+                <div class="info-item">
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=80&h=80&fit=crop" alt="Custom Configuration">
+                    <h3>Custom Configuration</h3>
+                    <p>Personalized SMS scripts, business hours, pricing rules, and response flows</p>
+                </div>
+                <div class="info-item">
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=80&h=80&fit=crop" alt="Training Session">
+                    <h3>Training Session</h3>
+                    <p>30-minute walkthrough showing you exactly how everything works</p>
+                </div>
+                <div class="info-item">
+                    <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?w=80&h=80&fit=crop" alt="Testing & Launch">
+                    <h3>Testing & Launch</h3>
+                    <p>We test everything before going live to ensure flawless operation</p>
                 </div>
             </div>
         </div>
     </section>
     
-    <section class="custom-quote">
-        <div class="container">
-            <div class="quote-box">
-                <h2>Need Something Different?</h2>
-                <p>Every project is unique. Let's discuss your specific needs and create a custom solution that fits your budget.</p>
-                <a href="/contact.html" class="pricing-btn" style="display: inline-block; padding: 15px 40px;">Get Custom Quote</a>
+    <!-- FAQ Preview -->
+    <section style="padding: 80px 0; background: white;">
+        <div class="container" style="max-width: 800px;">
+            <h2 style="text-align: center; font-size: 36px; margin-bottom: 40px;">Common Pricing Questions</h2>
+            
+            <div style="background: #f8f9fa; padding: 30px; border-radius: 8px; margin-bottom: 20px;">
+                <h3 style="font-size: 20px; margin-bottom: 10px;">When do I start paying the monthly fee?</h3>
+                <p style="color: #666;">Only after the system books your first job. We want to prove it works before you pay ongoing fees.</p>
+            </div>
+            
+            <div style="background: #f8f9fa; padding: 30px; border-radius: 8px; margin-bottom: 20px;">
+                <h3 style="font-size: 20px; margin-bottom: 10px;">What if I want to cancel?</h3>
+                <p style="color: #666;">Cancel anytime with no penalties. Just email us and we'll stop billing immediately.</p>
+            </div>
+            
+            <div style="background: #f8f9fa; padding: 30px; border-radius: 8px; margin-bottom: 20px;">
+                <h3 style="font-size: 20px; margin-bottom: 10px;">Are there any hidden fees?</h3>
+                <p style="color: #666;">No hidden fees. You only pay standard SMS costs (about 1¢ per text) and payment processing if you take deposits.</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="/faq" style="color: var(--highlight); text-decoration: none; font-weight: 600; font-size: 18px;">View All FAQs →</a>
             </div>
         </div>
     </section>
     
-    <section class="pricing-faq">
+    <!-- CTA -->
+    <section style="padding: 80px 0; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; text-align: center;">
         <div class="container">
-            <h2>Pricing Questions Answered</h2>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">What if I'm not sure which package I need?</div>
-                    <div class="faq-answer">No problem! Send me a message describing your project and I'll recommend the best option. We can always adjust as we go.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">Do you require payment upfront?</div>
-                    <div class="faq-answer">For Quick Fix projects, payment is due upon completion. For larger projects, I typically request 50% upfront and 50% upon delivery.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">What payment methods do you accept?</div>
-                    <div class="faq-answer">I accept PayPal, Wise, Zelle, and bank transfers. For Upwork clients, all payments go through the platform.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">What if the project takes longer than estimated?</div>
-                    <div class="faq-answer">I honor my quotes. If a project takes longer due to my miscalculation, that's on me. You pay the agreed price.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">Can I get a discount for multiple projects?</div>
-                    <div class="faq-answer">Absolutely! I offer package deals for clients with ongoing needs. Let's discuss a retainer arrangement.</div>
-                </div>
-            </div>
+            <h2 style="font-size: 42px; margin-bottom: 20px;">Ready to Stop Losing After-Hours Jobs?</h2>
+            <p style="font-size: 20px; opacity: 0.9; margin-bottom: 40px;">Get installed in 48 hours. Book a job in 7 days or pay nothing.</p>
+            <a href="/book-install" style="display: inline-block; background: white; color: var(--primary); padding: 18px 40px; text-decoration: none; border-radius: 5px; font-weight: 600; font-size: 18px; transition: all 0.3s;">Book Your Installation</a>
         </div>
     </section>
     
-    <section class="guarantee-section">
+    <footer style="background: var(--primary); color: white; padding: 40px 0; text-align: center;">
         <div class="container">
-            <div class="guarantee-content">
-                <div class="guarantee-icon" style="font-size: 60px; font-weight: bold;">100%</div>
-                <div class="guarantee-text">
-                    <h3>100% Satisfaction Guarantee</h3>
-                    <p>If you're not happy with the work, I'll fix it free or refund your payment. No questions asked.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div>
-                    <p>&copy; 2025 ZestFlow AI. All rights reserved.</p>
-                </div>
-                <ul class="footer-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/pricing.html">Pricing</a></li>
-                    <li><a href="/about.html">About</a></li>
-                    <li><a href="/contact.html">Contact</a></li>
-                </ul>
-            </div>
+            <p>&copy; 2025 ZestFlow AI. All rights reserved. | Book one job in 7 days or pay $0.</p>
         </div>
     </footer>
-
-    <style>
-        /* Footer styles */
-        footer {
-            background: var(--primary);
-            color: white;
-            padding: 40px 0;
-            margin-top: 0;
-        }
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .footer-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-        .footer-links a:hover {
-            opacity: 1;
-        }
-        @media (max-width: 768px) {
-            .footer-content {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-        }
-        
-        /* Theme Toggle Button */
-        .theme-toggle {
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 50px;
-            padding: 8px 12px;
-            cursor: pointer;
-            font-size: 20px;
-            transition: var(--theme-transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-        }
-        
-        .theme-toggle:hover {
-            background: var(--bg-section);
-            transform: rotate(180deg);
-        }
-        
-        .theme-toggle svg {
-            width: 20px;
-            height: 20px;
-            transition: var(--theme-transition);
-            position: absolute;
-        }
-        
-        .sun-icon {
-            fill: var(--text-dark);
-            opacity: 1;
-            transform: rotate(0deg) scale(1);
-        }
-        
-        .moon-icon {
-            fill: var(--text-dark);
-            opacity: 0;
-            transform: rotate(-180deg) scale(0);
-        }
-        
-        .theme-toggle svg {
-            width: 20px;
-            height: 20px;
-            transition: var(--theme-transition);
-            position: absolute;
-        }
-        
-        .sun-icon {
-            fill: var(--text-dark);
-            opacity: 1;
-            transform: rotate(0deg) scale(1);
-        }
-        
-        .moon-icon {
-            fill: var(--text-dark);
-            opacity: 0;
-            transform: rotate(-180deg) scale(0);
-        }
-    </style>
-    
-    <script>
-        function togglePricing() {
-            const toggle = document.querySelector('.toggle-switch');
-            const options = document.querySelectorAll('.toggle-option');
-            const prices = document.querySelectorAll('.price-amount');
-            const periods = document.querySelectorAll('.price-period');
-            
-            toggle.classList.toggle('active');
-            options.forEach(opt => opt.classList.toggle('active'));
-            
-            if (toggle.classList.contains('active')) {
-                // Monthly retainer prices
-                prices[0].innerHTML = '$500<span>/month</span>';
-                periods[0].textContent = '10 hours included';
-                
-                prices[1].innerHTML = '$1,500<span>/month</span>';
-                periods[1].textContent = '40 hours included';
-                
-                prices[2].innerHTML = '$3,000<span>/month</span>';
-                periods[2].textContent = 'Full-time support';
-            } else {
-                // One-time prices
-                prices[0].innerHTML = '$50<span>/fix</span>';
-                periods[0].textContent = 'Usually delivered same day';
-                
-                prices[1].innerHTML = '$150<span>/project</span>';
-                periods[1].textContent = '2-5 day delivery';
-                
-                prices[2].innerHTML = '$500<span>/week</span>';
-                periods[2].textContent = 'For larger projects';
-            }
-        }
-        
-        // Theme Toggle Functionality
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
-        
-        // Always start in light mode
-        // Users can toggle to dark mode if they prefer
-        
-        // Toggle theme
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-theme');
-            const isDark = body.classList.contains('dark-theme');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        });
-    </script>
 </body>
 </html>
