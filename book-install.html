@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Installation - After-Hours Job Booker</title>
+    <meta name="description" content="Install the After-Hours Job Booker in 48 hours. Automated SMS responses, calendar booking, and optional deposits.">
+    <link rel="stylesheet" href="/consistent-styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Light Theme Colors */
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f4c75;
+            --highlight: #3282b8;
+            --text-light: #f5f5f5;
+            --text-dark: #333;
+            --bg-light: #ffffff;
+            --bg-section: #f8f9fa;
+            --card-bg: #ffffff;
+            --border-color: rgba(0, 0, 0, 0.05);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--bg-light);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--highlight);
+        }
+        
+        .contact-btn {
+            background: var(--highlight);
+            color: white;
+            padding: 10px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .contact-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        /* Main Section */
+        .booking-section {
+            padding: 120px 0 80px;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, var(--bg-light), var(--bg-section));
+        }
+        
+        .booking-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+        
+        .booking-header h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .booking-header p {
+            font-size: 20px;
+            color: var(--text-muted, #666);
+        }
+        
+        /* Two Column Layout */
+        .booking-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        /* Left Column - Info */
+        .info-section {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        .checklist {
+            margin: 30px 0;
+        }
+        
+        .checklist h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: var(--bg-section);
+            border-radius: 8px;
+        }
+        
+        .checklist-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--highlight);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .checklist-text {
+            flex: 1;
+        }
+        
+        .checklist-text h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .checklist-text p {
+            font-size: 14px;
+            color: var(--text-muted, #666);
+        }
+        
+        /* Pricing Box */
+        .pricing-box {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .pricing-box h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .price {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        
+        .price-details {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        /* Right Column - Booking */
+        .booking-form {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .booking-form h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-align: center;
+        }
+        
+        /* Calendly Container */
+        .calendly-inline-widget {
+            min-width: 320px;
+            height: 630px;
+            margin: 20px 0;
+        }
+        
+        /* Payment Option */
+        .payment-option {
+            text-align: center;
+            padding: 30px;
+            background: var(--bg-section);
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .payment-option h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .payment-button {
+            display: inline-block;
+            background: var(--highlight);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 18px;
+            margin: 10px 0;
+            transition: all 0.3s;
+        }
+        
+        .payment-button:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin-top: 80px;
+            padding: 60px 0;
+            background: var(--bg-section);
+            border-radius: 12px;
+        }
+        
+        .faq-section h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary);
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+        
+        .faq-item {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .faq-question {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .faq-answer {
+            color: var(--text-muted, #666);
+            line-height: 1.8;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .mobile-menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+        
+        /* Guarantee Badge */
+        .guarantee-badge {
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            background: #27ae60;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transform: rotate(-5deg);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .booking-header h1 {
+                font-size: 36px;
+            }
+            
+            .booking-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Sticky Bottom Button */
+        .sticky-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--highlight);
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 5px 20px rgba(50, 130, 184, 0.4);
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        
+        .sticky-cta:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(50, 130, 184, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .sticky-cta {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">ZestFlow AI</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/demo.html">Demo</a></li>
+                <li><a href="/book-install" class="active">Book Install</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+            <a href="/contact.html" class="contact-btn">Contact</a>
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    
+    <section class="booking-section">
+        <div class="container">
+            <div class="booking-header">
+                <h1>We'll install your After-Hours Job Booker in 48 hours</h1>
+                <p>Never miss another after-hours opportunity. Automated responses, calendar booking, and optional deposits.</p>
+            </div>
+            
+            <div class="booking-content">
+                <!-- Left Column - Information -->
+                <div class="info-section">
+                    <div class="checklist">
+                        <h3>What We'll Set Up</h3>
+                        
+                        <div class="checklist-item">
+                            <div class="checklist-icon">✓</div>
+                            <div class="checklist-text">
+                                <h4>Website Form Connection</h4>
+                                <p>Connect to your existing contact form to capture after-hours inquiries</p>
+                            </div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checklist-icon">✓</div>
+                            <div class="checklist-text">
+                                <h4>Twilio SMS Number</h4>
+                                <p>Professional text messaging that responds in 10 seconds</p>
+                            </div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checklist-icon">✓</div>
+                            <div class="checklist-text">
+                                <h4>Google Calendar Integration</h4>
+                                <p>Customers book directly into your schedule</p>
+                            </div>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checklist-icon">✓</div>
+                            <div class="checklist-text">
+                                <h4>Google Sheets Database</h4>
+                                <p>Track all leads and bookings automatically</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-box">
+                        <div class="guarantee-badge">7-Day Guarantee</div>
+                        <h3>Simple Pricing</h3>
+                        <div class="price">$499</div>
+                        <p class="price-details">One-time setup fee</p>
+                        <p style="margin-top: 15px; font-size: 18px;">Then $149/mo after your first booked job</p>
+                        <p style="margin-top: 10px; opacity: 0.9;">If it doesn't book a job in 7 days, we remove it. No charge.</p>
+                    </div>
+                </div>
+                
+                <!-- Right Column - Booking Form -->
+                <div class="booking-form">
+                    <h2>Choose Your Installation Method</h2>
+                    
+                    <!-- Option 1: Direct Calendly Booking -->
+                    <div class="payment-option">
+                        <h3>Option 1: Book Install Session</h3>
+                        <p style="margin-bottom: 20px; color: var(--text-muted, #666);">Schedule a 30-minute installation session</p>
+                        
+                        <!-- Calendly inline widget - Replace with actual Calendly code -->
+                        <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR-CALENDLY-LINK/30min" style="background: #f5f5f5; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                            <div style="text-align: center; color: #666;">
+                                <p>Calendly widget will appear here</p>
+                                <p style="font-size: 14px; margin-top: 10px;">Replace with your actual Calendly embed code</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Option 2: Payment First -->
+                    <div class="payment-option">
+                        <h3>Option 2: Pay & Schedule</h3>
+                        <p style="margin-bottom: 20px; color: var(--text-muted, #666);">Complete payment first, then book your installation</p>
+                        <a href="#" class="payment-button">Pay $499 Setup Fee</a>
+                        <p style="margin-top: 15px; font-size: 14px; color: var(--text-muted, #666);">After payment, you'll receive a link to schedule your installation</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question">Will this work with my current site?</div>
+                        <div class="faq-answer">Yes—we connect to your existing form or missed calls. No need to change your website or phone system.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Do I need new software?</div>
+                        <div class="faq-answer">No—everything runs through SMS and your calendar. You'll get notifications on your phone and bookings in your calendar.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">What if it doesn't book a job?</div>
+                        <div class="faq-answer">We remove it. No charge. If you don't get at least one booked job in the first 7 days, we'll uninstall everything and refund your setup fee.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">What's the total price?</div>
+                        <div class="faq-answer">$499 setup fee (one-time), then $149/mo after your first booked job. No monthly fees until the system proves itself by booking real work.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sticky Bottom Button -->
+    <a href="#booking-form" class="sticky-cta">Install After-Hours Booker →</a>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle?.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Smooth scroll to booking form
+        document.querySelector('.sticky-cta').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('.booking-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    </script>
+    
+    <!-- Calendly Script - Add your actual Calendly script here -->
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</body>
+</html>
