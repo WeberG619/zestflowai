@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZestFlow Widget Demo - How Customers Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .contractor-site {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .phone-demo {
+            background: #333;
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        .emergency-widget {
+            background: #ff4444;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .emergency-widget h3 {
+            margin: 0 0 20px 0;
+            font-size: 24px;
+        }
+        .emergency-widget input, .emergency-widget textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .emergency-widget button {
+            background: white;
+            color: #ff4444;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .sms-conversation {
+            background: black;
+            padding: 20px;
+            border-radius: 20px;
+            height: 400px;
+            overflow-y: auto;
+        }
+        .sms {
+            margin: 10px 0;
+            padding: 12px 16px;
+            border-radius: 18px;
+            max-width: 80%;
+            font-size: 14px;
+        }
+        .sms-received {
+            background: #444;
+            color: white;
+            margin-right: auto;
+        }
+        .sms-sent {
+            background: #007AFF;
+            color: white;
+            margin-left: auto;
+            text-align: right;
+        }
+        .flow-arrow {
+            text-align: center;
+            font-size: 24px;
+            color: #3282b8;
+            margin: 20px 0;
+        }
+        @media (max-width: 768px) {
+            .demo-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>How Customers Book Emergency Services</h1>
+    <p class="subtitle">Two ways customers can reach contractors through ZestFlow</p>
+    
+    <div class="demo-container">
+        <!-- Website Form Demo -->
+        <div class="contractor-site">
+            <h2>Option 1: Through Contractor's Website</h2>
+            <p style="color: #666;">Customer visits JoesPlumbing.com at 11 PM</p>
+            
+            <div style="background: #f8f8f8; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                <h3 style="margin-top: 0;">Joe's Plumbing & Heating</h3>
+                <p>24/7 Emergency Service • Licensed & Insured</p>
+            </div>
+            
+            <!-- ZestFlow Widget -->
+            <div class="emergency-widget">
+                <h3>🚨 EMERGENCY SERVICE</h3>
+                <p style="margin: 0 0 20px 0;">Get help in 60 seconds!</p>
+                <form>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="tel" placeholder="Phone Number" required>
+                    <textarea placeholder="What's your emergency?" rows="3" required></textarea>
+                    <button type="submit">Get Immediate Help →</button>
+                </form>
+                <p style="margin: 15px 0 0 0; font-size: 14px;">
+                    ⚡ Instant response • 📅 Book appointment • 💳 Pay deposit
+                </p>
+            </div>
+            
+            <div class="flow-arrow">↓</div>
+            
+            <div style="background: #e8f5e9; padding: 20px; border-radius: 5px; text-align: center;">
+                <strong>Customer gets text in 60 seconds with booking link!</strong>
+            </div>
+        </div>
+        
+        <!-- Phone Demo -->
+        <div>
+            <h2 style="text-align: center;">Option 2: Through Phone Call</h2>
+            <p style="text-align: center; color: #666;">Customer calls contractor at 11 PM</p>
+            
+            <div class="phone-demo">
+                <div style="background: #222; padding: 15px; border-radius: 15px; margin-bottom: 20px; text-align: center; color: white;">
+                    <div style="font-size: 12px; opacity: 0.7;">Calling...</div>
+                    <div style="font-size: 18px; margin: 10px 0;">Joe's Plumbing</div>
+                    <div style="font-size: 14px; opacity: 0.7;">(555) 123-4567</div>
+                </div>
+                
+                <div class="sms-conversation">
+                    <div class="sms sms-received">
+                        Hi! This is Joe's Plumbing emergency line. We got your call! Text us your emergency and location for fastest service.
+                    </div>
+                    <div class="sms sms-sent">
+                        Burst pipe in basement! 123 Main St
+                    </div>
+                    <div class="sms sms-received">
+                        Got it! I can help immediately. Click here to book your emergency visit: zestflow.ai/book/joes/emergency
+                    </div>
+                    <div class="sms sms-received">
+                        ✅ Next available: Tonight 11:45 PM
+                        ✅ Estimated cost: $150-300
+                        ✅ Pay deposit to confirm
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrow">↓</div>
+            
+            <div style="background: #e8f5e9; padding: 20px; border-radius: 5px; text-align: center; margin-top: 20px;">
+                <strong>Customer books & pays deposit in 2 minutes!</strong>
+            </div>
+        </div>
+    </div>
+    
+    <div style="background: #3282b8; color: white; padding: 40px; border-radius: 10px; margin-top: 40px; text-align: center;">
+        <h2 style="margin-top: 0;">What Contractors Get:</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 30px;">
+            <div>
+                <h3>📱 Instant Alerts</h3>
+                <p>Get notified of booked jobs immediately</p>
+            </div>
+            <div>
+                <h3>📅 Calendar Sync</h3>
+                <p>Jobs auto-added to your schedule</p>
+            </div>
+            <div>
+                <h3>💰 Deposit Collected</h3>
+                <p>Customer pays before you arrive</p>
+            </div>
+            <div>
+                <h3>📊 Job Details</h3>
+                <p>All info collected upfront</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
