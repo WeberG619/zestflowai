@@ -91,7 +91,7 @@ nav {
     letter-spacing: -0.5px;
     text-decoration: none;
     transition: color 0.3s;
-    margin-right: auto;  /* Push nav links to center with consistent spacing */
+    margin-right: 60px;  /* Add space between logo and nav links */
 }
 
 .logo:hover {
@@ -100,7 +100,7 @@ nav {
 
 .nav-links {
     display: flex;
-    gap: 40px;  /* Consistent spacing matching demo page */
+    gap: 20px;  /* Reduced spacing between nav items */
     list-style: none;
     align-items: center;
 }
