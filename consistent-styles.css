@@ -100,7 +100,7 @@ nav {
 
 .nav-links {
     display: flex;
-    gap: 20px;  /* Reduced spacing between nav items */
+    gap: 40px;  /* Match demo page spacing */
     list-style: none;
     align-items: center;
 }
