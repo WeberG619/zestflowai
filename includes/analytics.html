@@ -1,0 +1,49 @@
+<!-- Google Analytics 4 - Replace G-XXXXXXXXXX with your Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  
+  // Replace G-XXXXXXXXXX with your actual GA4 Measurement ID
+  gtag('config', 'G-XXXXXXXXXX', {
+    // Enhanced measurement features
+    'page_title': document.title,
+    'page_location': window.location.href,
+    'page_path': window.location.pathname
+  });
+  
+  // Custom event tracking for form submissions
+  // This is automatically called by form-handler.js
+  window.trackFormSubmit = function(formType) {
+    gtag('event', 'form_submit', {
+      'event_category': 'engagement',
+      'event_label': formType,
+      'value': 1
+    });
+  };
+  
+  // Track booking conversions
+  window.trackBookingConversion = function(bookingId) {
+    gtag('event', 'conversion', {
+      'event_category': 'booking',
+      'event_label': 'installation_scheduled',
+      'value': bookingId,
+      'currency': 'USD',
+      'transaction_id': bookingId
+    });
+  };
+  
+  // Track page engagement time
+  let startTime = new Date().getTime();
+  window.addEventListener('beforeunload', function() {
+    let endTime = new Date().getTime();
+    let timeSpent = Math.round((endTime - startTime) / 1000); // in seconds
+    
+    gtag('event', 'page_timing', {
+      'event_category': 'engagement',
+      'event_label': document.title,
+      'value': timeSpent
+    });
+  });
+</script>

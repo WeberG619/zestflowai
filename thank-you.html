@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Installation Booked | ZestFlow AI</title>
+    <meta name="description" content="Your after-hours booking system installation has been scheduled. We'll be in touch within 24 hours.">
+    <link rel="stylesheet" href="/consistent-styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Light Theme Colors */
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f4c75;
+            --highlight: #3282b8;
+            --text-light: #f5f5f5;
+            --text-dark: #333;
+            --bg-light: #ffffff;
+            --bg-section: #f8f9fa;
+            --card-bg: #ffffff;
+            --border-color: rgba(0, 0, 0, 0.05);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--bg-light);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--highlight);
+        }
+        
+        /* Thank You Content */
+        .thank-you-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 0;
+            background: linear-gradient(to bottom, var(--bg-light), var(--bg-section));
+        }
+        
+        .thank-you-content {
+            text-align: center;
+            max-width: 800px;
+            background: white;
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #27ae60;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 40px;
+            color: white;
+        }
+        
+        .thank-you-content h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .thank-you-content > p {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        
+        /* Next Steps */
+        .next-steps {
+            background: var(--bg-section);
+            padding: 40px;
+            border-radius: 8px;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+        
+        .next-steps h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .step-number {
+            width: 30px;
+            height: 30px;
+            background: var(--highlight);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .step-text {
+            flex: 1;
+        }
+        
+        .step-text h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .step-text p {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        /* Contact Info */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .contact-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .contact-card h3 {
+            font-size: 18px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .contact-card p {
+            color: #666;
+        }
+        
+        .contact-card a {
+            color: var(--highlight);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+        
+        /* CTA Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: var(--highlight);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--border-color);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--highlight);
+            color: var(--highlight);
+        }
+        
+        /* Guarantee Banner */
+        .guarantee-banner {
+            background: #e8f5e9;
+            border: 2px solid #27ae60;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .guarantee-icon {
+            width: 40px;
+            height: 40px;
+            background: #27ae60;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .guarantee-text {
+            flex: 1;
+        }
+        
+        .guarantee-text h3 {
+            font-size: 18px;
+            color: #1b5e20;
+            margin-bottom: 5px;
+        }
+        
+        .guarantee-text p {
+            color: #2e7d32;
+            font-size: 14px;
+        }
+        
+        /* Loading State */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .loading.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .thank-you-content {
+                padding: 40px 30px;
+            }
+            
+            .thank-you-content h1 {
+                font-size: 32px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">ZestFlow AI</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/demo">Demo</a></li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="thank-you-section">
+        <div class="container">
+            <div class="thank-you-content">
+                <div class="success-icon">✓</div>
+                <h1>Thank You! Installation Scheduled</h1>
+                <p>Your after-hours booking system installation has been confirmed. Check your email for details.</p>
+                
+                <div class="next-steps">
+                    <h2>What Happens Next?</h2>
+                    
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-text">
+                            <h3>Within 24 Hours</h3>
+                            <p>We'll contact you to confirm your installation time and gather any specific requirements.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-text">
+                            <h3>48-Hour Installation</h3>
+                            <p>We'll set up your complete after-hours booking system, test everything, and train you on how it works.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-text">
+                            <h3>Start Booking Jobs</h3>
+                            <p>Your system goes live immediately after installation. Watch those after-hours jobs roll in!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h3>Questions?</h3>
+                        <p>Email us at<br><a href="mailto:weber@zestflowai.com">weber@zestflowai.com</a></p>
+                    </div>
+                    <div class="contact-card">
+                        <h3>Need Help Faster?</h3>
+                        <p>Text us at<br><strong>(XXX) XXX-XXXX</strong></p>
+                    </div>
+                </div>
+                
+                <div class="guarantee-banner">
+                    <div class="guarantee-icon">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=30&h=30&fit=crop" alt="Guarantee" style="width: 24px; height: 24px; border-radius: 4px;">
+                    </div>
+                    <div class="guarantee-text">
+                        <h3>Remember Our Guarantee</h3>
+                        <p>If the system doesn't book at least one job in 7 days, we'll remove it and refund your setup fee. No questions asked.</p>
+                    </div>
+                </div>
+                
+                <div class="cta-buttons" style="margin-top: 40px;">
+                    <a href="/" class="btn btn-secondary">Back to Home</a>
+                    <a href="/demo" class="btn btn-primary">Watch Demo Again</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        // Show booking details if available
+        const urlParams = new URLSearchParams(window.location.search);
+        const bookingId = urlParams.get('booking');
+        const leadId = urlParams.get('lead');
+        
+        if (bookingId || leadId) {
+            console.log('Booking/Lead tracked:', { bookingId, leadId });
+            
+            // You can add additional tracking or display custom messages based on these IDs
+            if (bookingId) {
+                const successIcon = document.querySelector('.success-icon');
+                successIcon.innerHTML = '#' + bookingId;
+                successIcon.style.fontSize = '20px';
+            }
+        }
+        
+        // Track conversion if analytics available
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'conversion', {
+                'event_category': 'booking',
+                'event_label': 'installation_scheduled',
+                'value': bookingId || leadId
+            });
+        }
+    </script>
+</body>
+</html>
