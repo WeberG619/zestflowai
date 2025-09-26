@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - ZestFlow AI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        input, textarea, select, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            background: #3282b8;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    
+    <!-- Pure HTML form with NO JavaScript -->
+    <form name="contact" method="POST" netlify>
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <select name="service" required>
+            <option value="">Select Service</option>
+            <option value="installation">Installation</option>
+            <option value="demo">Demo</option>
+            <option value="support">Support</option>
+        </select>
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+    
+    <p>This is a static form with no JavaScript interference.</p>
+</body>
+</html>
