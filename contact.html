@@ -440,13 +440,9 @@
                 <div class="contact-form">
                     <h2>Send a Message</h2>
                     
-                    <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact-success">
-                        <!-- Netlify Forms hidden field -->
-                        <input type="hidden" name="form-name" value="contact">
-                        <!-- Honeypot field for spam protection -->
-                        <p style="display:none">
-                            <label>Don't fill this out if you're human: <input name="bot-field"></label>
-                        </p>
+                    <form id="contact-form" name="contact" method="POST" action="https://formspree.io/f/myznzvak">
+                        <!-- Formspree redirect -->
+                        <input type="hidden" name="_next" value="https://zestflowai.com/contact-success">
                         
                         <div class="form-group">
                             <label for="name">Your Name</label>
