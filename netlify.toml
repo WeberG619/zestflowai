@@ -1,0 +1,31 @@
+# Netlify configuration file
+# This tells Netlify how to handle your site
+
+[build]
+  # Directory to publish (your site files are in root)
+  publish = "/"
+
+# Redirect rules for single page navigation
+[[redirects]]
+  from = "/demo"
+  to = "/demo.html"
+  status = 200
+
+[[redirects]]
+  from = "/book-install"
+  to = "/book-install.html"
+  status = 200
+
+# Handle form submissions (if not using your own backend)
+# Netlify can process forms for you (100 free submissions/month)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Environment variables (add these in Netlify dashboard)
+[build.environment]
+  NODE_VERSION = "18"
