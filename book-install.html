@@ -225,9 +225,12 @@
         
         /* Calendly Container */
         .calendly-inline-widget {
-            min-width: 320px;
-            height: 630px;
+            width: 100%;
+            height: 650px;
             margin: 20px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
         }
         
         /* Payment Option */
@@ -358,7 +361,7 @@
             }
         }
         
-        /* Sticky Bottom Button */
+        /* Sticky Bottom Button - REMOVED
         .sticky-cta {
             position: fixed;
             bottom: 30px;
@@ -379,14 +382,17 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 30px rgba(50, 130, 184, 0.5);
         }
+        */
         
         @media (max-width: 768px) {
+            /* Sticky button styles removed
             .sticky-cta {
                 bottom: 20px;
                 right: 20px;
                 padding: 12px 20px;
                 font-size: 14px;
             }
+            */
         }
     </style>
 </head>
@@ -523,8 +529,7 @@
         </div>
     </section>
     
-    <!-- Sticky Bottom Button -->
-    <a href="#booking-form" class="sticky-cta">Install After-Hours Booker</a>
+    <!-- Sticky Bottom Button removed per client request -->
     
     <script>
         // Mobile menu toggle
@@ -535,11 +540,7 @@
             navLinks.classList.toggle('active');
         });
         
-        // Smooth scroll to booking form
-        document.querySelector('.sticky-cta').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector('.booking-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
+        // Sticky button functionality removed
     </script>
     
     <!-- Calendly Script - Add your actual Calendly script here -->
