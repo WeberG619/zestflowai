@@ -184,6 +184,207 @@
                 gap: 30px;
             }
         }
+        
+        /* Demo Modal Styles */
+        .demo-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .demo-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .demo-modal-content {
+            background: #f8f9fa;
+            border-radius: 20px;
+            max-width: 400px;
+            width: 100%;
+            max-height: 90vh;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .demo-phone-header {
+            background: #1a1a2e;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .demo-close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .demo-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .demo-messages {
+            padding: 20px;
+            height: 500px;
+            overflow-y: auto;
+            background: white;
+        }
+        
+        .demo-message {
+            margin-bottom: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: messageSlide 0.3s forwards;
+        }
+        
+        .demo-message.received {
+            text-align: left;
+        }
+        
+        .demo-message.sent {
+            text-align: right;
+        }
+        
+        .demo-bubble {
+            display: inline-block;
+            padding: 12px 18px;
+            border-radius: 18px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        
+        .received .demo-bubble {
+            background: #e9ecef;
+            color: #333;
+            border-bottom-left-radius: 4px;
+        }
+        
+        .sent .demo-bubble {
+            background: #3282b8;
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .demo-timestamp {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+        
+        .demo-typing {
+            display: none;
+            padding: 15px 20px;
+            background: #e9ecef;
+            border-radius: 18px;
+            border-bottom-left-radius: 4px;
+            margin-bottom: 15px;
+        }
+        
+        .demo-typing.active {
+            display: inline-block;
+        }
+        
+        .demo-typing span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #999;
+            margin: 0 2px;
+            animation: typingDot 1.4s infinite;
+        }
+        
+        .demo-typing span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .demo-typing span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes messageSlide {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes typingDot {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .demo-action-button {
+            display: inline-block;
+            background: #3282b8;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+        
+        .demo-bottom-cta {
+            padding: 20px;
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+            text-align: center;
+        }
+        
+        .demo-bottom-cta h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+        
+        .demo-bottom-cta p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .demo-bottom-cta a {
+            display: inline-block;
+            background: #3282b8;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .demo-bottom-cta a:hover {
+            background: #0f4c75;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -229,10 +430,10 @@
                 <div class="emergency-widget">
                     <h3>EMERGENCY SERVICE</h3>
                     <p style="margin-bottom: 20px;">Get help in 60 seconds!</p>
-                    <form onsubmit="return false;">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="tel" placeholder="Phone Number" required>
-                        <textarea placeholder="What's your emergency?" rows="3" required></textarea>
+                    <form id="demoEmergencyForm">
+                        <input type="text" id="demoName" placeholder="Your Name" required>
+                        <input type="tel" id="demoPhone" placeholder="Phone Number" required>
+                        <textarea id="demoMessage" placeholder="What's your emergency?" rows="3" required></textarea>
                         <button type="submit">Get Immediate Help</button>
                     </form>
                     <p style="margin-top: 15px; font-size: 14px; opacity: 0.9;">
@@ -318,6 +519,24 @@
         </div>
     </footer>
     
+    <!-- Demo Modal -->
+    <div class="demo-modal" id="demoModal">
+        <div class="demo-modal-content">
+            <div class="demo-phone-header">
+                <button class="demo-close" onclick="closeDemoModal()">&times;</button>
+                Joe's Plumbing SMS
+            </div>
+            <div class="demo-messages" id="demoMessages">
+                <!-- Messages will be added here dynamically -->
+            </div>
+            <div class="demo-bottom-cta">
+                <h3>This is how it works!</h3>
+                <p>Your customers get instant responses 24/7</p>
+                <a href="/book-install.html">Get This For Your Business</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Theme toggle script -->
     <script>
         
@@ -327,6 +546,109 @@
         
         mobileMenuToggle?.addEventListener('click', function() {
             navLinks.classList.toggle('active');
+        });
+        
+        // Demo Form Handler
+        const demoForm = document.getElementById('demoEmergencyForm');
+        const demoModal = document.getElementById('demoModal');
+        const demoMessages = document.getElementById('demoMessages');
+        
+        // Demo conversation flow
+        const demoConversation = [
+            { type: 'sent', text: '{message}', delay: 0 },
+            { type: 'typing', delay: 500 },
+            { type: 'received', text: 'Hi! This is Joe\'s Plumbing emergency line. We got your message!', delay: 1500 },
+            { type: 'received', text: 'I can help you book an emergency visit right away.', delay: 2500 },
+            { type: 'received', text: 'Let me check our availability...', delay: 3500 },
+            { type: 'typing', delay: 4000 },
+            { type: 'received', text: 'Great news! I have a technician available:', delay: 5500 },
+            { type: 'received', text: '🕐 Tonight at 11:45 PM\n💰 Emergency rate: $150-300\n⏱️ Estimated 1-2 hours', delay: 6500 },
+            { type: 'received', text: 'Would you like to book this appointment?', delay: 7500 },
+            { type: 'action', text: 'Click here to confirm and pay deposit: zestflow.ai/book/demo', delay: 8000 },
+            { type: 'sent', text: 'Yes! Please book it', delay: 9000 },
+            { type: 'typing', delay: 9500 },
+            { type: 'received', text: '✅ Perfect! I\'ve reserved your spot.', delay: 10500 },
+            { type: 'received', text: 'Please click the link above to confirm with a $50 deposit. Your technician will arrive at 11:45 PM.', delay: 11500 },
+            { type: 'received', text: 'You\'ll receive a confirmation text once payment is complete. Thank you!', delay: 12500 }
+        ];
+        
+        demoForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('demoName').value;
+            const phone = document.getElementById('demoPhone').value;
+            const message = document.getElementById('demoMessage').value;
+            
+            // Clear previous messages
+            demoMessages.innerHTML = '';
+            
+            // Show modal
+            demoModal.classList.add('active');
+            
+            // Start conversation simulation
+            let messageIndex = 0;
+            
+            demoConversation.forEach((msg, index) => {
+                setTimeout(() => {
+                    if (msg.type === 'typing') {
+                        // Show typing indicator
+                        const typing = document.createElement('div');
+                        typing.className = 'demo-typing active';
+                        typing.innerHTML = '<span></span><span></span><span></span>';
+                        demoMessages.appendChild(typing);
+                        demoMessages.scrollTop = demoMessages.scrollHeight;
+                    } else {
+                        // Remove typing indicator if present
+                        const typing = demoMessages.querySelector('.demo-typing');
+                        if (typing) typing.remove();
+                        
+                        // Add message
+                        const messageDiv = document.createElement('div');
+                        messageDiv.className = `demo-message ${msg.type}`;
+                        
+                        let messageText = msg.text.replace('{message}', message);
+                        
+                        if (msg.type === 'action') {
+                            messageDiv.innerHTML = `
+                                <div class="demo-bubble">
+                                    ${messageText.split(':')[0]}:<br>
+                                    <a href="#" class="demo-action-button" onclick="event.preventDefault()">
+                                        ${messageText.split(':')[1]}
+                                    </a>
+                                </div>
+                                <div class="demo-timestamp">${getCurrentTime()}</div>
+                            `;
+                        } else {
+                            messageDiv.innerHTML = `
+                                <div class="demo-bubble">${messageText.replace(/\n/g, '<br>')}</div>
+                                <div class="demo-timestamp">${getCurrentTime()}</div>
+                            `;
+                        }
+                        
+                        messageDiv.style.animationDelay = `${index * 0.1}s`;
+                        demoMessages.appendChild(messageDiv);
+                        demoMessages.scrollTop = demoMessages.scrollHeight;
+                    }
+                }, msg.delay);
+            });
+        });
+        
+        function closeDemoModal() {
+            demoModal.classList.remove('active');
+            // Reset form
+            demoForm.reset();
+        }
+        
+        function getCurrentTime() {
+            const now = new Date();
+            return now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+        }
+        
+        // Close modal on background click
+        demoModal.addEventListener('click', function(e) {
+            if (e.target === demoModal) {
+                closeDemoModal();
+            }
         });
     </script>
 </body>
