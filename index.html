@@ -193,7 +193,7 @@
         
         /* Hero Section */
         .hero {
-            padding: 120px 0 80px; /* Normal padding for fixed header */
+            padding: 100px 0 80px; /* Adjusted padding after removing hello bar */
             background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(22, 33, 62, 0.9)), 
                         url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1920&h=1080&fit=crop') center/cover;
             color: white;
@@ -871,7 +871,8 @@
             scroll-margin-top: 80px; /* Height of fixed header */
         }
         
-        /* Quick Contact Widget */
+        /* Quick Contact Widget - REMOVED */
+        /*
         .quick-contact-widget {
             position: fixed;
             right: 30px;
@@ -889,6 +890,7 @@
         .quick-contact-widget.hidden {
             transform: translateY(400px);
         }
+        */
         
         .widget-header {
             display: flex;
@@ -1094,15 +1096,9 @@
             }
         }
     </style>
-    <link rel="stylesheet" href="/enhancement-styles.css">
+    <!-- <link rel="stylesheet" href="/enhancement-styles.css"> Disabled per client request -->
 </head>
 <body>
-    <!-- Hello Bar -->
-    <div style="background: #27ae60; color: white; text-align: center; padding: 12px 20px; font-size: 16px; font-weight: 600; position: relative; z-index: 1001;">
-        Install by Friday → first month free if it doesn't book a job
-        <a href="/book-install" style="margin-left: 20px; background: white; color: #27ae60; padding: 5px 15px; text-decoration: none; border-radius: 3px; font-size: 14px;">Book Install</a>
-    </div>
-    
     <header id="mainHeader">
         <nav class="container">
             <a href="/" class="logo">ZestFlow AI</a>
@@ -1136,8 +1132,8 @@
                     <h1>Book after-hours jobs automatically—before your competitor answers.</h1>
                     <p>If it doesn't land one job in 7 days, I remove it. No charge.</p>
                     <div style="margin-top: 30px; display: flex; gap: 20px; flex-wrap: wrap;">
-                        <a href="/book-install" class="contact-btn" style="font-size: 18px; padding: 15px 30px;">Install it on my site this week →</a>
-                        <a href="/demo" style="background: transparent; border: 2px solid white; color: white; padding: 15px 30px; text-decoration: none; border-radius: 4px; font-weight: 500; transition: all 0.3s; display: inline-block;">Watch 60-sec demo →</a>
+                        <a href="/book-install" class="contact-btn" style="font-size: 18px; padding: 15px 30px;">Install it on my site this week</a>
+                        <a href="/demo" style="background: transparent; border: 2px solid white; color: white; padding: 15px 30px; text-decoration: none; border-radius: 4px; font-weight: 500; transition: all 0.3s; display: inline-block;">Watch 60-sec demo</a>
                     </div>
                     <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.2);">
                         <p style="font-size: 16px; opacity: 0.9;">60-sec auto-reply • Calendar booking • Optional deposit • Works with your current site/phone</p>
@@ -1156,12 +1152,12 @@
                 <div class="service-card" style="padding: 40px; text-align: center;">
                     <h3 style="font-size: 28px; margin-bottom: 20px; color: var(--primary);">After-Hours Job Booker</h3>
                     <p style="color: var(--text-muted, #666); margin-bottom: 25px; font-size: 16px; line-height: 1.8;">Automatically responds to after-hours calls and books jobs while you sleep. Never miss another opportunity.</p>
-                    <a href="/book-install" style="display: inline-block; background: var(--highlight); color: white; padding: 15px 35px; text-decoration: none; border-radius: 5px; font-weight: 600; font-size: 16px;">Get Installed →</a>
+                    <a href="/book-install" style="display: inline-block; background: var(--highlight); color: white; padding: 15px 35px; text-decoration: none; border-radius: 5px; font-weight: 600; font-size: 16px;">Get Installed</a>
                 </div>
                 <div class="service-card" style="padding: 40px; text-align: center;">
                     <h3 style="font-size: 28px; margin-bottom: 20px; color: var(--primary);">Missed-Call Text-Back (10s)</h3>
                     <p style="color: var(--text-muted, #666); margin-bottom: 25px; font-size: 16px; line-height: 1.8;">Instantly text customers who can't get through. Capture leads before they call your competitor.</p>
-                    <a href="/demo" style="display: inline-block; background: var(--highlight); color: white; padding: 15px 35px; text-decoration: none; border-radius: 5px; font-weight: 600; font-size: 16px;">See Demo →</a>
+                    <a href="/demo" style="display: inline-block; background: var(--highlight); color: white; padding: 15px 35px; text-decoration: none; border-radius: 5px; font-weight: 600; font-size: 16px;">See Demo</a>
                 </div>
             </div>
         </div>
@@ -1272,7 +1268,7 @@
                         <p style="font-size: 18px; opacity: 0.9;">Monthly revenue increase</p>
                     </div>
                 </div>
-                <a href="/demo" style="display: inline-block; margin-top: 40px; background: white; color: var(--primary); padding: 18px 40px; text-decoration: none; border-radius: 5px; font-weight: 600; font-size: 18px;">See How It Works →</a>
+                <a href="/demo" style="display: inline-block; margin-top: 40px; background: white; color: var(--primary); padding: 18px 40px; text-decoration: none; border-radius: 5px; font-weight: 600; font-size: 18px;">See How It Works</a>
             </div>
         </div>
     </section>
@@ -1517,54 +1513,11 @@
             });
         });
     </script>
-    <script src="/website-enhancements.js"></script>
+    <!-- website-enhancements.js disabled per client request -->
     
-    <!-- Quick Contact Widget -->
-    <div class="quick-contact-widget" id="quickContactWidget">
-        <div class="widget-header">
-            <h3 class="widget-title">Need Help?</h3>
-            <button class="widget-close" onclick="closeWidget()">×</button>
-        </div>
-        
-        <div class="availability-status">
-            <div class="status-dot"></div>
-            <span>48-Hour Installation</span>
-        </div>
-        
-        <p style="font-size: 14px; color: var(--text-muted, #666); margin-bottom: 15px;">
-            Stop losing after-hours jobs. Get installed this week!
-        </p>
-        
-        <div class="widget-buttons">
-            <a href="/book-install" class="widget-btn widget-btn-primary">
-                Book Installation
-            </a>
-            <a href="/demo" class="widget-btn widget-btn-secondary">
-                Watch Demo First
-            </a>
-        </div>
-    </div>
+    <!-- Quick Contact Widget removed per client request -->
     
     <script>
-        // Quick Contact Widget
-        function closeWidget() {
-            document.getElementById('quickContactWidget').classList.add('hidden');
-            localStorage.setItem('widgetClosed', 'true');
-        }
-        
-        // Check if widget was previously closed
-        if (localStorage.getItem('widgetClosed') === 'true') {
-            document.getElementById('quickContactWidget').classList.add('hidden');
-        }
-        
-        // Show widget after 30 seconds if not previously closed
-        setTimeout(function() {
-            const widgetClosed = localStorage.getItem('widgetClosed');
-            if (widgetClosed !== 'true') {
-                document.getElementById('quickContactWidget').classList.remove('hidden');
-            }
-        }, 30000);
-        
         // Theme Toggle Functionality
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
@@ -1580,7 +1533,6 @@
         });
     </script>
     
-    <!-- Sticky Bottom Button -->
-    <a href="/book-install" style="position: fixed; bottom: 30px; right: 30px; background: var(--highlight); color: white; padding: 15px 25px; text-decoration: none; border-radius: 50px; font-weight: 600; box-shadow: 0 5px 20px rgba(50, 130, 184, 0.4); transition: all 0.3s; z-index: 999;">Install After-Hours Booker →</a>
+    <!-- Sticky Bottom Button removed per client request -->
 </body>
 </html>

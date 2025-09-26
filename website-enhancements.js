@@ -1,4 +1,6 @@
 // Business-driving enhancements for ZestFlowAI
+// TEMPORARILY DISABLED - All popups and floating elements removed per client request
+if (false) { // Disable all enhancements
 
 // 1. Exit Intent Popup
 let exitIntentShown = false;
@@ -28,43 +30,13 @@ function showExitPopup() {
     popup.querySelector('.close-popup').onclick = () => popup.remove();
 }
 
-// 2. Floating CTA Button
-const floatingCTA = document.createElement('div');
-floatingCTA.className = 'floating-cta';
-floatingCTA.innerHTML = `
-    <a href="/contact.html" class="floating-btn">
-        <span class="urgency">🔥 Available Now</span>
-        <span>Get Quick Fix →</span>
-    </a>
-`;
-document.body.appendChild(floatingCTA);
+// 2. Floating CTA Button - REMOVED
+// Removed per client request
 
-// 3. Live Chat Widget (Simple version)
-const chatWidget = document.createElement('div');
-chatWidget.className = 'chat-widget';
-chatWidget.innerHTML = `
-    <button class="chat-button" onclick="toggleChat()">
-        <span class="chat-icon">💬</span>
-        <span class="chat-status">Online</span>
-    </button>
-    <div class="chat-window" style="display: none;">
-        <div class="chat-header">
-            <span>Quick Question?</span>
-            <button onclick="toggleChat()">×</button>
-        </div>
-        <div class="chat-body">
-            <p>👋 Hi! I typically respond within 2-4 hours.</p>
-            <p>For urgent fixes, email me with "URGENT" in the subject.</p>
-            <a href="/contact.html" class="chat-cta">Send Message →</a>
-        </div>
-    </div>
-`;
-document.body.appendChild(chatWidget);
+// 3. Live Chat Widget - REMOVED
+// Removed per client request
 
-function toggleChat() {
-    const window = document.querySelector('.chat-window');
-    window.style.display = window.style.display === 'none' ? 'block' : 'none';
-}
+// toggleChat function removed
 
 // 4. Notification Bar - REMOVED per client request
 // The notification bar was causing header positioning issues
@@ -125,15 +97,17 @@ function updateFloatingCTA(sectionId) {
     
     switch(sectionId) {
         case 'services':
-            btn.textContent = 'Get Service Quote →';
+            // Removed - floating button no longer exists
             break;
         case 'portfolio':
-            btn.textContent = 'Start Your Project →';
+            // Removed - floating button no longer exists
             break;
         case 'testimonials':
-            btn.textContent = 'Join Happy Clients →';
+            // Removed - floating button no longer exists
             break;
         default:
-            btn.textContent = 'Get Quick Fix →';
+            // Removed - floating button no longer exists
     }
 }
+
+} // End of disabled code
