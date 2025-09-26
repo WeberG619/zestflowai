@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ZestFlow AI Changelog</title>
+    <link>https://www.zestflowai.com/changelog.html</link>
+    <description>Product updates, new features, and improvements for ZestFlow AI</description>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 26 Jan 2025 12:00:00 GMT</lastBuildDate>
+    <atom:link href="https://www.zestflowai.com/changelog.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>v2.4.0 - ServiceTitan Deep Integration</title>
+      <link>https://www.zestflowai.com/changelog.html#v2.4.0</link>
+      <description>Direct ServiceTitan integration with real-time job creation, automatic technician assignment, two-way sync, and custom field mapping.</description>
+      <pubDate>Sun, 26 Jan 2025 12:00:00 GMT</pubDate>
+      <guid>https://www.zestflowai.com/changelog.html#v2.4.0</guid>
+    </item>
+    
+    <item>
+      <title>v2.3.0 - Advanced Routing Intelligence</title>
+      <link>https://www.zestflowai.com/changelog.html#v2.3.0</link>
+      <description>ZIP code-based routing, time-of-day rules, VIP customer detection, and Spanish language support for SMS.</description>
+      <pubDate>Fri, 10 Jan 2025 12:00:00 GMT</pubDate>
+      <guid>https://www.zestflowai.com/changelog.html#v2.3.0</guid>
+    </item>
+    
+    <item>
+      <title>v2.2.0 - Payment Processing &amp; Deposits</title>
+      <link>https://www.zestflowai.com/changelog.html#v2.2.0</link>
+      <description>Integrated Stripe payment processing, automatic deposit collection via SMS, customizable deposit amounts, and payment retry logic.</description>
+      <pubDate>Sun, 15 Dec 2024 12:00:00 GMT</pubDate>
+      <guid>https://www.zestflowai.com/changelog.html#v2.2.0</guid>
+    </item>
+  </channel>
+</rss>

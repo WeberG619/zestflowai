@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers at ZestFlow AI - Join Our Mission to Transform Home Services</title>
+    <meta name="description" content="Join the ZestFlow AI team and help contractors capture more revenue. View open positions in engineering, sales, customer success, and more.">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Careers at ZestFlow AI - We're Hiring!">
+    <meta property="og:description" content="Join our mission to help home service businesses thrive. View open positions and learn about our culture.">
+    <meta property="og:image" content="https://www.zestflowai.com/images/careers-og.jpg">
+    <meta property="og:url" content="https://www.zestflowai.com/careers.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Careers at ZestFlow AI">
+    <meta name="twitter:description" content="Join our team and help transform the home services industry">
+    <meta name="twitter:image" content="https://www.zestflowai.com/images/careers-twitter.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.zestflowai.com/careers.html">
+    
+    <link rel="stylesheet" href="consistent-styles.css">
+    <link rel="stylesheet" href="global-styles.css">
+    <style>
+        .careers-hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .hero-content p {
+            font-size: 24px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            animation: fadeInUp 0.6s ease-out 0.1s;
+            animation-fill-mode: both;
+        }
+        
+        .culture-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .culture-card {
+            text-align: center;
+            padding: 40px;
+            background: var(--bg-section);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+        
+        .culture-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .culture-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .benefits-section {
+            padding: 80px 0;
+            background: var(--bg-section);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .benefit-icon {
+            font-size: 24px;
+            color: var(--highlight);
+            flex-shrink: 0;
+        }
+        
+        .positions-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .positions-filter {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background: var(--bg-section);
+            border: 2px solid transparent;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--highlight);
+        }
+        
+        .filter-btn.active {
+            background: var(--highlight);
+            color: white;
+        }
+        
+        .job-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .job-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+        
+        .job-title {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .job-meta {
+            display: flex;
+            gap: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .job-type {
+            background: var(--success);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+        
+        .job-description {
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+        
+        .job-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .job-tag {
+            background: var(--bg-section);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .application-section {
+            padding: 60px 0;
+            background: var(--bg-section);
+            text-align: center;
+        }
+        
+        .application-box {
+            background: white;
+            padding: 60px;
+            border-radius: 12px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        
+        @media (max-width: 768px) {
+            .careers-hero h1 {
+                font-size: 36px;
+            }
+            
+            .job-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+    
+    <!-- Schema.org structured data for job postings -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "JobPosting",
+          "position": 1,
+          "title": "Senior Full Stack Engineer",
+          "description": "Build the future of after-hours automation for contractors",
+          "datePosted": "2025-01-15",
+          "validThrough": "2025-03-01",
+          "employmentType": "FULL_TIME",
+          "hiringOrganization": {
+            "@type": "Organization",
+            "name": "ZestFlow AI",
+            "sameAs": "https://www.zestflowai.com"
+          },
+          "jobLocation": {
+            "@type": "Place",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Remote",
+              "addressRegion": "US"
+            }
+          },
+          "baseSalary": {
+            "@type": "MonetaryAmount",
+            "currency": "USD",
+            "value": {
+              "@type": "QuantitativeValue",
+              "minValue": 120000,
+              "maxValue": 180000,
+              "unitText": "YEAR"
+            }
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation (using standard header) -->
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">ZestFlow AI</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li class="dropdown">
+                    <a href="/demo.html">Product</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/demo.html">Watch Demo</a></li>
+                        <li><a href="/widget-demo.html">How It Works</a></li>
+                        <li><a href="/integrations.html">Integrations</a></li>
+                        <li><a href="/status.html">System Status</a></li>
+                    </ul>
+                </li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li class="dropdown">
+                    <a href="/resources.html">Resources</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/resources.html">Free Downloads</a></li>
+                        <li><a href="/blog.html">Blog</a></li>
+                        <li><a href="/tutorials.html">Video Tutorials</a></li>
+                        <li><a href="/help.html">Help Center</a></li>
+                        <li><a href="/calculator.html">ROI Calculator</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="/about.html">Company</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/testimonials.html">Testimonials</a></li>
+                        <li><a href="/case-studies.html">Case Studies</a></li>
+                        <li><a href="/press.html">Press & Media</a></li>
+                        <li><a href="/careers.html" class="active">Careers</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </li>
+                <li><a href="/book-install.html" class="nav-cta">Book Install</a></li>
+            </ul>
+            <a href="/book-install.html" class="contact-btn">Get Started</a>
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="careers-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Build the Future of Home Services</h1>
+                <p>Join our mission to help contractors capture millions in after-hours revenue while enjoying better work-life balance</p>
+                <a href="#positions" class="btn-primary" style="background: white; color: var(--primary);">View Open Positions</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Culture Section -->
+    <section class="culture-section">
+        <div class="container">
+            <div style="text-align: center;">
+                <h2 style="font-size: 42px; margin-bottom: 20px;">Our Culture & Values</h2>
+                <p style="font-size: 20px; color: #666; max-width: 800px; margin: 0 auto;">We're building more than just software - we're creating a movement that transforms an entire industry</p>
+            </div>
+            
+            <div class="culture-grid">
+                <div class="culture-card">
+                    <div class="culture-icon">🚀</div>
+                    <h3>Customer Obsession</h3>
+                    <p>Every decision starts with "How does this help contractors succeed?" We're not satisfied until our customers are thriving.</p>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-icon">💡</div>
+                    <h3>Innovation First</h3>
+                    <p>We challenge the status quo and constantly ask "What if?" Our best ideas come from thinking differently.</p>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-icon">🤝</div>
+                    <h3>Radical Transparency</h3>
+                    <p>Open communication, honest feedback, and shared knowledge. We believe transparency builds trust and better products.</p>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-icon">📈</div>
+                    <h3>Data-Driven</h3>
+                    <p>We measure everything and let data guide our decisions. Opinions are great, but metrics tell the truth.</p>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-icon">🎯</div>
+                    <h3>Impact Focused</h3>
+                    <p>We prioritize work that moves the needle. Every feature, every line of code should create real value.</p>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-icon">🌱</div>
+                    <h3>Growth Mindset</h3>
+                    <p>We're all students here. We celebrate learning, embrace challenges, and view failures as stepping stones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 42px; margin-bottom: 20px;">Why You'll Love Working Here</h2>
+            <p style="text-align: center; font-size: 20px; color: #666; margin-bottom: 40px;">We believe happy teams build amazing products</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <span class="benefit-icon">🏥</span>
+                    <div>
+                        <h4>Health & Wellness</h4>
+                        <p>100% covered health, dental, and vision for you and your family</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">🏖️</span>
+                    <div>
+                        <h4>Flexible Time Off</h4>
+                        <p>Unlimited PTO because we trust you to manage your time</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">💻</span>
+                    <div>
+                        <h4>Remote First</h4>
+                        <p>Work from anywhere - home, coffee shop, or our offices</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">📚</span>
+                    <div>
+                        <h4>Learning Budget</h4>
+                        <p>$2,000 annual budget for courses, conferences, and books</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">💰</span>
+                    <div>
+                        <h4>Equity Package</h4>
+                        <p>Meaningful equity because your success is our success</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">🎮</span>
+                    <div>
+                        <h4>Top Equipment</h4>
+                        <p>Latest MacBook Pro, monitors, and any tools you need</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">👶</span>
+                    <div>
+                        <h4>Parental Leave</h4>
+                        <p>16 weeks fully paid for all new parents</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <span class="benefit-icon">🏋️</span>
+                    <div>
+                        <h4>Wellness Stipend</h4>
+                        <p>$100/month for gym, yoga, or any wellness activity</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Open Positions Section -->
+    <section id="positions" class="positions-section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 42px; margin-bottom: 40px;">Open Positions</h2>
+            
+            <div class="positions-filter">
+                <button class="filter-btn active" onclick="filterJobs('all')">All Positions</button>
+                <button class="filter-btn" onclick="filterJobs('engineering')">Engineering</button>
+                <button class="filter-btn" onclick="filterJobs('sales')">Sales</button>
+                <button class="filter-btn" onclick="filterJobs('success')">Customer Success</button>
+                <button class="filter-btn" onclick="filterJobs('marketing')">Marketing</button>
+            </div>
+            
+            <div id="job-listings">
+                <!-- Engineering Positions -->
+                <div class="job-card" data-category="engineering" onclick="window.location.href='mailto:careers@zestflowai.com?subject=Senior Full Stack Engineer Application'">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Senior Full Stack Engineer</h3>
+                            <div class="job-meta">
+                                <span>📍 Remote (US)</span>
+                                <span>💼 Engineering</span>
+                            </div>
+                        </div>
+                        <span class="job-type">Full Time</span>
+                    </div>
+                    <p class="job-description">
+                        Help build the core platform that powers thousands of contractor businesses. You'll work on our SMS automation engine, payment processing, and real-time analytics dashboard.
+                    </p>
+                    <div class="job-tags">
+                        <span class="job-tag">Node.js</span>
+                        <span class="job-tag">React</span>
+                        <span class="job-tag">PostgreSQL</span>
+                        <span class="job-tag">AWS</span>
+                        <span class="job-tag">Twilio</span>
+                    </div>
+                </div>
+                
+                <div class="job-card" data-category="engineering" onclick="window.location.href='mailto:careers@zestflowai.com?subject=AI/ML Engineer Application'">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">AI/ML Engineer</h3>
+                            <div class="job-meta">
+                                <span>📍 Remote (US)</span>
+                                <span>💼 Engineering</span>
+                            </div>
+                        </div>
+                        <span class="job-type">Full Time</span>
+                    </div>
+                    <p class="job-description">
+                        Lead our AI initiatives to make our system smarter. Build models for conversation optimization, pricing intelligence, and predictive scheduling.
+                    </p>
+                    <div class="job-tags">
+                        <span class="job-tag">Python</span>
+                        <span class="job-tag">TensorFlow</span>
+                        <span class="job-tag">NLP</span>
+                        <span class="job-tag">LLMs</span>
+                    </div>
+                </div>
+                
+                <!-- Sales Positions -->
+                <div class="job-card" data-category="sales" onclick="window.location.href='mailto:careers@zestflowai.com?subject=Account Executive Application'">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Account Executive - Mid Market</h3>
+                            <div class="job-meta">
+                                <span>📍 Dallas, TX (Hybrid)</span>
+                                <span>💼 Sales</span>
+                            </div>
+                        </div>
+                        <span class="job-type">Full Time</span>
+                    </div>
+                    <p class="job-description">
+                        Drive revenue growth by helping contractors discover how ZestFlow AI can transform their business. Target: $1M+ ARR in year one.
+                    </p>
+                    <div class="job-tags">
+                        <span class="job-tag">B2B SaaS</span>
+                        <span class="job-tag">Field Sales</span>
+                        <span class="job-tag">Home Services</span>
+                    </div>
+                </div>
+                
+                <div class="job-card" data-category="sales" onclick="window.location.href='mailto:careers@zestflowai.com?subject=SDR Application'">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Sales Development Representative</h3>
+                            <div class="job-meta">
+                                <span>📍 Remote (US)</span>
+                                <span>💼 Sales</span>
+                            </div>
+                        </div>
+                        <span class="job-type">Full Time</span>
+                    </div>
+                    <p class="job-description">
+                        Be the first point of contact for contractors interested in ZestFlow AI. Qualify leads and set appointments for our Account Executives.
+                    </p>
+                    <div class="job-tags">
+                        <span class="job-tag">Outbound</span>
+                        <span class="job-tag">Lead Gen</span>
+                        <span class="job-tag">HubSpot</span>
+                    </div>
+                </div>
+                
+                <!-- Customer Success -->
+                <div class="job-card" data-category="success" onclick="window.location.href='mailto:careers@zestflowai.com?subject=Customer Success Manager Application'">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Customer Success Manager</h3>
+                            <div class="job-meta">
+                                <span>📍 Remote (US)</span>
+                                <span>💼 Customer Success</span>
+                            </div>
+                        </div>
+                        <span class="job-type">Full Time</span>
+                    </div>
+                    <p class="job-description">
+                        Ensure contractors achieve massive success with ZestFlow AI. Own retention, expansion, and customer advocacy.
+                    </p>
+                    <div class="job-tags">
+                        <span class="job-tag">SaaS</span>
+                        <span class="job-tag">Onboarding</span>
+                        <span class="job-tag">Retention</span>
+                    </div>
+                </div>
+                
+                <!-- Marketing -->
+                <div class="job-card" data-category="marketing" onclick="window.location.href='mailto:careers@zestflowai.com?subject=Content Marketing Manager Application'">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Content Marketing Manager</h3>
+                            <div class="job-meta">
+                                <span>📍 Remote (US)</span>
+                                <span>💼 Marketing</span>
+                            </div>
+                        </div>
+                        <span class="job-type">Full Time</span>
+                    </div>
+                    <p class="job-description">
+                        Create compelling content that educates contractors and drives organic growth. Own our blog, email campaigns, and educational resources.
+                    </p>
+                    <div class="job-tags">
+                        <span class="job-tag">SEO</span>
+                        <span class="job-tag">Content Strategy</span>
+                        <span class="job-tag">Email Marketing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Application Section -->
+    <section class="application-section">
+        <div class="container">
+            <div class="application-box">
+                <h2 style="font-size: 36px; margin-bottom: 20px;">Don't See Your Perfect Role?</h2>
+                <p style="font-size: 18px; color: #666; margin-bottom: 30px;">
+                    We're always looking for exceptional people who share our mission. Send us your resume and tell us how you can help contractors succeed.
+                </p>
+                <a href="mailto:careers@zestflowai.com" class="btn-primary">Send Your Resume</a>
+                
+                <div style="margin-top: 40px; padding-top: 40px; border-top: 1px solid #e0e0e0;">
+                    <h3 style="margin-bottom: 20px;">Our Hiring Process</h3>
+                    <ol style="text-align: left; max-width: 600px; margin: 0 auto; line-height: 2;">
+                        <li><strong>Application Review</strong> - We review every application personally (1-2 days)</li>
+                        <li><strong>Phone Screen</strong> - 30-minute call to discuss your background and interests</li>
+                        <li><strong>Technical/Role Interview</strong> - Deep dive into your skills and experience (60-90 min)</li>
+                        <li><strong>Team Interviews</strong> - Meet potential teammates and leadership (2-3 sessions)</li>
+                        <li><strong>Reference Checks</strong> - We'll speak with people you've worked with</li>
+                        <li><strong>Offer</strong> - Competitive package with equity</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-newsletter">
+            <div class="container">
+                <h3>Join Our Talent Network</h3>
+                <p>Get notified when new positions open that match your skills</p>
+                <form class="newsletter-form" id="talent-network" data-form="talent-network">
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                    <button type="submit">Join Network</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="/demo.html">Watch Demo</a></li>
+                            <li><a href="/widget-demo.html">How It Works</a></li>
+                            <li><a href="/pricing.html">Pricing</a></li>
+                            <li><a href="/integrations.html">Integrations</a></li>
+                            <li><a href="/changelog.html">What's New</a></li>
+                            <li><a href="/status.html">System Status</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="/blog.html">Blog</a></li>
+                            <li><a href="/tutorials.html">Video Tutorials</a></li>
+                            <li><a href="/resources.html">Free Downloads</a></li>
+                            <li><a href="/calculator.html">ROI Calculator</a></li>
+                            <li><a href="/help.html">Help Center</a></li>
+                            <li><a href="/api-docs.html">API Documentation</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="/about.html">About Us</a></li>
+                            <li><a href="/testimonials.html">Testimonials</a></li>
+                            <li><a href="/case-studies.html">Case Studies</a></li>
+                            <li><a href="/service-areas.html">Service Areas</a></li>
+                            <li><a href="/press.html">Press</a></li>
+                            <li><a href="/careers.html">Careers</a></li>
+                            <li><a href="/contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="/terms.html">Terms of Service</a></li>
+                            <li><a href="/privacy.html">Privacy Policy</a></li>
+                            <li><a href="/cookies.html">Cookie Policy</a></li>
+                            <li><a href="/refund.html">Refund Policy</a></li>
+                            <li><a href="/api-terms.html">API Terms</a></li>
+                            <li><a href="/accessibility.html">Accessibility</a></li>
+                            <li><a href="/ccpa.html">California Privacy</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <div class="social-links">
+                            <a href="https://facebook.com/zestflowai" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="https://twitter.com/zestflowai" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="https://linkedin.com/company/zestflowai" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://youtube.com/zestflowai" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="https://instagram.com/zestflowai" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <div class="footer-contact">
+                            <p><strong>Sales:</strong> 1-800-ZESTFLOW</p>
+                            <p><strong>Support:</strong> support@zestflowai.com</p>
+                            <p><strong>Hours:</strong> Mon-Fri 9AM-6PM EST</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2025 ZestFlow AI. All rights reserved. We're an equal opportunity employer.</p>
+                    <div class="trust-badges">
+                        <img src="/images/ssl-secure.svg" alt="SSL Secure" width="60">
+                        <img src="/images/gdpr-compliant.svg" alt="GDPR Compliant" width="60">
+                        <img src="/images/soc2-certified.svg" alt="SOC2 Certified" width="60">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+    
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-consent" id="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h3>We value your privacy</h3>
+                <p>We use cookies to enhance your experience, analyze site traffic, and for marketing purposes. By clicking "Accept All", you consent to our use of cookies. <a href="/cookies.html" target="_blank">Learn more</a></p>
+            </div>
+            <div class="cookie-actions">
+                <button class="cookie-btn cookie-settings" onclick="openCookieSettings()">Cookie Settings</button>
+                <button class="cookie-btn cookie-accept" onclick="acceptAllCookies()">Accept All</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+    <script src="/js/form-handler.js"></script>
+    <script>
+        // Job filtering
+        function filterJobs(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            const jobs = document.querySelectorAll('.job-card');
+            
+            // Update active button
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase().includes(category) || (category === 'all' && btn.textContent === 'All Positions')) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Filter jobs
+            jobs.forEach(job => {
+                if (category === 'all' || job.dataset.category === category) {
+                    job.style.display = 'block';
+                    setTimeout(() => {
+                        job.style.opacity = '1';
+                        job.style.transform = 'translateY(0)';
+                    }, 10);
+                } else {
+                    job.style.opacity = '0';
+                    job.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        job.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle?.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Smooth scroll to positions
+        document.querySelector('a[href="#positions"]')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('positions').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+    
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</body>
+</html>

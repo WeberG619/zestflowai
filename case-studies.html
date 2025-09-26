@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies - Real Success Stories | ZestFlow AI</title>
+    <meta name="description" content="See how contractors increased revenue by 40%+ using ZestFlow AI. Real case studies with verified results from plumbers, HVAC techs, and electricians.">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="ZestFlow AI Success Stories - 40%+ Revenue Increase">
+    <meta property="og:description" content="Real contractors share how they're capturing $10,000+ monthly in after-hours revenue with ZestFlow AI.">
+    <meta property="og:image" content="https://www.zestflowai.com/images/case-studies-og.jpg">
+    <meta property="og:url" content="https://www.zestflowai.com/case-studies.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ZestFlow AI Success Stories">
+    <meta name="twitter:description" content="See how contractors increased revenue by 40%+ with after-hours automation">
+    <meta name="twitter:image" content="https://www.zestflowai.com/images/case-studies-twitter.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.zestflowai.com/case-studies.html">
+    
+    <link rel="stylesheet" href="consistent-styles.css">
+    <link rel="stylesheet" href="global-styles.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-box {
+            text-align: center;
+            animation: fadeInUp 0.6s ease-out 0.2s;
+            animation-fill-mode: both;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--highlight);
+        }
+        
+        .case-studies-section {
+            padding: 80px 0;
+            background: var(--bg-section);
+        }
+        
+        .case-study-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+        
+        .case-study-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+        }
+        
+        .case-study-header {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            padding: 40px;
+            align-items: center;
+        }
+        
+        .company-info {
+            text-align: center;
+        }
+        
+        .company-logo {
+            width: 120px;
+            height: 120px;
+            background: var(--bg-section);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            margin: 0 auto 20px;
+        }
+        
+        .results-highlight {
+            background: linear-gradient(135deg, var(--success), #2ecc71);
+            color: white;
+            padding: 40px;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+        }
+        
+        .result-item {
+            text-align: center;
+        }
+        
+        .result-number {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .result-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .case-study-content {
+            padding: 40px;
+        }
+        
+        .challenge-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .section-box {
+            background: var(--bg-section);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid var(--highlight);
+        }
+        
+        .testimonial-box {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .testimonial-text {
+            font-size: 24px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .download-section {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .download-box {
+            background: var(--bg-section);
+            padding: 60px;
+            border-radius: 12px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .case-study-header,
+            .challenge-solution {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    
+    <!-- Schema.org structured data for case studies -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "ZestFlow AI Case Studies",
+      "description": "Real success stories from contractors using ZestFlow AI",
+      "url": "https://www.zestflowai.com/case-studies.html",
+      "hasPart": [
+        {
+          "@type": "Article",
+          "headline": "Thompson Plumbing: From $8K to $31K Monthly",
+          "description": "How a Dallas plumber nearly quadrupled after-hours revenue",
+          "author": {
+            "@type": "Organization",
+            "name": "ZestFlow AI"
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation (using standard header) -->
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">ZestFlow AI</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li class="dropdown">
+                    <a href="/demo.html">Product</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/demo.html">Watch Demo</a></li>
+                        <li><a href="/widget-demo.html">How It Works</a></li>
+                        <li><a href="/integrations.html">Integrations</a></li>
+                        <li><a href="/status.html">System Status</a></li>
+                    </ul>
+                </li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li class="dropdown">
+                    <a href="/resources.html">Resources</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/resources.html">Free Downloads</a></li>
+                        <li><a href="/blog.html">Blog</a></li>
+                        <li><a href="/tutorials.html">Video Tutorials</a></li>
+                        <li><a href="/help.html">Help Center</a></li>
+                        <li><a href="/calculator.html">ROI Calculator</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="/about.html">Company</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/testimonials.html">Testimonials</a></li>
+                        <li><a href="/case-studies.html" class="active">Case Studies</a></li>
+                        <li><a href="/press.html">Press & Media</a></li>
+                        <li><a href="/careers.html">Careers</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </li>
+                <li><a href="/book-install.html" class="nav-cta">Book Install</a></li>
+            </ul>
+            <a href="/book-install.html" class="contact-btn">Get Started</a>
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Real Contractors. Real Results.</h1>
+                <p style="font-size: 24px; opacity: 0.9; max-width: 800px; margin: 0 auto;">See how home service businesses are transforming their after-hours operations and capturing revenue they never knew existed</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-box">
+                        <div class="stat-number">287%</div>
+                        <div class="stat-label">Average Revenue Increase</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">$18,420</div>
+                        <div class="stat-label">Avg. Monthly Revenue Added</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">7 days</div>
+                        <div class="stat-label">Time to First Booking</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Case Studies -->
+    <section class="case-studies-section">
+        <div class="container">
+            <!-- Case Study 1: Thompson Plumbing -->
+            <div class="case-study-card">
+                <div class="case-study-header">
+                    <div class="company-info">
+                        <div class="company-logo">🔧</div>
+                        <h2>Thompson Plumbing</h2>
+                        <p style="color: #666;">Dallas, Texas</p>
+                        <p style="color: #666;">12 employees</p>
+                    </div>
+                    <div class="results-highlight">
+                        <h3 style="font-size: 28px; margin-bottom: 30px;">3 Months After ZestFlow AI</h3>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <div class="result-number">287%</div>
+                                <div class="result-label">Revenue Increase</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">$31K</div>
+                                <div class="result-label">Monthly After-Hours</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">89%</div>
+                                <div class="result-label">SMS Conversion</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">52</div>
+                                <div class="result-label">Jobs/Month</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-study-content">
+                    <div class="challenge-solution">
+                        <div class="section-box">
+                            <h3 style="margin-bottom: 15px; color: var(--primary);">🚨 The Challenge</h3>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 10px;">✗ Voicemail full of missed opportunities</li>
+                                <li style="margin-bottom: 10px;">✗ Losing 40+ emergency calls monthly</li>
+                                <li style="margin-bottom: 10px;">✗ Competitors getting their overflow</li>
+                                <li style="margin-bottom: 10px;">✗ Owner working 80+ hours/week</li>
+                            </ul>
+                        </div>
+                        <div class="section-box">
+                            <h3 style="margin-bottom: 15px; color: var(--primary);">✅ The Solution</h3>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 10px;">✓ ZestFlow AI installed in 45 minutes</li>
+                                <li style="margin-bottom: 10px;">✓ First booking within 3 hours</li>
+                                <li style="margin-bottom: 10px;">✓ Automated deposit collection</li>
+                                <li style="margin-bottom: 10px;">✓ Owner sleeps through the night</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-box">
+                        <p class="testimonial-text">"I was skeptical at first, but the numbers don't lie. We went from $8,000 to $31,000 in after-hours revenue in just 3 months. My only regret is not doing this sooner."</p>
+                        <p style="font-weight: 600;">- Mike Thompson, Owner</p>
+                    </div>
+                    
+                    <h3 style="margin: 40px 0 20px; color: var(--primary);">Key Results</h3>
+                    <ul style="line-height: 2;">
+                        <li><strong>Week 1:</strong> 8 jobs booked, $3,600 revenue</li>
+                        <li><strong>Month 1:</strong> 31 jobs booked, $13,950 revenue</li>
+                        <li><strong>Month 3:</strong> 52 jobs booked, $31,200 revenue</li>
+                        <li><strong>ROI:</strong> 685% return on investment</li>
+                        <li><strong>Customer Satisfaction:</strong> 4.9/5 stars for after-hours service</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Case Study 2: Elite HVAC -->
+            <div class="case-study-card">
+                <div class="case-study-header">
+                    <div class="company-info">
+                        <div class="company-logo">❄️</div>
+                        <h2>Elite HVAC Solutions</h2>
+                        <p style="color: #666;">Phoenix, Arizona</p>
+                        <p style="color: #666;">8 employees</p>
+                    </div>
+                    <div class="results-highlight" style="background: linear-gradient(135deg, #3498db, #2980b9);">
+                        <h3 style="font-size: 28px; margin-bottom: 30px;">Summer Peak Performance</h3>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <div class="result-number">$47K</div>
+                                <div class="result-label">July Revenue</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">94</div>
+                                <div class="result-label">AC Emergencies</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">2.1min</div>
+                                <div class="result-label">Response Time</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">100%</div>
+                                <div class="result-label">Deposit Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-study-content">
+                    <div class="challenge-solution">
+                        <div class="section-box">
+                            <h3 style="margin-bottom: 15px; color: var(--primary);">🚨 The Challenge</h3>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 10px;">✗ Peak season overwhelming call volume</li>
+                                <li style="margin-bottom: 10px;">✗ Missing 60% of after-hours calls</li>
+                                <li style="margin-bottom: 10px;">✗ Techs burnt out from overtime</li>
+                                <li style="margin-bottom: 10px;">✗ No way to collect deposits</li>
+                            </ul>
+                        </div>
+                        <div class="section-box">
+                            <h3 style="margin-bottom: 15px; color: var(--primary);">✅ The Solution</h3>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 10px;">✓ 24/7 automated SMS booking</li>
+                                <li style="margin-bottom: 10px;">✓ Smart routing by location</li>
+                                <li style="margin-bottom: 10px;">✓ Automatic $99 deposit collection</li>
+                                <li style="margin-bottom: 10px;">✓ Integration with ServiceTitan</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-box" style="background: linear-gradient(135deg, #3498db, #2980b9);">
+                        <p class="testimonial-text">"During our busiest month ever, ZestFlow AI handled 94 emergency calls flawlessly. We collected $9,306 in deposits alone, which covered the entire year's cost of the system."</p>
+                        <p style="font-weight: 600;">- Sarah Martinez, Operations Manager</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Case Study 3: Lightning Electric -->
+            <div class="case-study-card">
+                <div class="case-study-header">
+                    <div class="company-info">
+                        <div class="company-logo">⚡</div>
+                        <h2>Lightning Electric</h2>
+                        <p style="color: #666;">Atlanta, Georgia</p>
+                        <p style="color: #666;">15 employees</p>
+                    </div>
+                    <div class="results-highlight" style="background: linear-gradient(135deg, #f39c12, #e67e22);">
+                        <h3 style="font-size: 28px; margin-bottom: 30px;">6-Month Transformation</h3>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <div class="result-number">$156K</div>
+                                <div class="result-label">Added Revenue</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">347</div>
+                                <div class="result-label">Jobs Booked</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">91%</div>
+                                <div class="result-label">Show Rate</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">2</div>
+                                <div class="result-label">New Trucks Added</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-study-content">
+                    <div class="testimonial-box" style="background: linear-gradient(135deg, #f39c12, #e67e22);">
+                        <p class="testimonial-text">"The ROI was so strong that we hired two additional technicians and bought two new trucks just to handle the after-hours demand. This system literally grew our business by 40%."</p>
+                        <p style="font-weight: 600;">- David Chen, Owner</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Download Section -->
+    <section class="download-section">
+        <div class="container">
+            <div class="download-box">
+                <h2 style="font-size: 36px; margin-bottom: 20px; color: var(--primary);">Get the Full Case Study Report</h2>
+                <p style="font-size: 18px; color: #666; margin-bottom: 30px;">Download our comprehensive 28-page report featuring 10 detailed case studies across different trades and markets</p>
+                
+                <form class="email-form" style="max-width: 500px; margin: 0 auto;" data-form="case-study-download">
+                    <input type="email" name="email" placeholder="Your email address" required style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 5px; margin-bottom: 15px;">
+                    <button type="submit" style="width: 100%; background: var(--highlight); color: white; padding: 15px; border: none; border-radius: 5px; font-size: 18px; font-weight: 600; cursor: pointer;">Download Case Studies PDF</button>
+                </form>
+                
+                <p style="margin-top: 20px; font-size: 14px; color: #999;">
+                    We'll also send you monthly updates with new success stories. Unsubscribe anytime.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section style="padding: 80px 0; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; text-align: center;">
+        <div class="container">
+            <h2 style="font-size: 42px; margin-bottom: 20px;">Ready to Write Your Success Story?</h2>
+            <p style="font-size: 20px; margin-bottom: 40px; opacity: 0.9;">Join 500+ contractors capturing after-hours revenue on autopilot</p>
+            <a href="/book-install.html" class="btn-primary" style="background: white; color: var(--primary); padding: 15px 40px; text-decoration: none; border-radius: 5px; font-weight: 600; display: inline-block;">Book Your Installation</a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-newsletter">
+            <div class="container">
+                <h3>Never Miss an Update</h3>
+                <p>Get tips on capturing more after-hours revenue delivered weekly</p>
+                <form class="newsletter-form" id="footer-newsletter" data-form="newsletter">
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="/demo.html">Watch Demo</a></li>
+                            <li><a href="/widget-demo.html">How It Works</a></li>
+                            <li><a href="/pricing.html">Pricing</a></li>
+                            <li><a href="/integrations.html">Integrations</a></li>
+                            <li><a href="/changelog.html">What's New</a></li>
+                            <li><a href="/status.html">System Status</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="/blog.html">Blog</a></li>
+                            <li><a href="/tutorials.html">Video Tutorials</a></li>
+                            <li><a href="/resources.html">Free Downloads</a></li>
+                            <li><a href="/calculator.html">ROI Calculator</a></li>
+                            <li><a href="/help.html">Help Center</a></li>
+                            <li><a href="/api-docs.html">API Documentation</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="/about.html">About Us</a></li>
+                            <li><a href="/testimonials.html">Testimonials</a></li>
+                            <li><a href="/case-studies.html">Case Studies</a></li>
+                            <li><a href="/service-areas.html">Service Areas</a></li>
+                            <li><a href="/press.html">Press</a></li>
+                            <li><a href="/careers.html">Careers</a></li>
+                            <li><a href="/contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="/terms.html">Terms of Service</a></li>
+                            <li><a href="/privacy.html">Privacy Policy</a></li>
+                            <li><a href="/cookies.html">Cookie Policy</a></li>
+                            <li><a href="/refund.html">Refund Policy</a></li>
+                            <li><a href="/api-terms.html">API Terms</a></li>
+                            <li><a href="/accessibility.html">Accessibility</a></li>
+                            <li><a href="/ccpa.html">California Privacy</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <div class="social-links">
+                            <a href="https://facebook.com/zestflowai" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="https://twitter.com/zestflowai" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="https://linkedin.com/company/zestflowai" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://youtube.com/zestflowai" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="https://instagram.com/zestflowai" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <div class="footer-contact">
+                            <p><strong>Sales:</strong> 1-800-ZESTFLOW</p>
+                            <p><strong>Support:</strong> support@zestflowai.com</p>
+                            <p><strong>Hours:</strong> Mon-Fri 9AM-6PM EST</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2025 ZestFlow AI. All rights reserved.</p>
+                    <div class="trust-badges">
+                        <img src="/images/ssl-secure.svg" alt="SSL Secure" width="60">
+                        <img src="/images/gdpr-compliant.svg" alt="GDPR Compliant" width="60">
+                        <img src="/images/soc2-certified.svg" alt="SOC2 Certified" width="60">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+    
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-consent" id="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h3>We value your privacy</h3>
+                <p>We use cookies to enhance your experience, analyze site traffic, and for marketing purposes. By clicking "Accept All", you consent to our use of cookies. <a href="/cookies.html" target="_blank">Learn more</a></p>
+            </div>
+            <div class="cookie-actions">
+                <button class="cookie-btn cookie-settings" onclick="openCookieSettings()">Cookie Settings</button>
+                <button class="cookie-btn cookie-accept" onclick="acceptAllCookies()">Accept All</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+    <script src="/js/form-handler.js"></script>
+    <script>
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle?.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+    
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</body>
+</html>

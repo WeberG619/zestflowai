@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Tutorials & Training | ZestFlow AI</title>
+    <meta name="description" content="Learn how to maximize your ZestFlow AI system with step-by-step video tutorials, training guides, and best practices.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="consistent-styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f4c75;
+            --highlight: #3282b8;
+            --text-light: #f5f5f5;
+            --text-dark: #333;
+            --bg-light: #ffffff;
+            --bg-section: #f8f9fa;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --error: #e74c3c;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--text-light);
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .hero-section p {
+            font-size: 22px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 0.6s ease-out 0.2s;
+            animation-fill-mode: both;
+        }
+        
+        .search-box {
+            max-width: 500px;
+            margin: 40px auto 0;
+            position: relative;
+            animation: fadeInUp 0.6s ease-out 0.4s;
+            animation-fill-mode: both;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--highlight);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        /* Categories Section */
+        .categories-section {
+            padding: 60px 0;
+            background: white;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .category-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .category-card {
+            background: var(--bg-section);
+            padding: 30px 20px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .category-card:hover,
+        .category-card.active {
+            background: white;
+            border-color: var(--highlight);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .category-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .category-card h3 {
+            font-size: 18px;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .category-count {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Videos Grid */
+        .videos-section {
+            padding: 80px 0;
+            background: var(--bg-section);
+        }
+        
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .video-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: var(--bg-section);
+            overflow: hidden;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        
+        .video-card:hover .play-overlay {
+            opacity: 1;
+        }
+        
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--highlight);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .video-content {
+            padding: 25px;
+        }
+        
+        .video-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background: rgba(50, 130, 184, 0.1);
+            color: var(--highlight);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .video-new {
+            background: rgba(39, 174, 96, 0.1);
+            color: var(--success);
+        }
+        
+        .video-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .video-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .video-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 13px;
+            color: #999;
+        }
+        
+        /* Featured Tutorial */
+        .featured-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .featured-tutorial {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 60px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .featured-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .featured-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .featured-text p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .featured-video {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .featured-video img {
+            width: 100%;
+            height: auto;
+        }
+        
+        /* Learning Paths */
+        .paths-section {
+            padding: 80px 0;
+            background: var(--bg-section);
+        }
+        
+        .learning-paths {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .path-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .path-card:hover {
+            border-color: var(--highlight);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .path-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--bg-section);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin: 0 auto 20px;
+        }
+        
+        .path-card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .path-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .path-progress {
+            background: var(--bg-section);
+            height: 8px;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: var(--success);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        
+        .path-link {
+            display: inline-block;
+            color: var(--highlight);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 36px;
+            }
+            
+            .featured-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .videos-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">ZestFlow AI</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/demo.html">Demo</a></li>
+                <li><a href="/tutorials.html" class="active">Tutorials</a></li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li><a href="/testimonials.html">Testimonials</a></li>
+                <li><a href="/resources.html">Resources</a></li>
+                <li><a href="/book-install.html">Book Install</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+            <a href="/book-install.html" class="contact-btn">Book Install</a>
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Learn & Master ZestFlow AI</h1>
+            <p>Step-by-step video tutorials to help you capture more after-hours revenue and grow your business</p>
+            
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search for tutorials...">
+                <button class="search-btn">Search</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Categories -->
+    <section class="categories-section">
+        <div class="container">
+            <div class="category-cards">
+                <div class="category-card active" data-category="all">
+                    <div class="category-icon">🎥</div>
+                    <h3>All Videos</h3>
+                    <span class="category-count">24 tutorials</span>
+                </div>
+                <div class="category-card" data-category="getting-started">
+                    <div class="category-icon">🚀</div>
+                    <h3>Getting Started</h3>
+                    <span class="category-count">6 tutorials</span>
+                </div>
+                <div class="category-card" data-category="advanced">
+                    <div class="category-icon">⚡</div>
+                    <h3>Advanced Features</h3>
+                    <span class="category-count">8 tutorials</span>
+                </div>
+                <div class="category-card" data-category="integrations">
+                    <div class="category-icon">🔗</div>
+                    <h3>Integrations</h3>
+                    <span class="category-count">5 tutorials</span>
+                </div>
+                <div class="category-card" data-category="best-practices">
+                    <div class="category-icon">💡</div>
+                    <h3>Best Practices</h3>
+                    <span class="category-count">5 tutorials</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Tutorial -->
+    <section class="featured-section">
+        <div class="container">
+            <div class="featured-tutorial">
+                <div class="featured-content">
+                    <div class="featured-text">
+                        <span class="video-badge video-new">NEW</span>
+                        <h2>Quick Start Guide: Go Live in 10 Minutes</h2>
+                        <p>Watch our CEO walk through the complete setup process. From installation to your first booking in under 10 minutes.</p>
+                        <button class="btn-primary" style="background: white; color: var(--primary); padding: 12px 30px; border: none; border-radius: 5px; font-weight: 600; cursor: pointer;">
+                            ▶️ Watch Now
+                        </button>
+                    </div>
+                    <div class="featured-video">
+                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop" alt="Quick Start Tutorial">
+                        <div class="play-overlay">
+                            <div class="play-button">▶️</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Videos Grid -->
+    <section class="videos-section">
+        <div class="container">
+            <h2 style="font-size: 36px; margin-bottom: 20px; color: var(--primary);">Browse All Tutorials</h2>
+            
+            <div class="videos-grid">
+                <!-- Getting Started Videos -->
+                <div class="video-card" data-category="getting-started">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop" alt="Installation Guide">
+                        <span class="video-duration">5:32</span>
+                        <div class="play-overlay">
+                            <div class="play-button">▶️</div>
+                        </div>
+                    </div>
+                    <div class="video-content">
+                        <span class="video-badge">Getting Started</span>
+                        <h3>Installation & Initial Setup</h3>
+                        <p>Complete walkthrough of the installation process, including phone forwarding and SMS setup.</p>
+                        <div class="video-meta">
+                            <span>👁️ 1.2k views</span>
+                            <span>📅 2 days ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-card" data-category="getting-started">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop" alt="Dashboard Overview">
+                        <span class="video-duration">8:15</span>
+                        <div class="play-overlay">
+                            <div class="play-button">▶️</div>
+                        </div>
+                    </div>
+                    <div class="video-content">
+                        <span class="video-badge">Getting Started</span>
+                        <h3>Dashboard Overview</h3>
+                        <p>Tour of your ZestFlow dashboard, understanding metrics, and navigating key features.</p>
+                        <div class="video-meta">
+                            <span>👁️ 945 views</span>
+                            <span>📅 1 week ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-card" data-category="getting-started">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=300&fit=crop" alt="First SMS Setup">
+                        <span class="video-duration">6:45</span>
+                        <div class="play-overlay">
+                            <div class="play-button">▶️</div>
+                        </div>
+                    </div>
+                    <div class="video-content">
+                        <span class="video-badge video-new">New</span>
+                        <h3>Customizing Your SMS Messages</h3>
+                        <p>How to personalize automated messages for your brand and service offerings.</p>
+                        <div class="video-meta">
+                            <span>👁️ 523 views</span>
+                            <span>📅 3 days ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Advanced Features -->
+                <div class="video-card" data-category="advanced">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Advanced Routing">
+                        <span class="video-duration">12:20</span>
+                        <div class="play-overlay">
+                            <div class="play-button">▶️</div>
+                        </div>
+                    </div>
+                    <div class="video-content">
+                        <span class="video-badge">Advanced</span>
+                        <h3>Advanced Call Routing Rules</h3>
+                        <p>Set up complex routing based on time, location, service type, and customer history.</p>
+                        <div class="video-meta">
+                            <span>👁️ 342 views</span>
+                            <span>📅 2 weeks ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-card" data-category="advanced">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="Analytics Deep Dive">
+                        <span class="video-duration">15:45</span>
+                        <div class="play-overlay">
+                            <div class="play-button">▶️</div>
+                        </div>
+                    </div>
+                    <div class="video-content">
+                        <span class="video-badge">Advanced</span>
+                        <h3>Analytics & ROI Tracking</h3>
+                        <p>Deep dive into analytics dashboard, custom reports, and measuring your success.</p>
+                        <div class="video-meta">
+                            <span>👁️ 678 views</span>
+                            <span>📅 1 month ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Integrations -->
+                <div class="video-card" data-category="integrations">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=300&fit=crop" alt="ServiceTitan Integration">
+                        <span class="video-duration">10:30</span>
+                        <div class="play-overlay">
+                            <div class="play-button">▶️</div>
+                        </div>
+                    </div>
+                    <div class="video-content">
+                        <span class="video-badge">Integrations</span>
+                        <h3>ServiceTitan Integration Setup</h3>
+                        <p>Complete guide to connecting ZestFlow with ServiceTitan for automated job creation.</p>
+                        <div class="video-meta">
+                            <span>👁️ 892 views</span>
+                            <span>📅 1 week ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-card" data-category="integrations">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop" alt="QuickBooks Setup">
+                        <span class="video-duration">7:15</span>
+                        <div class="play-overlay">
+                            <div class="play-button">▶️</div>
+                        </div>
+                    </div>
+                    <div class="video-content">
+                        <span class="video-badge">Integrations</span>
+                        <h3>QuickBooks Integration</h3>
+                        <p>Automatically create invoices and track revenue from after-hours jobs.</p>
+                        <div class="video-meta">
+                            <span>👁️ 456 views</span>
+                            <span>📅 2 weeks ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Best Practices -->
+                <div class="video-card" data-category="best-practices">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&h=300&fit=crop" alt="Pricing Strategy">
+                        <span class="video-duration">11:00</span>
+                        <div class="play-overlay">
+                            <div class="play-button">▶️</div>
+                        </div>
+                    </div>
+                    <div class="video-content">
+                        <span class="video-badge">Best Practices</span>
+                        <h3>Emergency Pricing Strategies</h3>
+                        <p>How top contractors price after-hours work for maximum profit and customer satisfaction.</p>
+                        <div class="video-meta">
+                            <span>👁️ 1.8k views</span>
+                            <span>📅 1 month ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-card" data-category="best-practices">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=300&fit=crop" alt="Team Training">
+                        <span class="video-duration">9:20</span>
+                        <div class="play-overlay">
+                            <div class="play-button">▶️</div>
+                        </div>
+                    </div>
+                    <div class="video-content">
+                        <span class="video-badge">Best Practices</span>
+                        <h3>Training Your Team</h3>
+                        <p>Best practices for getting your techs and office staff on board with the new system.</p>
+                        <div class="video-meta">
+                            <span>👁️ 723 views</span>
+                            <span>📅 3 weeks ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Learning Paths -->
+    <section class="paths-section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 36px; margin-bottom: 20px; color: var(--primary);">Structured Learning Paths</h2>
+            <p style="text-align: center; font-size: 18px; color: #666; margin-bottom: 40px;">Follow our recommended paths to master ZestFlow AI</p>
+            
+            <div class="learning-paths">
+                <div class="path-card">
+                    <div class="path-icon">🎯</div>
+                    <h3>New User Path</h3>
+                    <p>Perfect for contractors just getting started with ZestFlow AI</p>
+                    <div class="path-progress">
+                        <div class="progress-bar" style="width: 0%;"></div>
+                    </div>
+                    <p style="font-size: 14px; color: #666;">6 videos • 45 minutes</p>
+                    <a href="#" class="path-link">Start Learning →</a>
+                </div>
+                
+                <div class="path-card">
+                    <div class="path-icon">💰</div>
+                    <h3>Revenue Maximizer</h3>
+                    <p>Advanced strategies to capture more high-value emergency jobs</p>
+                    <div class="path-progress">
+                        <div class="progress-bar" style="width: 0%;"></div>
+                    </div>
+                    <p style="font-size: 14px; color: #666;">8 videos • 1.5 hours</p>
+                    <a href="#" class="path-link">Start Learning →</a>
+                </div>
+                
+                <div class="path-card">
+                    <div class="path-icon">🔧</div>
+                    <h3>Integration Master</h3>
+                    <p>Connect ZestFlow with all your existing business tools</p>
+                    <div class="path-progress">
+                        <div class="progress-bar" style="width: 0%;"></div>
+                    </div>
+                    <p style="font-size: 14px; color: #666;">10 videos • 2 hours</p>
+                    <a href="#" class="path-link">Start Learning →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section style="padding: 80px 0; background: white; text-align: center;">
+        <div class="container">
+            <h2 style="font-size: 36px; margin-bottom: 20px; color: var(--primary);">Need Personal Help?</h2>
+            <p style="font-size: 18px; color: #666; margin-bottom: 30px;">Our support team is here to help you succeed</p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="/book-install.html" class="btn-primary" style="background: var(--highlight); color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: 600;">Schedule 1-on-1 Training</a>
+                <a href="/contact.html" class="btn-secondary" style="background: white; color: var(--highlight); padding: 13px 28px; text-decoration: none; border-radius: 5px; font-weight: 600; border: 2px solid var(--highlight);">Contact Support</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ZestFlow AI. All rights reserved.</p>
+            <p>
+                <a href="/terms.html" style="color: inherit;">Terms of Service</a> | 
+                <a href="/privacy.html" style="color: inherit;">Privacy Policy</a> | 
+                <a href="/help.html" style="color: inherit;">Help Center</a>
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle?.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Category filtering
+        const categoryCards = document.querySelectorAll('.category-card');
+        const videoCards = document.querySelectorAll('.video-card');
+        
+        categoryCards.forEach(card => {
+            card.addEventListener('click', function() {
+                // Update active category
+                categoryCards.forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter videos
+                const category = this.getAttribute('data-category');
+                
+                videoCards.forEach(video => {
+                    if (category === 'all' || video.getAttribute('data-category') === category) {
+                        video.style.display = 'block';
+                    } else {
+                        video.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Search functionality
+        const searchInput = document.querySelector('.search-input');
+        const searchBtn = document.querySelector('.search-btn');
+        
+        searchBtn?.addEventListener('click', function() {
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            videoCards.forEach(video => {
+                const title = video.querySelector('h3').textContent.toLowerCase();
+                const description = video.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    video.style.display = 'block';
+                } else {
+                    video.style.display = 'none';
+                }
+            });
+        });
+        
+        // Play button animations
+        const playButtons = document.querySelectorAll('.play-button, .video-thumbnail');
+        
+        playButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                alert('In production, this would open the video player or redirect to the video page');
+            });
+        });
+    </script>
+</body>
+</html>

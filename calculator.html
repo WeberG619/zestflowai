@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI Calculator - See How Much You're Losing | ZestFlow AI</title>
+    <meta name="description" content="Calculate how much revenue you're losing from missed after-hours calls. Free ROI calculator for contractors.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/consistent-styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Light Theme Colors */
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f4c75;
+            --highlight: #3282b8;
+            --text-light: #f5f5f5;
+            --text-dark: #333;
+            --bg-light: #ffffff;
+            --bg-section: #f8f9fa;
+            --card-bg: #ffffff;
+            --border-color: rgba(0, 0, 0, 0.05);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --success-color: #27ae60;
+            --danger-color: #e74c3c;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--bg-light);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--highlight);
+        }
+        
+        .contact-btn {
+            background: var(--highlight);
+            color: white;
+            padding: 10px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .contact-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        /* Calculator Hero */
+        .calculator-hero {
+            padding: 120px 0 60px;
+            background: linear-gradient(to bottom, var(--bg-light), var(--bg-section));
+            text-align: center;
+        }
+        
+        .calculator-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .calculator-hero p {
+            font-size: 20px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Calculator Section */
+        .calculator-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .calculator-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        /* Input Panel */
+        .input-panel {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+        
+        .input-panel h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        
+        .input-group {
+            margin-bottom: 30px;
+        }
+        
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+            font-size: 16px;
+        }
+        
+        .input-group .help-text {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .input-wrapper .prefix {
+            position: absolute;
+            left: 15px;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .input-wrapper input {
+            width: 100%;
+            padding: 15px 15px 15px 35px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 18px;
+            transition: border-color 0.3s;
+            font-weight: 500;
+        }
+        
+        .input-wrapper input[type="number"] {
+            -moz-appearance: textfield;
+        }
+        
+        .input-wrapper input::-webkit-inner-spin-button,
+        .input-wrapper input::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: var(--highlight);
+        }
+        
+        .slider-container {
+            margin-top: 15px;
+        }
+        
+        .slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #e0e0e0;
+            outline: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--highlight);
+            cursor: pointer;
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--highlight);
+            cursor: pointer;
+            border: none;
+        }
+        
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        /* Results Panel */
+        .results-panel {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 40px;
+            border-radius: 12px;
+            color: white;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .results-panel h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+        
+        .result-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .result-label {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .result-value {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .result-value.loss {
+            color: #ff6b6b;
+        }
+        
+        .result-value.gain {
+            color: #51cf66;
+        }
+        
+        .result-detail {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .cta-box {
+            background: white;
+            color: var(--primary);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .cta-box h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .cta-box p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--highlight);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* Breakdown Section */
+        .breakdown-section {
+            padding: 80px 0;
+            background: var(--bg-section);
+        }
+        
+        .breakdown-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .breakdown-content h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: var(--primary);
+        }
+        
+        .breakdown-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .breakdown-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .breakdown-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--highlight);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .breakdown-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .breakdown-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .calculator-hero h1 {
+                font-size: 36px;
+            }
+            
+            .calculator-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-panel {
+                position: static;
+                margin-top: 40px;
+            }
+            
+            .result-value {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">ZestFlow AI</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/demo.html">Demo</a></li>
+                <li><a href="/widget-demo.html">How It Works</a></li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li><a href="/testimonials.html">Testimonials</a></li>
+                <li><a href="/compare.html">Compare</a></li>
+                <li><a href="/calculator.html" class="active">ROI Calculator</a></li>
+                <li><a href="/book-install.html">Book Install</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+            <a href="/book-install.html" class="contact-btn">Book Install</a>
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    
+    <section class="calculator-hero">
+        <div class="container">
+            <h1>Calculate Your Lost Revenue</h1>
+            <p>See how much money you're losing from missed after-hours calls and how our system pays for itself</p>
+        </div>
+    </section>
+    
+    <section class="calculator-section">
+        <div class="container">
+            <div class="calculator-container">
+                <!-- Input Panel -->
+                <div class="input-panel">
+                    <h2>Your Business Numbers</h2>
+                    
+                    <div class="input-group">
+                        <label for="afterHoursCalls">After-hours calls per week</label>
+                        <p class="help-text">How many calls/texts do you miss outside business hours?</p>
+                        <div class="input-wrapper">
+                            <input type="number" id="afterHoursCalls" value="8" min="1" max="100">
+                        </div>
+                        <div class="slider-container">
+                            <input type="range" class="slider" id="afterHoursSlider" min="1" max="50" value="8">
+                            <div class="slider-labels">
+                                <span>1</span>
+                                <span>25</span>
+                                <span>50+</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="avgJobValue">Average job value</label>
+                        <p class="help-text">What's your typical emergency service charge?</p>
+                        <div class="input-wrapper">
+                            <span class="prefix">$</span>
+                            <input type="number" id="avgJobValue" value="450" min="50" max="5000">
+                        </div>
+                        <div class="slider-container">
+                            <input type="range" class="slider" id="jobValueSlider" min="50" max="2000" value="450">
+                            <div class="slider-labels">
+                                <span>$50</span>
+                                <span>$1000</span>
+                                <span>$2000+</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="conversionRate">Current booking rate</label>
+                        <p class="help-text">What % of after-hours callers do you actually book?</p>
+                        <div class="input-wrapper">
+                            <input type="number" id="conversionRate" value="20" min="0" max="100">
+                            <span class="prefix" style="left: auto; right: 15px;">%</span>
+                        </div>
+                        <div class="slider-container">
+                            <input type="range" class="slider" id="conversionSlider" min="0" max="100" value="20">
+                            <div class="slider-labels">
+                                <span>0%</span>
+                                <span>50%</span>
+                                <span>100%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="emergencyMultiplier">Emergency rate multiplier</label>
+                        <p class="help-text">How much more do you charge for emergency/after-hours?</p>
+                        <div class="input-wrapper">
+                            <input type="number" id="emergencyMultiplier" value="1.5" min="1" max="3" step="0.1">
+                            <span class="prefix" style="left: auto; right: 15px;">x</span>
+                        </div>
+                        <div class="slider-container">
+                            <input type="range" class="slider" id="multiplierSlider" min="1" max="3" value="1.5" step="0.1">
+                            <div class="slider-labels">
+                                <span>1x</span>
+                                <span>2x</span>
+                                <span>3x</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Results Panel -->
+                <div class="results-panel">
+                    <h2>You're Losing Money!</h2>
+                    
+                    <div class="result-item">
+                        <div class="result-label">Lost revenue per month</div>
+                        <div class="result-value loss" id="monthlyLoss">$0</div>
+                        <div class="result-detail">From missed after-hours opportunities</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-label">Lost revenue per year</div>
+                        <div class="result-value loss" id="yearlyLoss">$0</div>
+                        <div class="result-detail">That's real money walking away</div>
+                    </div>
+                    
+                    <div class="result-item" style="background: rgba(81, 207, 102, 0.2);">
+                        <div class="result-label">With ZestFlow AI</div>
+                        <div class="result-value gain" id="potentialGain">$0</div>
+                        <div class="result-detail">Additional monthly revenue (87% booking rate)</div>
+                    </div>
+                    
+                    <div class="result-item" style="background: rgba(255, 255, 255, 0.2);">
+                        <div class="result-label">ROI in first month</div>
+                        <div class="result-value" id="roiPercent">0%</div>
+                        <div class="result-detail">System pays for itself in <span id="paybackDays">0</span> days</div>
+                    </div>
+                    
+                    <div class="cta-box">
+                        <h3>Stop Losing $<span id="ctaLoss">0</span>/month</h3>
+                        <p>Get your after-hours booking system installed in 48 hours</p>
+                        <a href="/book-install.html" class="cta-button">Start Capturing These Jobs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="breakdown-section">
+        <div class="container">
+            <div class="breakdown-content">
+                <h2>Why Contractors Lose After-Hours Jobs</h2>
+                
+                <div class="breakdown-grid">
+                    <div class="breakdown-card">
+                        <div class="breakdown-icon">🕐</div>
+                        <h3>60% of Calls Are After Hours</h3>
+                        <p>Emergencies don't follow business hours. Pipes burst at midnight, ACs fail on weekends.</p>
+                    </div>
+                    
+                    <div class="breakdown-card">
+                        <div class="breakdown-icon">📱</div>
+                        <h3>Customers Call 3-5 Contractors</h3>
+                        <p>In an emergency, they call everyone. First to respond gets the job - usually within 5 minutes.</p>
+                    </div>
+                    
+                    <div class="breakdown-card">
+                        <div class="breakdown-icon">💰</div>
+                        <h3>Emergency Jobs Pay 1.5-3x More</h3>
+                        <p>Customers happily pay premium rates for immediate help. These are your most profitable jobs.</p>
+                    </div>
+                    
+                    <div class="breakdown-card">
+                        <div class="breakdown-icon">🤝</div>
+                        <h3>87% Book When Contact Is Made</h3>
+                        <p>Our data shows when you respond instantly, almost 9 out of 10 customers book on the spot.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer style="background: var(--primary); color: white; padding: 40px 0; text-align: center;">
+        <div class="container">
+            <p>&copy; 2025 ZestFlow AI. All rights reserved.</p>
+            <p style="margin-top: 20px; opacity: 0.8;">
+                <a href="/terms.html" style="color: white; text-decoration: none; margin: 0 15px;">Terms of Service</a> | 
+                <a href="/privacy.html" style="color: white; text-decoration: none; margin: 0 15px;">Privacy Policy</a> | 
+                <a href="/contact.html" style="color: white; text-decoration: none; margin: 0 15px;">Contact</a>
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        // ROI Calculator Logic
+        function updateCalculations() {
+            // Get input values
+            const afterHoursCalls = parseFloat(document.getElementById('afterHoursCalls').value) || 8;
+            const avgJobValue = parseFloat(document.getElementById('avgJobValue').value) || 450;
+            const currentConversion = parseFloat(document.getElementById('conversionRate').value) || 20;
+            const emergencyMultiplier = parseFloat(document.getElementById('emergencyMultiplier').value) || 1.5;
+            
+            // Calculate actual job value with emergency multiplier
+            const actualJobValue = avgJobValue * emergencyMultiplier;
+            
+            // Current situation
+            const currentMonthlyJobs = (afterHoursCalls * 4) * (currentConversion / 100);
+            const currentMonthlyRevenue = currentMonthlyJobs * actualJobValue;
+            
+            // With ZestFlow (87% conversion rate)
+            const zestflowConversion = 87;
+            const zestflowMonthlyJobs = (afterHoursCalls * 4) * (zestflowConversion / 100);
+            const zestflowMonthlyRevenue = zestflowMonthlyJobs * actualJobValue;
+            
+            // Lost revenue
+            const monthlyLoss = zestflowMonthlyRevenue - currentMonthlyRevenue;
+            const yearlyLoss = monthlyLoss * 12;
+            
+            // ROI Calculation
+            const setupCost = 499;
+            const monthlyCost = 149;
+            const firstMonthCost = setupCost + monthlyCost;
+            const additionalRevenue = monthlyLoss;
+            const roi = ((additionalRevenue - firstMonthCost) / firstMonthCost) * 100;
+            const paybackDays = Math.ceil(firstMonthCost / (additionalRevenue / 30));
+            
+            // Update display
+            document.getElementById('monthlyLoss').textContent = '$' + Math.round(monthlyLoss).toLocaleString();
+            document.getElementById('yearlyLoss').textContent = '$' + Math.round(yearlyLoss).toLocaleString();
+            document.getElementById('potentialGain').textContent = '+$' + Math.round(additionalRevenue).toLocaleString();
+            document.getElementById('roiPercent').textContent = Math.round(roi) + '%';
+            document.getElementById('paybackDays').textContent = paybackDays;
+            document.getElementById('ctaLoss').textContent = Math.round(monthlyLoss).toLocaleString();
+        }
+        
+        // Sync inputs with sliders
+        function syncInputs() {
+            // After hours calls
+            const afterHoursCalls = document.getElementById('afterHoursCalls');
+            const afterHoursSlider = document.getElementById('afterHoursSlider');
+            
+            afterHoursCalls.addEventListener('input', function() {
+                afterHoursSlider.value = this.value;
+                updateCalculations();
+            });
+            
+            afterHoursSlider.addEventListener('input', function() {
+                afterHoursCalls.value = this.value;
+                updateCalculations();
+            });
+            
+            // Average job value
+            const avgJobValue = document.getElementById('avgJobValue');
+            const jobValueSlider = document.getElementById('jobValueSlider');
+            
+            avgJobValue.addEventListener('input', function() {
+                jobValueSlider.value = this.value;
+                updateCalculations();
+            });
+            
+            jobValueSlider.addEventListener('input', function() {
+                avgJobValue.value = this.value;
+                updateCalculations();
+            });
+            
+            // Conversion rate
+            const conversionRate = document.getElementById('conversionRate');
+            const conversionSlider = document.getElementById('conversionSlider');
+            
+            conversionRate.addEventListener('input', function() {
+                conversionSlider.value = this.value;
+                updateCalculations();
+            });
+            
+            conversionSlider.addEventListener('input', function() {
+                conversionRate.value = this.value;
+                updateCalculations();
+            });
+            
+            // Emergency multiplier
+            const emergencyMultiplier = document.getElementById('emergencyMultiplier');
+            const multiplierSlider = document.getElementById('multiplierSlider');
+            
+            emergencyMultiplier.addEventListener('input', function() {
+                multiplierSlider.value = this.value;
+                updateCalculations();
+            });
+            
+            multiplierSlider.addEventListener('input', function() {
+                emergencyMultiplier.value = this.value;
+                updateCalculations();
+            });
+        }
+        
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle?.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Initialize
+        syncInputs();
+        updateCalculations();
+    </script>
+</body>
+</html>

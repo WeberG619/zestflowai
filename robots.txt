@@ -1,0 +1,54 @@
+# Robots.txt for ZestFlow AI
+# https://www.zestflowai.com/
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /backend/
+Disallow: /js/
+Disallow: /includes/
+Disallow: /email-templates/
+Disallow: /*.json$
+Disallow: /*.log$
+Disallow: /form-test.html
+Disallow: /contact-temp.html
+Disallow: /contact-clean.html
+Disallow: /static-contact.html
+Disallow: /netlify-form-fix.html
+Disallow: /create-favicon.html
+Disallow: /generate-favicon.html
+Disallow: /logo-display.html
+Disallow: /admin-dashboard-demo.html
+Disallow: /automation-landing-page.html
+Disallow: /bug-fixing-landing-page.html
+Disallow: /system-architecture.html
+
+# Crawl-delay for bots that respect it
+User-agent: *
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://www.zestflowai.com/sitemap.xml
+
+# Special rules for major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /

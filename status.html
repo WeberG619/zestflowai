@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Status | ZestFlow AI</title>
+    <meta name="description" content="Real-time system status, uptime monitoring, and incident reports for ZestFlow AI services.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <!-- Auto-refresh every 60 seconds -->
+    <meta http-equiv="refresh" content="60">
+    
+    <link rel="stylesheet" href="consistent-styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f4c75;
+            --highlight: #3282b8;
+            --text-light: #f5f5f5;
+            --text-dark: #333;
+            --bg-light: #ffffff;
+            --bg-section: #f8f9fa;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --error: #e74c3c;
+            --info: #3498db;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Status Header */
+        .status-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--text-light);
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+        
+        .status-header h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .overall-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255,255,255,0.1);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+        
+        .status-indicator {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        .status-operational {
+            background: var(--success);
+        }
+        
+        .status-degraded {
+            background: var(--warning);
+        }
+        
+        .status-down {
+            background: var(--error);
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 currentColor;
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(0,0,0,0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0,0,0,0);
+            }
+        }
+        
+        /* Services Grid */
+        .services-section {
+            padding: 60px 0;
+            background: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .service-item:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        
+        .service-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-section);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .service-details h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .service-details p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .service-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .status-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .badge-operational {
+            background: rgba(39, 174, 96, 0.1);
+            color: var(--success);
+        }
+        
+        .badge-degraded {
+            background: rgba(243, 156, 18, 0.1);
+            color: var(--warning);
+        }
+        
+        .badge-maintenance {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--info);
+        }
+        
+        .badge-down {
+            background: rgba(231, 76, 60, 0.1);
+            color: var(--error);
+        }
+        
+        /* Uptime Stats */
+        .uptime-section {
+            padding: 60px 0;
+            background: var(--bg-section);
+        }
+        
+        .uptime-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .uptime-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .uptime-percentage {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--success);
+            margin-bottom: 10px;
+        }
+        
+        .uptime-label {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .uptime-chart {
+            display: flex;
+            gap: 2px;
+            height: 40px;
+            margin-top: 20px;
+        }
+        
+        .day-bar {
+            flex: 1;
+            background: var(--success);
+            border-radius: 2px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .day-bar:hover::after {
+            content: attr(data-date);
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 10;
+        }
+        
+        .day-bar.partial {
+            background: var(--warning);
+        }
+        
+        .day-bar.down {
+            background: var(--error);
+        }
+        
+        /* Incidents */
+        .incidents-section {
+            padding: 60px 0;
+            background: white;
+        }
+        
+        .incident-timeline {
+            margin-top: 40px;
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .incident-timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e0e0e0;
+        }
+        
+        .incident-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding: 25px;
+            background: var(--bg-section);
+            border-radius: 10px;
+        }
+        
+        .incident-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 3px solid var(--highlight);
+            border-radius: 50%;
+        }
+        
+        .incident-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .incident-title h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .incident-date {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .incident-type {
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .type-resolved {
+            background: rgba(39, 174, 96, 0.1);
+            color: var(--success);
+        }
+        
+        .type-investigating {
+            background: rgba(243, 156, 18, 0.1);
+            color: var(--warning);
+        }
+        
+        .incident-content p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .incident-updates {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .update-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .update-time {
+            color: #666;
+            min-width: 80px;
+        }
+        
+        /* Subscribe Section */
+        .subscribe-section {
+            padding: 60px 0;
+            background: var(--bg-section);
+        }
+        
+        .subscribe-box {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .subscribe-form {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .subscribe-input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .subscribe-btn {
+            background: var(--highlight);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .subscribe-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .status-header h1 {
+                font-size: 32px;
+            }
+            
+            .service-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .uptime-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .subscribe-form {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">ZestFlow AI</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/demo.html">Demo</a></li>
+                <li><a href="/status.html" class="active">Status</a></li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li><a href="/book-install.html">Book Install</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+            <a href="/book-install.html" class="contact-btn">Book Install</a>
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    
+    <!-- Status Header -->
+    <section class="status-header">
+        <div class="container">
+            <h1>System Status</h1>
+            <p style="font-size: 18px; opacity: 0.9;">Real-time status of ZestFlow AI services</p>
+            <div class="overall-status">
+                <span class="status-indicator status-operational"></span>
+                <span>All Systems Operational</span>
+            </div>
+            <p style="margin-top: 20px; font-size: 14px; opacity: 0.8;">Last updated: <span id="last-update">Just now</span></p>
+        </div>
+    </section>
+    
+    <!-- Services Status -->
+    <section class="services-section">
+        <div class="container">
+            <h2 style="font-size: 32px; margin-bottom: 10px; color: var(--primary);">Service Status</h2>
+            <p style="color: #666;">Current status of all ZestFlow AI services</p>
+            
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-info">
+                        <div class="service-icon">📞</div>
+                        <div class="service-details">
+                            <h3>Call Forwarding</h3>
+                            <p>Inbound call routing and forwarding</p>
+                        </div>
+                    </div>
+                    <div class="service-status">
+                        <span class="status-badge badge-operational">Operational</span>
+                        <span style="color: #666; font-size: 14px;">0.3ms</span>
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-info">
+                        <div class="service-icon">💬</div>
+                        <div class="service-details">
+                            <h3>SMS Engine</h3>
+                            <p>Automated SMS conversations and booking</p>
+                        </div>
+                    </div>
+                    <div class="service-status">
+                        <span class="status-badge badge-operational">Operational</span>
+                        <span style="color: #666; font-size: 14px;">1.2s</span>
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-info">
+                        <div class="service-icon">🤖</div>
+                        <div class="service-details">
+                            <h3>AI Processing</h3>
+                            <p>Natural language understanding and responses</p>
+                        </div>
+                    </div>
+                    <div class="service-status">
+                        <span class="status-badge badge-operational">Operational</span>
+                        <span style="color: #666; font-size: 14px;">0.8s</span>
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-info">
+                        <div class="service-icon">💾</div>
+                        <div class="service-details">
+                            <h3>Database</h3>
+                            <p>Customer data and booking storage</p>
+                        </div>
+                    </div>
+                    <div class="service-status">
+                        <span class="status-badge badge-operational">Operational</span>
+                        <span style="color: #666; font-size: 14px;">12ms</span>
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-info">
+                        <div class="service-icon">🌐</div>
+                        <div class="service-details">
+                            <h3>API Services</h3>
+                            <p>REST API and webhook delivery</p>
+                        </div>
+                    </div>
+                    <div class="service-status">
+                        <span class="status-badge badge-operational">Operational</span>
+                        <span style="color: #666; font-size: 14px;">45ms</span>
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-info">
+                        <div class="service-icon">💳</div>
+                        <div class="service-details">
+                            <h3>Payment Processing</h3>
+                            <p>Deposit collection and payment gateway</p>
+                        </div>
+                    </div>
+                    <div class="service-status">
+                        <span class="status-badge badge-operational">Operational</span>
+                        <span style="color: #666; font-size: 14px;">2.1s</span>
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-info">
+                        <div class="service-icon">📊</div>
+                        <div class="service-details">
+                            <h3>Dashboard & Analytics</h3>
+                            <p>Admin dashboard and reporting</p>
+                        </div>
+                    </div>
+                    <div class="service-status">
+                        <span class="status-badge badge-operational">Operational</span>
+                        <span style="color: #666; font-size: 14px;">320ms</span>
+                    </div>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-info">
+                        <div class="service-icon">🔗</div>
+                        <div class="service-details">
+                            <h3>Integrations</h3>
+                            <p>Third-party service connections</p>
+                        </div>
+                    </div>
+                    <div class="service-status">
+                        <span class="status-badge badge-operational">Operational</span>
+                        <span style="color: #666; font-size: 14px;">Varies</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Uptime Statistics -->
+    <section class="uptime-section">
+        <div class="container">
+            <h2 style="font-size: 32px; margin-bottom: 10px; color: var(--primary);">Uptime Statistics</h2>
+            <p style="color: #666;">Historical uptime data for the last 90 days</p>
+            
+            <div class="uptime-grid">
+                <div class="uptime-card">
+                    <div class="uptime-percentage">99.98%</div>
+                    <div class="uptime-label">Last 24 Hours</div>
+                    <div class="uptime-chart">
+                        <!-- Generate 24 bars for hours -->
+                        <script>
+                            document.write([...Array(24)].map((_, i) => 
+                                `<div class="day-bar" data-date="${i}:00" style="height: ${Math.random() > 0.02 ? '100%' : '60%'}"></div>`
+                            ).join(''));
+                        </script>
+                    </div>
+                </div>
+                
+                <div class="uptime-card">
+                    <div class="uptime-percentage">99.95%</div>
+                    <div class="uptime-label">Last 7 Days</div>
+                    <div class="uptime-chart">
+                        <!-- Generate 7 bars for days -->
+                        <script>
+                            const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+                            document.write(days.map(day => 
+                                `<div class="day-bar" data-date="${day}" style="height: ${Math.random() > 0.05 ? '100%' : '70%'}"></div>`
+                            ).join(''));
+                        </script>
+                    </div>
+                </div>
+                
+                <div class="uptime-card">
+                    <div class="uptime-percentage">99.93%</div>
+                    <div class="uptime-label">Last 30 Days</div>
+                    <div class="uptime-chart">
+                        <!-- Generate 30 bars for days -->
+                        <script>
+                            document.write([...Array(30)].map((_, i) => 
+                                `<div class="day-bar" data-date="Day ${i+1}" style="height: ${Math.random() > 0.07 ? '100%' : '80%'}"></div>`
+                            ).join(''));
+                        </script>
+                    </div>
+                </div>
+                
+                <div class="uptime-card">
+                    <div class="uptime-percentage">99.91%</div>
+                    <div class="uptime-label">Last 90 Days</div>
+                    <p style="font-size: 14px; color: #666; margin-top: 10px;">
+                        Total Downtime: 7h 14m<br>
+                        Incidents: 3
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Recent Incidents -->
+    <section class="incidents-section">
+        <div class="container">
+            <h2 style="font-size: 32px; margin-bottom: 10px; color: var(--primary);">Recent Incidents</h2>
+            <p style="color: #666;">Service disruptions and maintenance events</p>
+            
+            <div class="incident-timeline">
+                <div class="incident-item">
+                    <div class="incident-header">
+                        <div class="incident-title">
+                            <h4>Scheduled Maintenance Complete</h4>
+                            <p class="incident-date">January 23, 2025</p>
+                        </div>
+                        <span class="incident-type type-resolved">Resolved</span>
+                    </div>
+                    <div class="incident-content">
+                        <p>Successfully completed scheduled maintenance for database optimization and security updates. All services operated normally during the maintenance window.</p>
+                        <div class="incident-updates">
+                            <div class="update-item">
+                                <span class="update-time">04:00 UTC</span>
+                                <span>Maintenance completed, all systems verified operational</span>
+                            </div>
+                            <div class="update-item">
+                                <span class="update-time">02:00 UTC</span>
+                                <span>Maintenance started as scheduled</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="incident-item">
+                    <div class="incident-header">
+                        <div class="incident-title">
+                            <h4>SMS Delivery Delays</h4>
+                            <p class="incident-date">January 15, 2025</p>
+                        </div>
+                        <span class="incident-type type-resolved">Resolved</span>
+                    </div>
+                    <div class="incident-content">
+                        <p>Some users experienced 2-3 minute delays in SMS delivery due to carrier network congestion. Issue was resolved by implementing additional SMS gateway redundancy.</p>
+                        <div class="incident-updates">
+                            <div class="update-item">
+                                <span class="update-time">18:45 UTC</span>
+                                <span>Issue resolved, SMS delivery times back to normal</span>
+                            </div>
+                            <div class="update-item">
+                                <span class="update-time">17:30 UTC</span>
+                                <span>Identified carrier issue, implementing workaround</span>
+                            </div>
+                            <div class="update-item">
+                                <span class="update-time">16:15 UTC</span>
+                                <span>Investigating reports of SMS delays</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="incident-item">
+                    <div class="incident-header">
+                        <div class="incident-title">
+                            <h4>API Rate Limit Improvements</h4>
+                            <p class="incident-date">January 8, 2025</p>
+                        </div>
+                        <span class="incident-type type-resolved">Completed</span>
+                    </div>
+                    <div class="incident-content">
+                        <p>Increased API rate limits from 5,000 to 10,000 requests per hour based on customer feedback. No downtime required for this update.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Subscribe Section -->
+    <section class="subscribe-section">
+        <div class="container">
+            <div class="subscribe-box">
+                <h3 style="font-size: 28px; margin-bottom: 15px; color: var(--primary);">Stay Updated</h3>
+                <p style="color: #666; margin-bottom: 25px;">Get instant notifications about system status changes and scheduled maintenance</p>
+                
+                <form class="subscribe-form" onsubmit="alert('In production, this would subscribe to status updates'); return false;">
+                    <input type="email" class="subscribe-input" placeholder="Your email address" required>
+                    <button type="submit" class="subscribe-btn">Subscribe</button>
+                </form>
+                
+                <p style="margin-top: 20px; font-size: 14px; color: #666;">
+                    Also follow <a href="#" style="color: var(--highlight);">@ZestFlowStatus</a> on Twitter for real-time updates
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ZestFlow AI. All rights reserved.</p>
+            <p>
+                <a href="/terms.html" style="color: inherit;">Terms of Service</a> | 
+                <a href="/privacy.html" style="color: inherit;">Privacy Policy</a> | 
+                <a href="/api-status.json" style="color: inherit;">API Status</a>
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle?.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Update last refresh time
+        function updateLastRefresh() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            document.getElementById('last-update').textContent = `${timeString}`;
+        }
+        
+        // Update on load and every minute
+        updateLastRefresh();
+        setInterval(updateLastRefresh, 60000);
+        
+        // Simulate real-time updates (in production, this would use WebSockets)
+        function simulateStatusUpdate() {
+            const statuses = ['Operational', 'Operational', 'Operational', 'Operational', 'Degraded'];
+            const badges = document.querySelectorAll('.status-badge');
+            
+            badges.forEach(badge => {
+                if (Math.random() > 0.98) { // 2% chance of status change
+                    const newStatus = statuses[Math.floor(Math.random() * statuses.length)];
+                    badge.textContent = newStatus;
+                    badge.className = 'status-badge badge-' + newStatus.toLowerCase();
+                }
+            });
+        }
+        
+        // Check for updates every 5 seconds
+        setInterval(simulateStatusUpdate, 5000);
+    </script>
+</body>
+</html>

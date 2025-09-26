@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started Guide - ZestFlow AI Onboarding</title>
+    <meta name="description" content="Complete guide to setting up ZestFlow AI. From installation to your first booked job in 45 minutes. Step-by-step onboarding instructions.">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Getting Started with ZestFlow AI">
+    <meta property="og:description" content="Step-by-step guide to set up your after-hours booking system in 45 minutes">
+    <meta property="og:image" content="https://www.zestflowai.com/images/onboarding-og.jpg">
+    <meta property="og:url" content="https://www.zestflowai.com/onboarding.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="consistent-styles.css">
+    <link rel="stylesheet" href="global-styles.css">
+    <style>
+        .onboarding-hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+        
+        .onboarding-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .onboarding-hero p {
+            font-size: 22px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            animation: fadeInUp 0.6s ease-out 0.1s;
+            animation-fill-mode: both;
+        }
+        
+        .progress-bar {
+            background: rgba(255,255,255,0.2);
+            height: 8px;
+            border-radius: 4px;
+            margin: 40px auto;
+            max-width: 600px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: var(--highlight);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 4px;
+        }
+        
+        .onboarding-steps {
+            padding: 80px 0;
+            background: var(--bg-section);
+        }
+        
+        .step-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            cursor: pointer;
+            border-left: 5px solid transparent;
+        }
+        
+        .step-card.active {
+            border-left-color: var(--highlight);
+            transform: translateX(10px);
+        }
+        
+        .step-card.completed {
+            opacity: 0.7;
+            border-left-color: var(--success);
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--highlight);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .step-card.completed .step-number {
+            background: var(--success);
+        }
+        
+        .step-title {
+            flex: 1;
+        }
+        
+        .step-title h2 {
+            font-size: 28px;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .step-time {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .step-content {
+            display: none;
+            margin-top: 30px;
+        }
+        
+        .step-card.active .step-content {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .substep {
+            background: var(--bg-section);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--highlight);
+        }
+        
+        .substep h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .checklist {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .checklist li {
+            padding: 10px 0 10px 35px;
+            position: relative;
+            line-height: 1.8;
+        }
+        
+        .checklist li:before {
+            content: '☐';
+            position: absolute;
+            left: 0;
+            font-size: 24px;
+            color: var(--highlight);
+        }
+        
+        .checklist li.checked:before {
+            content: '✓';
+            color: var(--success);
+        }
+        
+        .resource-box {
+            background: linear-gradient(135deg, var(--highlight), var(--accent));
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .resource-box h3 {
+            margin-bottom: 15px;
+        }
+        
+        .resource-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .resource-links a {
+            background: white;
+            color: var(--highlight);
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .resource-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .video-placeholder {
+            background: #000;
+            padding: 40% 0;
+            border-radius: 8px;
+            position: relative;
+            margin: 20px 0;
+        }
+        
+        .video-placeholder .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .video-placeholder .play-button:hover {
+            background: white;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .video-placeholder .play-button:after {
+            content: '▶';
+            font-size: 30px;
+            color: var(--highlight);
+            margin-left: 5px;
+        }
+        
+        .help-section {
+            padding: 60px 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .help-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .help-card {
+            padding: 30px;
+            background: var(--bg-section);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .help-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .help-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .onboarding-hero h1 {
+                font-size: 36px;
+            }
+            
+            .resource-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation (using standard header) -->
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">ZestFlow AI</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li class="dropdown">
+                    <a href="/demo.html">Product</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/demo.html">Watch Demo</a></li>
+                        <li><a href="/widget-demo.html">How It Works</a></li>
+                        <li><a href="/integrations.html">Integrations</a></li>
+                        <li><a href="/status.html">System Status</a></li>
+                    </ul>
+                </li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li class="dropdown">
+                    <a href="/resources.html">Resources</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/resources.html">Free Downloads</a></li>
+                        <li><a href="/blog.html">Blog</a></li>
+                        <li><a href="/tutorials.html">Video Tutorials</a></li>
+                        <li><a href="/help.html">Help Center</a></li>
+                        <li><a href="/calculator.html">ROI Calculator</a></li>
+                        <li><a href="/onboarding.html" class="active">Getting Started</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="/about.html">Company</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/testimonials.html">Testimonials</a></li>
+                        <li><a href="/case-studies.html">Case Studies</a></li>
+                        <li><a href="/press.html">Press & Media</a></li>
+                        <li><a href="/careers.html">Careers</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </li>
+                <li><a href="/book-install.html" class="nav-cta">Book Install</a></li>
+            </ul>
+            <a href="/book-install.html" class="contact-btn">Get Started</a>
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="onboarding-hero">
+        <div class="container">
+            <h1>Welcome to ZestFlow AI! 🎉</h1>
+            <p>Let's get your after-hours booking system up and running in the next 45 minutes</p>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-bar"></div>
+            </div>
+            <p style="font-size: 16px; opacity: 0.8;">Progress: <span id="progress-text">0%</span> Complete</p>
+        </div>
+    </section>
+    
+    <!-- Onboarding Steps -->
+    <section class="onboarding-steps">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto;">
+                <!-- Step 1: Account Setup -->
+                <div class="step-card active" data-step="1">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <div class="step-title">
+                            <h2>Account Setup</h2>
+                            <span class="step-time">⏱️ 5 minutes</span>
+                        </div>
+                    </div>
+                    
+                    <div class="step-content">
+                        <p>First, let's get your ZestFlow AI account configured with your business details.</p>
+                        
+                        <div class="substep">
+                            <h3>Login to Your Dashboard</h3>
+                            <p>Check your email for your login credentials. Your dashboard URL is:</p>
+                            <code style="background: #f0f0f0; padding: 10px; display: inline-block; margin: 10px 0; border-radius: 5px;">
+                                https://app.zestflowai.com/login
+                            </code>
+                        </div>
+                        
+                        <div class="substep">
+                            <h3>Complete Business Profile</h3>
+                            <ul class="checklist">
+                                <li>Enter your business name</li>
+                                <li>Add your service area (ZIP codes or cities)</li>
+                                <li>Upload your logo (optional but recommended)</li>
+                                <li>Set your business hours</li>
+                                <li>Add team member emails for notifications</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="resource-box">
+                            <h3>Need Help?</h3>
+                            <div class="resource-links">
+                                <a href="/tutorials.html#account-setup">Watch Video Tutorial</a>
+                                <a href="/help.html#business-profile">Read Guide</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 2: Service & Pricing -->
+                <div class="step-card" data-step="2">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <div class="step-title">
+                            <h2>Services & Pricing</h2>
+                            <span class="step-time">⏱️ 10 minutes</span>
+                        </div>
+                    </div>
+                    
+                    <div class="step-content">
+                        <p>Configure your services and pricing so ZestFlow AI can accurately quote customers.</p>
+                        
+                        <div class="substep">
+                            <h3>Add Your Services</h3>
+                            <ul class="checklist">
+                                <li>List your main service categories (e.g., Plumbing, HVAC, Electrical)</li>
+                                <li>Add specific services under each category</li>
+                                <li>Set service durations (helps with scheduling)</li>
+                                <li>Mark which services are available after-hours</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="substep">
+                            <h3>Configure Pricing</h3>
+                            <p>Choose your pricing strategy:</p>
+                            <ul style="line-height: 2; margin: 15px 0;">
+                                <li><strong>Fixed Pricing:</strong> Set specific prices for each service</li>
+                                <li><strong>Range Pricing:</strong> Provide min/max ranges</li>
+                                <li><strong>Quote-Based:</strong> Collect info for custom quotes</li>
+                            </ul>
+                            
+                            <div style="background: #fff3cd; padding: 15px; border-radius: 5px; margin-top: 20px;">
+                                <strong>💡 Pro Tip:</strong> Start with range pricing to maximize bookings, then refine as you learn what works best.
+                            </div>
+                        </div>
+                        
+                        <div class="video-placeholder">
+                            <div class="play-button" onclick="playVideo('pricing-setup')"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 3: Calendar Integration -->
+                <div class="step-card" data-step="3">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <div class="step-title">
+                            <h2>Calendar Integration</h2>
+                            <span class="step-time">⏱️ 5 minutes</span>
+                        </div>
+                    </div>
+                    
+                    <div class="step-content">
+                        <p>Connect your calendar so customers can book available time slots automatically.</p>
+                        
+                        <div class="substep">
+                            <h3>Connect Your Calendar</h3>
+                            <p>ZestFlow AI integrates with:</p>
+                            <ul style="line-height: 2; margin: 15px 0;">
+                                <li>✓ Google Calendar</li>
+                                <li>✓ Microsoft Outlook</li>
+                                <li>✓ Apple Calendar (via CalDAV)</li>
+                                <li>✓ ServiceTitan</li>
+                                <li>✓ Housecall Pro</li>
+                            </ul>
+                            
+                            <p style="margin-top: 20px;">Click "Connect Calendar" and follow the authorization prompts.</p>
+                        </div>
+                        
+                        <div class="substep">
+                            <h3>Set Availability Rules</h3>
+                            <ul class="checklist">
+                                <li>Define after-hours time slots</li>
+                                <li>Set buffer time between appointments</li>
+                                <li>Block out holidays and vacations</li>
+                                <li>Configure emergency vs. standard booking windows</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 4: SMS Configuration -->
+                <div class="step-card" data-step="4">
+                    <div class="step-header">
+                        <div class="step-number">4</div>
+                        <div class="step-title">
+                            <h2>SMS & Communication</h2>
+                            <span class="step-time">⏱️ 10 minutes</span>
+                        </div>
+                    </div>
+                    
+                    <div class="step-content">
+                        <p>Customize how ZestFlow AI communicates with your customers.</p>
+                        
+                        <div class="substep">
+                            <h3>Phone Number Setup</h3>
+                            <p>You have two options:</p>
+                            <ul style="line-height: 2; margin: 15px 0;">
+                                <li><strong>Use Your Existing Number:</strong> We'll forward calls and texts (recommended)</li>
+                                <li><strong>Get a New Number:</strong> Keep your current number separate</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="substep">
+                            <h3>Customize Messages</h3>
+                            <p>Personalize the automated responses:</p>
+                            <ul class="checklist">
+                                <li>Initial greeting message</li>
+                                <li>Service selection prompts</li>
+                                <li>Booking confirmation text</li>
+                                <li>Reminder messages</li>
+                                <li>Follow-up templates</li>
+                            </ul>
+                            
+                            <p style="margin-top: 20px;"><strong>Example Initial Message:</strong></p>
+                            <div style="background: #f0f0f0; padding: 15px; border-radius: 5px; margin: 10px 0; font-style: italic;">
+                                "Thanks for contacting [Your Business]! I can help you book an appointment right now. Reply with:<br>
+                                1 - Emergency Service<br>
+                                2 - Schedule for Tomorrow<br>
+                                3 - Get Pricing Info"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 5: Payment Setup -->
+                <div class="step-card" data-step="5">
+                    <div class="step-header">
+                        <div class="step-number">5</div>
+                        <div class="step-title">
+                            <h2>Payment & Deposits</h2>
+                            <span class="step-time">⏱️ 5 minutes</span>
+                        </div>
+                    </div>
+                    
+                    <div class="step-content">
+                        <p>Set up automated deposit collection to reduce no-shows and secure bookings.</p>
+                        
+                        <div class="substep">
+                            <h3>Connect Payment Processor</h3>
+                            <p>ZestFlow AI integrates with:</p>
+                            <ul style="line-height: 2; margin: 15px 0;">
+                                <li>✓ Stripe (recommended - instant setup)</li>
+                                <li>✓ Square</li>
+                                <li>✓ PayPal</li>
+                                <li>✓ Your existing processor (contact support)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="substep">
+                            <h3>Configure Deposit Rules</h3>
+                            <ul class="checklist">
+                                <li>Set deposit amount ($99 recommended for emergencies)</li>
+                                <li>Choose when deposits are required</li>
+                                <li>Configure refund policies</li>
+                                <li>Set up receipts and invoicing</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: #d4edda; padding: 15px; border-radius: 5px; margin-top: 20px;">
+                            <strong>✅ Success Tip:</strong> Contractors who collect deposits see 91% show rates vs. 68% without deposits.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 6: Test & Launch -->
+                <div class="step-card" data-step="6">
+                    <div class="step-header">
+                        <div class="step-number">6</div>
+                        <div class="step-title">
+                            <h2>Test & Go Live!</h2>
+                            <span class="step-time">⏱️ 10 minutes</span>
+                        </div>
+                    </div>
+                    
+                    <div class="step-content">
+                        <p>Let's test everything and make your system live!</p>
+                        
+                        <div class="substep">
+                            <h3>Run Test Booking</h3>
+                            <ol style="line-height: 2;">
+                                <li>Text your business number from a different phone</li>
+                                <li>Go through the booking flow as a customer</li>
+                                <li>Verify the appointment appears in your calendar</li>
+                                <li>Check that confirmation messages are sent</li>
+                                <li>Test the deposit collection (you can refund it)</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="substep">
+                            <h3>Activate Your System</h3>
+                            <ul class="checklist">
+                                <li>Toggle "System Active" in dashboard</li>
+                                <li>Update your voicemail message</li>
+                                <li>Add after-hours info to your website</li>
+                                <li>Update Google Business hours</li>
+                                <li>Notify your team about the new system</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="resource-box">
+                            <h3>🎉 Congratulations! You're Live!</h3>
+                            <p style="margin-bottom: 20px;">Your after-hours booking system is now active and ready to capture revenue.</p>
+                            <div class="resource-links">
+                                <a href="/dashboard">Go to Dashboard</a>
+                                <a href="/tutorials.html">Watch More Tutorials</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Help Section -->
+    <section class="help-section">
+        <div class="container">
+            <h2 style="font-size: 36px; margin-bottom: 20px;">Need Additional Help?</h2>
+            <p style="font-size: 18px; color: #666;">Our success team is here to ensure you get maximum value from ZestFlow AI</p>
+            
+            <div class="help-options">
+                <div class="help-card">
+                    <div class="help-icon">💬</div>
+                    <h3>Live Chat Support</h3>
+                    <p>Get instant help from our team during business hours</p>
+                    <a href="#" onclick="openChat()" style="color: var(--highlight); text-decoration: none; font-weight: 600;">Start Chat →</a>
+                </div>
+                
+                <div class="help-card">
+                    <div class="help-icon">📅</div>
+                    <h3>1-on-1 Setup Call</h3>
+                    <p>Book a free 30-minute setup call with an expert</p>
+                    <a href="/book-setup-call.html" style="color: var(--highlight); text-decoration: none; font-weight: 600;">Schedule Call →</a>
+                </div>
+                
+                <div class="help-card">
+                    <div class="help-icon">📚</div>
+                    <h3>Knowledge Base</h3>
+                    <p>Browse 100+ articles and video tutorials</p>
+                    <a href="/help.html" style="color: var(--highlight); text-decoration: none; font-weight: 600;">Browse Help →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="/demo.html">Watch Demo</a></li>
+                            <li><a href="/widget-demo.html">How It Works</a></li>
+                            <li><a href="/pricing.html">Pricing</a></li>
+                            <li><a href="/integrations.html">Integrations</a></li>
+                            <li><a href="/changelog.html">What's New</a></li>
+                            <li><a href="/status.html">System Status</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="/blog.html">Blog</a></li>
+                            <li><a href="/tutorials.html">Video Tutorials</a></li>
+                            <li><a href="/resources.html">Free Downloads</a></li>
+                            <li><a href="/calculator.html">ROI Calculator</a></li>
+                            <li><a href="/help.html">Help Center</a></li>
+                            <li><a href="/api-docs.html">API Documentation</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="/about.html">About Us</a></li>
+                            <li><a href="/testimonials.html">Testimonials</a></li>
+                            <li><a href="/case-studies.html">Case Studies</a></li>
+                            <li><a href="/service-areas.html">Service Areas</a></li>
+                            <li><a href="/press.html">Press</a></li>
+                            <li><a href="/careers.html">Careers</a></li>
+                            <li><a href="/contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="/terms.html">Terms of Service</a></li>
+                            <li><a href="/privacy.html">Privacy Policy</a></li>
+                            <li><a href="/cookies.html">Cookie Policy</a></li>
+                            <li><a href="/refund.html">Refund Policy</a></li>
+                            <li><a href="/api-terms.html">API Terms</a></li>
+                            <li><a href="/accessibility.html">Accessibility</a></li>
+                            <li><a href="/ccpa.html">California Privacy</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <div class="social-links">
+                            <a href="https://facebook.com/zestflowai" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="https://twitter.com/zestflowai" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="https://linkedin.com/company/zestflowai" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://youtube.com/zestflowai" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="https://instagram.com/zestflowai" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <div class="footer-contact">
+                            <p><strong>Sales:</strong> 1-800-ZESTFLOW</p>
+                            <p><strong>Support:</strong> support@zestflowai.com</p>
+                            <p><strong>Hours:</strong> Mon-Fri 9AM-6PM EST</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2025 ZestFlow AI. All rights reserved.</p>
+                    <div class="trust-badges">
+                        <img src="/images/ssl-secure.svg" alt="SSL Secure" width="60">
+                        <img src="/images/gdpr-compliant.svg" alt="GDPR Compliant" width="60">
+                        <img src="/images/soc2-certified.svg" alt="SOC2 Certified" width="60">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-consent" id="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h3>We value your privacy</h3>
+                <p>We use cookies to enhance your experience, analyze site traffic, and for marketing purposes. By clicking "Accept All", you consent to our use of cookies. <a href="/cookies.html" target="_blank">Learn more</a></p>
+            </div>
+            <div class="cookie-actions">
+                <button class="cookie-btn cookie-settings" onclick="openCookieSettings()">Cookie Settings</button>
+                <button class="cookie-btn cookie-accept" onclick="acceptAllCookies()">Accept All</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+    <script src="/js/form-handler.js"></script>
+    <script>
+        // Step navigation
+        const stepCards = document.querySelectorAll('.step-card');
+        let currentStep = 1;
+        let completedSteps = [];
+        
+        stepCards.forEach(card => {
+            const header = card.querySelector('.step-header');
+            header.addEventListener('click', () => {
+                const stepNum = parseInt(card.dataset.step);
+                
+                // Close all other steps
+                stepCards.forEach(c => c.classList.remove('active'));
+                
+                // Open clicked step
+                card.classList.add('active');
+                currentStep = stepNum;
+                
+                updateProgress();
+            });
+        });
+        
+        // Progress tracking
+        function updateProgress() {
+            const totalSteps = stepCards.length;
+            const progress = (completedSteps.length / totalSteps) * 100;
+            
+            document.getElementById('progress-bar').style.width = progress + '%';
+            document.getElementById('progress-text').textContent = Math.round(progress) + '%';
+            
+            // Save progress to localStorage
+            localStorage.setItem('onboarding_progress', JSON.stringify({
+                currentStep,
+                completedSteps,
+                timestamp: Date.now()
+            }));
+        }
+        
+        // Mark step as complete
+        function completeStep(stepNum) {
+            if (!completedSteps.includes(stepNum)) {
+                completedSteps.push(stepNum);
+                document.querySelector(`[data-step="${stepNum}"]`).classList.add('completed');
+                updateProgress();
+            }
+        }
+        
+        // Restore progress
+        function restoreProgress() {
+            const saved = localStorage.getItem('onboarding_progress');
+            if (saved) {
+                const data = JSON.parse(saved);
+                completedSteps = data.completedSteps || [];
+                
+                completedSteps.forEach(stepNum => {
+                    document.querySelector(`[data-step="${stepNum}"]`).classList.add('completed');
+                });
+                
+                updateProgress();
+            }
+        }
+        
+        // Checklist functionality
+        document.querySelectorAll('.checklist li').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('checked');
+                
+                // Check if all items in current step are checked
+                const currentStepCard = document.querySelector('.step-card.active');
+                const allItems = currentStepCard.querySelectorAll('.checklist li');
+                const checkedItems = currentStepCard.querySelectorAll('.checklist li.checked');
+                
+                if (allItems.length === checkedItems.length && allItems.length > 0) {
+                    const stepNum = parseInt(currentStepCard.dataset.step);
+                    completeStep(stepNum);
+                    
+                    // Auto-advance to next step
+                    if (stepNum < stepCards.length) {
+                        setTimeout(() => {
+                            stepCards[stepNum].querySelector('.step-header').click();
+                        }, 500);
+                    }
+                }
+            });
+        });
+        
+        // Video placeholder
+        function playVideo(videoId) {
+            // In production, this would open a video modal or embed
+            alert('Video player would open here for: ' + videoId);
+        }
+        
+        // Live chat
+        function openChat() {
+            // In production, this would open live chat widget
+            if (window.Intercom) {
+                window.Intercom('show');
+            } else {
+                alert('Live chat would open here');
+            }
+        }
+        
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle?.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Initialize
+        restoreProgress();
+    </script>
+    
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</body>
+</html>

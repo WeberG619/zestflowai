@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Support - ZestFlow AI</title>
+    <meta name="description" content="Get help with your after-hours job booking system. Setup guides, troubleshooting, and support resources.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/consistent-styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Light Theme Colors */
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f4c75;
+            --highlight: #3282b8;
+            --text-light: #f5f5f5;
+            --text-dark: #333;
+            --bg-light: #ffffff;
+            --bg-section: #f8f9fa;
+            --card-bg: #ffffff;
+            --border-color: rgba(0, 0, 0, 0.05);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--bg-light);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--highlight);
+        }
+        
+        .contact-btn {
+            background: var(--highlight);
+            color: white;
+            padding: 10px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .contact-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        /* Help Hero */
+        .help-hero {
+            padding: 120px 0 60px;
+            background: linear-gradient(to bottom, var(--bg-light), var(--bg-section));
+            text-align: center;
+        }
+        
+        .help-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .help-hero p {
+            font-size: 20px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Search Bar */
+        .search-section {
+            padding: 40px 0;
+            background: white;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 20px 60px 20px 25px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-size: 18px;
+            transition: border-color 0.3s;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--highlight);
+        }
+        
+        .search-box button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--highlight);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .search-box button:hover {
+            background: var(--accent);
+        }
+        
+        /* Help Categories */
+        .help-categories {
+            padding: 80px 0;
+            background: var(--bg-section);
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .category-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--bg-section);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 36px;
+        }
+        
+        .category-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .category-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .category-card a {
+            color: var(--highlight);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        /* Documentation Section */
+        .docs-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .docs-content {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        /* Sidebar */
+        .docs-sidebar {
+            position: sticky;
+            top: 100px;
+        }
+        
+        .docs-nav {
+            background: var(--bg-section);
+            border-radius: 10px;
+            padding: 30px;
+        }
+        
+        .docs-nav h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .docs-nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .docs-nav li {
+            margin-bottom: 15px;
+        }
+        
+        .docs-nav a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .docs-nav a:hover,
+        .docs-nav a.active {
+            color: var(--highlight);
+        }
+        
+        /* Documentation Articles */
+        .docs-articles {
+            max-width: 800px;
+        }
+        
+        .doc-section {
+            margin-bottom: 80px;
+            scroll-margin-top: 100px;
+        }
+        
+        .doc-section h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .doc-article {
+            background: var(--bg-section);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .doc-article h3 {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .doc-article h4 {
+            font-size: 18px;
+            color: var(--primary);
+            margin: 20px 0 10px;
+        }
+        
+        .doc-article p {
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .doc-article ul,
+        .doc-article ol {
+            margin: 20px 0;
+            padding-left: 30px;
+            color: #555;
+        }
+        
+        .doc-article li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        
+        .code-block {
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .tip-box {
+            background: #e8f5e9;
+            border-left: 4px solid var(--success-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .tip-box p {
+            margin: 0;
+            color: #2e7d32;
+        }
+        
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--warning-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .warning-box p {
+            margin: 0;
+            color: #e65100;
+        }
+        
+        /* Contact Support */
+        .contact-support {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+        
+        .contact-support h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-support p {
+            font-size: 20px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+        
+        .support-options {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .support-option {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px 40px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .support-option h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .support-option p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .support-option a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .docs-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .docs-sidebar {
+                position: static;
+                margin-bottom: 40px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .help-hero h1 {
+                font-size: 36px;
+            }
+            
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">ZestFlow AI</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/demo.html">Demo</a></li>
+                <li><a href="/widget-demo.html">How It Works</a></li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li><a href="/testimonials.html">Testimonials</a></li>
+                <li><a href="/compare.html">Compare</a></li>
+                <li><a href="/help.html" class="active">Help</a></li>
+                <li><a href="/book-install.html">Book Install</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+            <a href="/book-install.html" class="contact-btn">Book Install</a>
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    
+    <section class="help-hero">
+        <div class="container">
+            <h1>Help & Support Center</h1>
+            <p>Everything you need to get the most from your after-hours booking system</p>
+        </div>
+    </section>
+    
+    <section class="search-section">
+        <div class="container">
+            <div class="search-box">
+                <input type="text" placeholder="Search for help articles...">
+                <button>🔍</button>
+            </div>
+        </div>
+    </section>
+    
+    <section class="help-categories">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 36px; margin-bottom: 20px;">What can we help you with?</h2>
+            
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">🚀</div>
+                    <h3>Getting Started</h3>
+                    <p>New to ZestFlow? Learn the basics and get up and running quickly.</p>
+                    <a href="#getting-started">View Articles →</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">⚙️</div>
+                    <h3>System Configuration</h3>
+                    <p>Customize SMS templates, business hours, pricing rules, and more.</p>
+                    <a href="#configuration">View Articles →</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">📱</div>
+                    <h3>Managing Bookings</h3>
+                    <p>Learn how to handle appointments, deposits, and customer communication.</p>
+                    <a href="#bookings">View Articles →</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">🔧</div>
+                    <h3>Troubleshooting</h3>
+                    <p>Common issues and how to solve them quickly.</p>
+                    <a href="#troubleshooting">View Articles →</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">💡</div>
+                    <h3>Best Practices</h3>
+                    <p>Tips to maximize bookings and improve customer experience.</p>
+                    <a href="#best-practices">View Articles →</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">💰</div>
+                    <h3>Billing & Account</h3>
+                    <p>Manage your subscription, payment methods, and account settings.</p>
+                    <a href="#billing">View Articles →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="docs-section">
+        <div class="container">
+            <div class="docs-content">
+                <!-- Sidebar Navigation -->
+                <aside class="docs-sidebar">
+                    <nav class="docs-nav">
+                        <h3>Documentation</h3>
+                        <ul>
+                            <li><a href="#getting-started" class="active">Getting Started</a></li>
+                            <li><a href="#configuration">Configuration</a></li>
+                            <li><a href="#bookings">Managing Bookings</a></li>
+                            <li><a href="#troubleshooting">Troubleshooting</a></li>
+                            <li><a href="#best-practices">Best Practices</a></li>
+                            <li><a href="#billing">Billing & Account</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+                
+                <!-- Documentation Articles -->
+                <div class="docs-articles">
+                    <!-- Getting Started -->
+                    <section id="getting-started" class="doc-section">
+                        <h2>Getting Started</h2>
+                        
+                        <article class="doc-article">
+                            <h3>Welcome to ZestFlow AI</h3>
+                            <p>Your after-hours booking system is designed to capture emergency service requests when you're not available. Here's everything you need to know to get started.</p>
+                            
+                            <h4>How It Works</h4>
+                            <ol>
+                                <li><strong>Customer contacts you</strong> - Via your website form or by calling/texting your phone</li>
+                                <li><strong>Instant response</strong> - Our AI responds within 10-60 seconds</li>
+                                <li><strong>Qualification</strong> - System asks about the emergency and location</li>
+                                <li><strong>Booking</strong> - Customer selects available time from your calendar</li>
+                                <li><strong>Confirmation</strong> - Both you and customer get confirmation</li>
+                            </ol>
+                            
+                            <div class="tip-box">
+                                <p><strong>Pro Tip:</strong> Test the system yourself by calling your after-hours number from a different phone. This helps you understand the customer experience.</p>
+                            </div>
+                        </article>
+                        
+                        <article class="doc-article">
+                            <h3>Initial Setup Checklist</h3>
+                            <p>During your 48-hour installation, we handle these items:</p>
+                            
+                            <ul>
+                                <li>✓ Connect your website form to our system</li>
+                                <li>✓ Set up Twilio phone number (or connect existing)</li>
+                                <li>✓ Integrate your Google Calendar</li>
+                                <li>✓ Configure SMS templates with your business info</li>
+                                <li>✓ Set up Google Sheets for lead tracking</li>
+                                <li>✓ Configure payment processing (if using Pro plan)</li>
+                                <li>✓ Test everything thoroughly</li>
+                                <li>✓ Provide 30-minute training session</li>
+                            </ul>
+                        </article>
+                    </section>
+                    
+                    <!-- Configuration -->
+                    <section id="configuration" class="doc-section">
+                        <h2>System Configuration</h2>
+                        
+                        <article class="doc-article">
+                            <h3>Setting Business Hours</h3>
+                            <p>Define when the automated system should activate:</p>
+                            
+                            <ol>
+                                <li>Log into your dashboard</li>
+                                <li>Navigate to Settings → Business Hours</li>
+                                <li>Set your regular hours for each day</li>
+                                <li>The system automatically handles calls outside these hours</li>
+                            </ol>
+                            
+                            <div class="warning-box">
+                                <p><strong>Important:</strong> Remember to update hours for holidays or when you're on vacation to avoid missed opportunities.</p>
+                            </div>
+                        </article>
+                        
+                        <article class="doc-article">
+                            <h3>Customizing SMS Templates</h3>
+                            <p>Make responses sound like your business:</p>
+                            
+                            <h4>Available Templates</h4>
+                            <ul>
+                                <li><strong>Initial Response</strong> - First message after contact</li>
+                                <li><strong>Qualification Questions</strong> - Gathering emergency details</li>
+                                <li><strong>Booking Confirmation</strong> - After appointment scheduled</li>
+                                <li><strong>Reminder Messages</strong> - Before appointment time</li>
+                            </ul>
+                            
+                            <h4>Template Variables</h4>
+                            <div class="code-block">
+{customer_name} - Customer's name
+{business_name} - Your business name
+{appointment_time} - Scheduled time
+{service_type} - Type of service requested
+{deposit_amount} - If deposits enabled
+                            </div>
+                        </article>
+                        
+                        <article class="doc-article">
+                            <h3>Calendar Integration</h3>
+                            <p>Your calendar controls availability:</p>
+                            
+                            <ul>
+                                <li>Only shows times you've marked as available</li>
+                                <li>Automatically updates when you book other appointments</li>
+                                <li>Respects buffer times between appointments</li>
+                                <li>Can set different availability for emergency vs regular service</li>
+                            </ul>
+                        </article>
+                    </section>
+                    
+                    <!-- Managing Bookings -->
+                    <section id="bookings" class="doc-section">
+                        <h2>Managing Bookings</h2>
+                        
+                        <article class="doc-article">
+                            <h3>Handling New Bookings</h3>
+                            <p>When a customer books through the system:</p>
+                            
+                            <ol>
+                                <li><strong>Immediate notification</strong> - You get SMS + email</li>
+                                <li><strong>Calendar entry</strong> - Automatically added with all details</li>
+                                <li><strong>Google Sheets log</strong> - New row with customer info</li>
+                                <li><strong>Customer confirmation</strong> - They receive booking details</li>
+                            </ol>
+                            
+                            <div class="tip-box">
+                                <p><strong>Best Practice:</strong> Always confirm emergency bookings with a personal call 30 minutes before arrival.</p>
+                            </div>
+                        </article>
+                        
+                        <article class="doc-article">
+                            <h3>Managing Deposits (Pro Plan)</h3>
+                            <p>If you're collecting deposits:</p>
+                            
+                            <ul>
+                                <li>Customer pays before booking is confirmed</li>
+                                <li>Funds go directly to your Stripe/Square account</li>
+                                <li>Standard processing fees apply (2.9% + 30¢)</li>
+                                <li>Refunds handled through your payment processor</li>
+                            </ul>
+                            
+                            <h4>Setting Deposit Amounts</h4>
+                            <p>Configure different deposits for different services:</p>
+                            <ul>
+                                <li>Fixed amount (e.g., $50 for all services)</li>
+                                <li>Percentage of estimated job (e.g., 25%)</li>
+                                <li>Service-specific (e.g., $75 for plumbing, $100 for HVAC)</li>
+                            </ul>
+                        </article>
+                    </section>
+                    
+                    <!-- Troubleshooting -->
+                    <section id="troubleshooting" class="doc-section">
+                        <h2>Troubleshooting</h2>
+                        
+                        <article class="doc-article">
+                            <h3>Common Issues & Solutions</h3>
+                            
+                            <h4>System not responding to texts</h4>
+                            <ul>
+                                <li>Check if phone forwarding is active</li>
+                                <li>Verify Twilio account has credits</li>
+                                <li>Ensure system is outside business hours</li>
+                                <li>Test with a different phone number</li>
+                            </ul>
+                            
+                            <h4>Calendar not showing correct availability</h4>
+                            <ul>
+                                <li>Refresh calendar permissions</li>
+                                <li>Check for conflicting events</li>
+                                <li>Verify time zone settings</li>
+                                <li>Clear calendar cache</li>
+                            </ul>
+                            
+                            <h4>Not receiving notifications</h4>
+                            <ul>
+                                <li>Check spam folder for emails</li>
+                                <li>Verify phone number is correct</li>
+                                <li>Ensure notification settings are enabled</li>
+                                <li>Test with manual booking</li>
+                            </ul>
+                        </article>
+                        
+                        <article class="doc-article">
+                            <h3>Error Messages</h3>
+                            
+                            <div class="code-block">
+"Calendar sync failed" - Re-authorize Google Calendar access
+"Payment processing error" - Check Stripe/Square connection
+"SMS delivery failed" - Verify phone number format
+"Booking conflict" - Calendar shows double-booking
+                            </div>
+                        </article>
+                    </section>
+                    
+                    <!-- Best Practices -->
+                    <section id="best-practices" class="doc-section">
+                        <h2>Best Practices</h2>
+                        
+                        <article class="doc-article">
+                            <h3>Maximizing Bookings</h3>
+                            
+                            <h4>Response Time Matters</h4>
+                            <ul>
+                                <li>Our system responds in 10-60 seconds</li>
+                                <li>Customers usually call 3-5 contractors</li>
+                                <li>First response typically wins the job</li>
+                            </ul>
+                            
+                            <h4>Availability Strategy</h4>
+                            <ul>
+                                <li>Offer at least 2-3 time slots for emergencies</li>
+                                <li>Keep some same-night availability</li>
+                                <li>Update calendar immediately after manual bookings</li>
+                                <li>Block out time for existing commitments</li>
+                            </ul>
+                            
+                            <h4>SMS Template Tips</h4>
+                            <ul>
+                                <li>Keep messages short and clear</li>
+                                <li>Include your business name in first message</li>
+                                <li>Emphasize quick response time</li>
+                                <li>Make booking link prominent</li>
+                            </ul>
+                        </article>
+                        
+                        <article class="doc-article">
+                            <h3>Customer Experience</h3>
+                            
+                            <div class="tip-box">
+                                <p><strong>Remember:</strong> Customers in emergencies are stressed. Make the process as simple as possible.</p>
+                            </div>
+                            
+                            <ul>
+                                <li>Use empathetic language in templates</li>
+                                <li>Provide clear pricing expectations</li>
+                                <li>Send confirmation immediately</li>
+                                <li>Follow up personally before arrival</li>
+                            </ul>
+                        </article>
+                    </section>
+                    
+                    <!-- Billing -->
+                    <section id="billing" class="doc-section">
+                        <h2>Billing & Account</h2>
+                        
+                        <article class="doc-article">
+                            <h3>Understanding Your Bill</h3>
+                            
+                            <h4>What You're Charged</h4>
+                            <ul>
+                                <li><strong>Setup Fee:</strong> One-time charge ($499 or $699)</li>
+                                <li><strong>Monthly Fee:</strong> Begins after first booked job ($149 or $199)</li>
+                                <li><strong>SMS Costs:</strong> ~$0.01 per message (billed separately)</li>
+                                <li><strong>No hidden fees</strong> - That's everything</li>
+                            </ul>
+                            
+                            <h4>7-Day Guarantee</h4>
+                            <p>If the system doesn't book at least one job in your first 7 days, we remove it and refund your setup fee. No questions asked.</p>
+                        </article>
+                        
+                        <article class="doc-article">
+                            <h3>Managing Your Account</h3>
+                            
+                            <h4>Updating Payment Method</h4>
+                            <ol>
+                                <li>Log into dashboard</li>
+                                <li>Go to Account → Billing</li>
+                                <li>Update card information</li>
+                                <li>Save changes</li>
+                            </ol>
+                            
+                            <h4>Canceling Service</h4>
+                            <p>No contracts, cancel anytime:</p>
+                            <ul>
+                                <li>Email support@zestflowai.com</li>
+                                <li>Service continues until end of billing period</li>
+                                <li>Export all your data before cancellation</li>
+                                <li>No cancellation fees</li>
+                            </ul>
+                        </article>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact-support">
+        <div class="container">
+            <h2>Still Need Help?</h2>
+            <p>Our support team is here to ensure your success</p>
+            
+            <div class="support-options">
+                <div class="support-option">
+                    <h3>📧 Email Support</h3>
+                    <p>Response within 2-4 hours</p>
+                    <p><a href="mailto:support@zestflowai.com">support@zestflowai.com</a></p>
+                </div>
+                
+                <div class="support-option">
+                    <h3>💬 Priority Support</h3>
+                    <p>Pro plan customers</p>
+                    <p>Phone: 1-800-ZESTFLOW</p>
+                </div>
+                
+                <div class="support-option">
+                    <h3>🚨 Emergency Help</h3>
+                    <p>System down? Critical issue?</p>
+                    <p>Text: URGENT to (555) 123-4567</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer style="background: var(--primary); color: white; padding: 40px 0; text-align: center;">
+        <div class="container">
+            <p>&copy; 2025 ZestFlow AI. All rights reserved.</p>
+            <p style="margin-top: 20px; opacity: 0.8;">
+                <a href="/terms.html" style="color: white; text-decoration: none; margin: 0 15px;">Terms of Service</a> | 
+                <a href="/privacy.html" style="color: white; text-decoration: none; margin: 0 15px;">Privacy Policy</a> | 
+                <a href="/contact.html" style="color: white; text-decoration: none; margin: 0 15px;">Contact</a>
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle?.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        // Active section highlighting
+        const sections = document.querySelectorAll('.doc-section');
+        const navItems = document.querySelectorAll('.docs-nav a');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+        
+        // Simple search functionality
+        const searchInput = document.querySelector('.search-box input');
+        searchInput?.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const articles = document.querySelectorAll('.doc-article');
+            
+            articles.forEach(article => {
+                const text = article.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    article.style.display = 'block';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

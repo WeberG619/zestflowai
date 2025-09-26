@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changelog & Updates | ZestFlow AI</title>
+    <meta name="description" content="Product updates, new features, improvements, and bug fixes for ZestFlow AI. Stay updated with our latest releases.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="consistent-styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f4c75;
+            --highlight: #3282b8;
+            --text-light: #f5f5f5;
+            --text-dark: #333;
+            --bg-light: #ffffff;
+            --bg-section: #f8f9fa;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --error: #e74c3c;
+            --info: #3498db;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .changelog-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--text-light);
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+        
+        .changelog-header h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .changelog-header p {
+            font-size: 20px;
+            opacity: 0.9;
+            animation: fadeInUp 0.6s ease-out 0.2s;
+            animation-fill-mode: both;
+        }
+        
+        .version-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 20px;
+            animation: fadeInUp 0.6s ease-out 0.4s;
+            animation-fill-mode: both;
+        }
+        
+        /* Filter Tabs */
+        .filter-section {
+            padding: 40px 0;
+            background: white;
+            border-bottom: 1px solid #f0f0f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .filter-tabs {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .filter-tab {
+            padding: 10px 20px;
+            background: var(--bg-section);
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .filter-tab:hover,
+        .filter-tab.active {
+            background: var(--highlight);
+            color: white;
+            border-color: var(--highlight);
+        }
+        
+        /* Changelog Content */
+        .changelog-content {
+            padding: 60px 0;
+            background: var(--bg-section);
+        }
+        
+        .release-entry {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+        
+        .release-entry:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+        }
+        
+        .release-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .release-title h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .release-date {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .release-version {
+            background: var(--highlight);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .release-content {
+            display: grid;
+            gap: 30px;
+        }
+        
+        .change-category h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .category-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--bg-section);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        
+        .change-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .change-item {
+            padding: 12px 0;
+            padding-left: 40px;
+            position: relative;
+            border-bottom: 1px solid #f8f8f8;
+            transition: all 0.2s;
+        }
+        
+        .change-item:hover {
+            background: #fafafa;
+            margin: 0 -10px;
+            padding-left: 50px;
+            padding-right: 10px;
+        }
+        
+        .change-item::before {
+            content: '•';
+            position: absolute;
+            left: 20px;
+            color: var(--highlight);
+            font-size: 20px;
+            line-height: 1;
+        }
+        
+        .change-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            background: rgba(50, 130, 184, 0.1);
+            color: var(--highlight);
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .tag-new {
+            background: rgba(39, 174, 96, 0.1);
+            color: var(--success);
+        }
+        
+        .tag-improved {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--info);
+        }
+        
+        .tag-fixed {
+            background: rgba(231, 76, 60, 0.1);
+            color: var(--error);
+        }
+        
+        .tag-deprecated {
+            background: rgba(243, 156, 18, 0.1);
+            color: var(--warning);
+        }
+        
+        /* Subscribe Section */
+        .subscribe-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .subscribe-box {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 60px;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .subscribe-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .subscribe-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .subscribe-form {
+            display: flex;
+            gap: 15px;
+            max-width: 500px;
+            margin: 30px auto 0;
+        }
+        
+        .subscribe-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .subscribe-btn {
+            background: white;
+            color: var(--primary);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .subscribe-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .changelog-header h1 {
+                font-size: 36px;
+            }
+            
+            .release-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .release-title h2 {
+                font-size: 24px;
+            }
+            
+            .subscribe-form {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">ZestFlow AI</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/demo.html">Demo</a></li>
+                <li><a href="/changelog.html" class="active">Changelog</a></li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li><a href="/book-install.html">Book Install</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+            <a href="/book-install.html" class="contact-btn">Book Install</a>
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    
+    <!-- Changelog Header -->
+    <section class="changelog-header">
+        <div class="container">
+            <h1>Changelog</h1>
+            <p>Track every improvement, feature, and fix we ship</p>
+            <div class="version-badge">Current Version: v2.4.0</div>
+        </div>
+    </section>
+    
+    <!-- Filter Tabs -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">All Updates</button>
+                <button class="filter-tab" data-filter="features">Features</button>
+                <button class="filter-tab" data-filter="improvements">Improvements</button>
+                <button class="filter-tab" data-filter="fixes">Bug Fixes</button>
+                <button class="filter-tab" data-filter="api">API Changes</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Changelog Content -->
+    <section class="changelog-content">
+        <div class="container">
+            <!-- Version 2.4.0 -->
+            <div class="release-entry" data-categories="features improvements api">
+                <div class="release-header">
+                    <div class="release-title">
+                        <h2>ServiceTitan Deep Integration</h2>
+                        <p class="release-date">Released on January 26, 2025</p>
+                    </div>
+                    <span class="release-version">v2.4.0</span>
+                </div>
+                <div class="release-content">
+                    <div class="change-category">
+                        <h3><span class="category-icon">✨</span> New Features</h3>
+                        <ul class="change-list">
+                            <li class="change-item">Direct ServiceTitan integration with real-time job creation<span class="change-tag tag-new">NEW</span></li>
+                            <li class="change-item">Automatic technician assignment based on availability</li>
+                            <li class="change-item">Two-way sync for customer data and job history</li>
+                            <li class="change-item">Custom field mapping for ServiceTitan workflows</li>
+                        </ul>
+                    </div>
+                    <div class="change-category">
+                        <h3><span class="category-icon">🚀</span> Improvements</h3>
+                        <ul class="change-list">
+                            <li class="change-item">50% faster SMS response times<span class="change-tag tag-improved">IMPROVED</span></li>
+                            <li class="change-item">Enhanced AI understanding of trade-specific terminology</li>
+                            <li class="change-item">Better handling of multi-property customers</li>
+                        </ul>
+                    </div>
+                    <div class="change-category">
+                        <h3><span class="category-icon">🔧</span> API Updates</h3>
+                        <ul class="change-list">
+                            <li class="change-item">New webhook events for job status changes</li>
+                            <li class="change-item">Expanded customer object with property details</li>
+                            <li class="change-item">Rate limit increased to 10,000 requests/hour</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Version 2.3.0 -->
+            <div class="release-entry" data-categories="features improvements fixes">
+                <div class="release-header">
+                    <div class="release-title">
+                        <h2>Advanced Routing Intelligence</h2>
+                        <p class="release-date">Released on January 10, 2025</p>
+                    </div>
+                    <span class="release-version">v2.3.0</span>
+                </div>
+                <div class="release-content">
+                    <div class="change-category">
+                        <h3><span class="category-icon">✨</span> New Features</h3>
+                        <ul class="change-list">
+                            <li class="change-item">ZIP code-based routing for multi-location businesses</li>
+                            <li class="change-item">Time-of-day routing rules with holiday support</li>
+                            <li class="change-item">VIP customer detection and priority handling</li>
+                            <li class="change-item">Spanish language support for SMS conversations<span class="change-tag tag-new">NEW</span></li>
+                        </ul>
+                    </div>
+                    <div class="change-category">
+                        <h3><span class="category-icon">🚀</span> Improvements</h3>
+                        <ul class="change-list">
+                            <li class="change-item">Smarter price quote generation based on job type</li>
+                            <li class="change-item">Enhanced dashboard with real-time metrics</li>
+                            <li class="change-item">Faster loading times for analytics reports</li>
+                        </ul>
+                    </div>
+                    <div class="change-category">
+                        <h3><span class="category-icon">🐛</span> Bug Fixes</h3>
+                        <ul class="change-list">
+                            <li class="change-item">Fixed timezone issues for West Coast users<span class="change-tag tag-fixed">FIXED</span></li>
+                            <li class="change-item">Resolved duplicate booking notifications</li>
+                            <li class="change-item">Corrected revenue calculations for partial refunds</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Version 2.2.0 -->
+            <div class="release-entry" data-categories="features improvements api">
+                <div class="release-header">
+                    <div class="release-title">
+                        <h2>Payment Processing & Deposits</h2>
+                        <p class="release-date">Released on December 15, 2024</p>
+                    </div>
+                    <span class="release-version">v2.2.0</span>
+                </div>
+                <div class="release-content">
+                    <div class="change-category">
+                        <h3><span class="category-icon">✨</span> New Features</h3>
+                        <ul class="change-list">
+                            <li class="change-item">Integrated Stripe payment processing</li>
+                            <li class="change-item">Automatic deposit collection via SMS<span class="change-tag tag-new">NEW</span></li>
+                            <li class="change-item">Customizable deposit amounts by service type</li>
+                            <li class="change-item">Payment retry logic for failed transactions</li>
+                        </ul>
+                    </div>
+                    <div class="change-category">
+                        <h3><span class="category-icon">🚀</span> Improvements</h3>
+                        <ul class="change-list">
+                            <li class="change-item">PCI-compliant payment handling</li>
+                            <li class="change-item">Better fraud detection and prevention</li>
+                            <li class="change-item">Simplified refund processing</li>
+                        </ul>
+                    </div>
+                    <div class="change-category">
+                        <h3><span class="category-icon">🔧</span> API Updates</h3>
+                        <ul class="change-list">
+                            <li class="change-item">New payment endpoints for custom integrations</li>
+                            <li class="change-item">Webhook notifications for payment events</li>
+                            <li class="change-item">Enhanced security with API key scoping</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Version 2.1.0 -->
+            <div class="release-entry" data-categories="features improvements fixes">
+                <div class="release-header">
+                    <div class="release-title">
+                        <h2>Analytics Dashboard Overhaul</h2>
+                        <p class="release-date">Released on November 28, 2024</p>
+                    </div>
+                    <span class="release-version">v2.1.0</span>
+                </div>
+                <div class="release-content">
+                    <div class="change-category">
+                        <h3><span class="category-icon">✨</span> New Features</h3>
+                        <ul class="change-list">
+                            <li class="change-item">Revenue forecasting based on historical data</li>
+                            <li class="change-item">Conversion funnel visualization</li>
+                            <li class="change-item">Custom report builder with export options</li>
+                            <li class="change-item">Team performance metrics and leaderboards</li>
+                        </ul>
+                    </div>
+                    <div class="change-category">
+                        <h3><span class="category-icon">🚀</span> Improvements</h3>
+                        <ul class="change-list">
+                            <li class="change-item">Mobile-optimized dashboard design<span class="change-tag tag-improved">IMPROVED</span></li>
+                            <li class="change-item">Faster data processing for large datasets</li>
+                            <li class="change-item">Real-time updates without page refresh</li>
+                        </ul>
+                    </div>
+                    <div class="change-category">
+                        <h3><span class="category-icon">🐛</span> Bug Fixes</h3>
+                        <ul class="change-list">
+                            <li class="change-item">Fixed CSV export formatting issues</li>
+                            <li class="change-item">Resolved chart rendering on Safari</li>
+                            <li class="change-item">Corrected date range filters for reports</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Version 2.0.0 -->
+            <div class="release-entry" data-categories="features improvements api">
+                <div class="release-header">
+                    <div class="release-title">
+                        <h2>AI-Powered Conversations 2.0</h2>
+                        <p class="release-date">Released on November 1, 2024</p>
+                    </div>
+                    <span class="release-version">v2.0.0</span>
+                </div>
+                <div class="release-content">
+                    <div class="change-category">
+                        <h3><span class="category-icon">✨</span> Major Features</h3>
+                        <ul class="change-list">
+                            <li class="change-item">Complete AI engine rebuild for 10x better conversations<span class="change-tag tag-new">MAJOR</span></li>
+                            <li class="change-item">Multi-turn conversation memory</li>
+                            <li class="change-item">Context-aware pricing suggestions</li>
+                            <li class="change-item">Sentiment analysis for upset customers</li>
+                            <li class="change-item">Automatic escalation to human support when needed</li>
+                        </ul>
+                    </div>
+                    <div class="change-category">
+                        <h3><span class="category-icon">⚠️</span> Breaking Changes</h3>
+                        <ul class="change-list">
+                            <li class="change-item">API v1 endpoints deprecated<span class="change-tag tag-deprecated">DEPRECATED</span></li>
+                            <li class="change-item">New webhook payload format</li>
+                            <li class="change-item">Updated authentication requirements</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Subscribe Section -->
+    <section class="subscribe-section">
+        <div class="container">
+            <div class="subscribe-box">
+                <div class="subscribe-content">
+                    <h2 style="font-size: 36px; margin-bottom: 15px;">Never Miss an Update</h2>
+                    <p style="font-size: 18px; opacity: 0.9;">Get notified about new features, improvements, and important changes</p>
+                    
+                    <form class="subscribe-form" onsubmit="alert('In production, this would subscribe to changelog updates'); return false;">
+                        <input type="email" class="subscribe-input" placeholder="Your email address" required>
+                        <button type="submit" class="subscribe-btn">Subscribe</button>
+                    </form>
+                    
+                    <p style="margin-top: 20px; font-size: 14px; opacity: 0.8;">
+                        Also available via <a href="/changelog.xml" style="color: white; text-decoration: underline;">RSS feed</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ZestFlow AI. All rights reserved.</p>
+            <p>
+                <a href="/terms.html" style="color: inherit;">Terms of Service</a> | 
+                <a href="/privacy.html" style="color: inherit;">Privacy Policy</a> | 
+                <a href="/status.html" style="color: inherit;">System Status</a>
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle?.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Filter functionality
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const releaseEntries = document.querySelectorAll('.release-entry');
+        
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Update active tab
+                filterTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter releases
+                const filter = this.getAttribute('data-filter');
+                
+                releaseEntries.forEach(entry => {
+                    const categories = entry.getAttribute('data-categories');
+                    
+                    if (filter === 'all' || categories.includes(filter)) {
+                        entry.style.display = 'block';
+                    } else {
+                        entry.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

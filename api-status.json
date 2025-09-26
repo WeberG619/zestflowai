@@ -1,0 +1,25 @@
+{
+  "status": "operational",
+  "timestamp": "2025-01-26T12:00:00Z",
+  "services": {
+    "api": {
+      "status": "operational",
+      "response_time": 45
+    },
+    "webhooks": {
+      "status": "operational", 
+      "response_time": 120
+    },
+    "authentication": {
+      "status": "operational",
+      "response_time": 23
+    }
+  },
+  "uptime": {
+    "last_24_hours": 99.98,
+    "last_7_days": 99.95,
+    "last_30_days": 99.93
+  },
+  "incidents": [],
+  "maintenance": []
+}

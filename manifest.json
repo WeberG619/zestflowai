@@ -1,0 +1,91 @@
+{
+  "name": "ZestFlow AI - After-Hours Booking System",
+  "short_name": "ZestFlow AI",
+  "description": "Never miss another after-hours job. Automated SMS booking for contractors.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3282b8",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["business", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32 48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "https://via.placeholder.com/192x192/3282b8/ffffff?text=ZF",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://via.placeholder.com/512x512/3282b8/ffffff?text=ZF",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1280&h=720&fit=crop",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "label": "SMS conversation demo"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1280&h=720&fit=crop",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "label": "Dashboard view"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Book Installation",
+      "short_name": "Book Install",
+      "description": "Schedule your ZestFlow AI installation",
+      "url": "/book-install.html",
+      "icons": [
+        {
+          "src": "https://via.placeholder.com/96x96/3282b8/ffffff?text=📅",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Watch Demo",
+      "short_name": "Demo",
+      "description": "See ZestFlow AI in action",
+      "url": "/demo.html",
+      "icons": [
+        {
+          "src": "https://via.placeholder.com/96x96/3282b8/ffffff?text=▶️",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "ROI Calculator",
+      "short_name": "Calculator",
+      "description": "Calculate your lost revenue",
+      "url": "/calculator.html",
+      "icons": [
+        {
+          "src": "https://via.placeholder.com/96x96/3282b8/ffffff?text=💰",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

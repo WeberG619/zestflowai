@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrations & Partners | ZestFlow AI</title>
+    <meta name="description" content="Connect ZestFlow AI with your existing tools. Seamless integrations with CRMs, payment processors, scheduling software, and more.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="consistent-styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f4c75;
+            --highlight: #3282b8;
+            --text-light: #f5f5f5;
+            --text-dark: #333;
+            --bg-light: #ffffff;
+            --bg-section: #f8f9fa;
+            --success: #27ae60;
+            --warning: #f39c12;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--text-light);
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .hero-section p {
+            font-size: 22px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 0.6s ease-out 0.2s;
+            animation-fill-mode: both;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-box {
+            text-align: center;
+            animation: fadeInUp 0.6s ease-out 0.4s;
+            animation-fill-mode: both;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--highlight);
+        }
+        
+        .stat-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        /* Integration Categories */
+        .categories-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .category-tabs {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+        
+        .category-tab {
+            padding: 12px 30px;
+            background: var(--bg-section);
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        
+        .category-tab:hover,
+        .category-tab.active {
+            background: var(--highlight);
+            color: white;
+            border-color: var(--highlight);
+        }
+        
+        /* Integration Cards */
+        .integrations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .integration-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .integration-card:hover {
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+            border-color: var(--highlight);
+        }
+        
+        .integration-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-section);
+            border-radius: 12px;
+            font-size: 40px;
+        }
+        
+        .integration-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .integration-card p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .integration-status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .status-active {
+            background: rgba(39, 174, 96, 0.1);
+            color: var(--success);
+        }
+        
+        .status-coming {
+            background: rgba(243, 156, 18, 0.1);
+            color: var(--warning);
+        }
+        
+        .integration-link {
+            color: var(--highlight);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+        }
+        
+        .integration-link:hover {
+            gap: 10px;
+        }
+        
+        /* Featured Integration */
+        .featured-section {
+            padding: 80px 0;
+            background: var(--bg-section);
+        }
+        
+        .featured-integration {
+            background: white;
+            border-radius: 12px;
+            padding: 60px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        
+        .featured-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .featured-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .featured-text p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+            font-size: 20px;
+        }
+        
+        /* API Section */
+        .api-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .api-box {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 60px;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .api-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .api-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .api-box h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .api-box p {
+            font-size: 20px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .api-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-api {
+            background: white;
+            color: var(--primary);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-api:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 13px 28px;
+        }
+        
+        /* Request Form */
+        .request-section {
+            padding: 80px 0;
+            background: var(--bg-section);
+        }
+        
+        .request-form {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--highlight);
+            outline: none;
+        }
+        
+        .form-submit {
+            background: var(--highlight);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        
+        .form-submit:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 36px;
+            }
+            
+            .featured-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .integrations-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .api-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">ZestFlow AI</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/demo.html">Demo</a></li>
+                <li><a href="/widget-demo.html">How It Works</a></li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li><a href="/testimonials.html">Testimonials</a></li>
+                <li><a href="/integrations.html" class="active">Integrations</a></li>
+                <li><a href="/book-install.html">Book Install</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+            <a href="/book-install.html" class="contact-btn">Book Install</a>
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Powerful Integrations</h1>
+            <p>Connect ZestFlow AI with your favorite tools. One system that works seamlessly with everything you already use.</p>
+            
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Direct Integrations</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Via Zapier/API</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">API Uptime</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Integration Categories -->
+    <section class="categories-section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 36px; margin-bottom: 40px; color: var(--primary);">Browse by Category</h2>
+            
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="all">All Integrations</button>
+                <button class="category-tab" data-category="crm">CRM Systems</button>
+                <button class="category-tab" data-category="payment">Payment</button>
+                <button class="category-tab" data-category="scheduling">Scheduling</button>
+                <button class="category-tab" data-category="communication">Communication</button>
+                <button class="category-tab" data-category="accounting">Accounting</button>
+            </div>
+            
+            <div class="integrations-grid">
+                <!-- CRM Integrations -->
+                <div class="integration-card" data-category="crm">
+                    <div class="integration-logo">📱</div>
+                    <span class="integration-status status-active">Active</span>
+                    <h3>Salesforce</h3>
+                    <p>Automatically create leads and opportunities from after-hours bookings</p>
+                    <a href="#" class="integration-link">Learn More →</a>
+                </div>
+                
+                <div class="integration-card" data-category="crm">
+                    <div class="integration-logo">🔷</div>
+                    <span class="integration-status status-active">Active</span>
+                    <h3>HubSpot</h3>
+                    <p>Sync contacts, deals, and track ROI from emergency jobs</p>
+                    <a href="#" class="integration-link">Learn More →</a>
+                </div>
+                
+                <div class="integration-card" data-category="crm">
+                    <div class="integration-logo">📊</div>
+                    <span class="integration-status status-active">Active</span>
+                    <h3>Pipedrive</h3>
+                    <p>Create deals and activities automatically from SMS bookings</p>
+                    <a href="#" class="integration-link">Learn More →</a>
+                </div>
+                
+                <div class="integration-card" data-category="crm">
+                    <div class="integration-logo">🏢</div>
+                    <span class="integration-status status-active">Active</span>
+                    <h3>ServiceTitan</h3>
+                    <p>Direct integration with the #1 field service software</p>
+                    <a href="#" class="integration-link">Learn More →</a>
+                </div>
+                
+                <!-- Payment Integrations -->
+                <div class="integration-card" data-category="payment">
+                    <div class="integration-logo">💳</div>
+                    <span class="integration-status status-active">Active</span>
+                    <h3>Stripe</h3>
+                    <p>Collect deposits and process payments seamlessly</p>
+                    <a href="#" class="integration-link">Learn More →</a>
+                </div>
+                
+                <div class="integration-card" data-category="payment">
+                    <div class="integration-logo">🟦</div>
+                    <span class="integration-status status-active">Active</span>
+                    <h3>Square</h3>
+                    <p>Accept payments and sync with Square POS</p>
+                    <a href="#" class="integration-link">Learn More →</a>
+                </div>
+                
+                <div class="integration-card" data-category="payment">
+                    <div class="integration-logo">💰</div>
+                    <span class="integration-status status-active">Active</span>
+                    <h3>PayPal</h3>
+                    <p>Offer PayPal as a payment option for customers</p>
+                    <a href="#" class="integration-link">Learn More →</a>
+                </div>
+                
+                <!-- Scheduling Integrations -->
+                <div class="integration-card" data-category="scheduling">
+                    <div class="integration-logo">📅</div>
+                    <span class="integration-status status-active">Active</span>
+                    <h3>Calendly</h3>
+                    <p>Sync availability and book follow-up appointments</p>
+                    <a href="#" class="integration-link">Learn More →</a>
+                </div>
+                
+                <div class="integration-card" data-category="scheduling">
+                    <div class="integration-logo">🗓️</div>
+                    <span class="integration-status status-active">Active</span>
+                    <h3>Google Calendar</h3>
+                    <p>Automatic calendar events for all bookings</p>
+                    <a href="#" class="integration-link">Learn More →</a>
+                </div>
+                
+                <div class="integration-card" data-category="scheduling">
+                    <div class="integration-logo">📆</div>
+                    <span class="integration-status status-active">Active</span>
+                    <h3>Outlook Calendar</h3>
+                    <p>Sync with Microsoft 365 calendars</p>
+                    <a href="#" class="integration-link">Learn More →</a>
+                </div>
+                
+                <!-- Communication Integrations -->
+                <div class="integration-card" data-category="communication">
+                    <div class="integration-logo">💬</div>
+                    <span class="integration-status status-active">Active</span>
+                    <h3>Twilio</h3>
+                    <p>Enhanced SMS capabilities and international support</p>
+                    <a href="#" class="integration-link">Learn More →</a>
+                </div>
+                
+                <div class="integration-card" data-category="communication">
+                    <div class="integration-logo">💌</div>
+                    <span class="integration-status status-active">Active</span>
+                    <h3>Slack</h3>
+                    <p>Real-time notifications for new bookings</p>
+                    <a href="#" class="integration-link">Learn More →</a>
+                </div>
+                
+                <div class="integration-card" data-category="communication">
+                    <div class="integration-logo">📧</div>
+                    <span class="integration-status status-active">Active</span>
+                    <h3>Mailchimp</h3>
+                    <p>Add customers to email lists automatically</p>
+                    <a href="#" class="integration-link">Learn More →</a>
+                </div>
+                
+                <!-- Accounting Integrations -->
+                <div class="integration-card" data-category="accounting">
+                    <div class="integration-logo">📚</div>
+                    <span class="integration-status status-active">Active</span>
+                    <h3>QuickBooks</h3>
+                    <p>Create invoices and track revenue automatically</p>
+                    <a href="#" class="integration-link">Learn More →</a>
+                </div>
+                
+                <div class="integration-card" data-category="accounting">
+                    <div class="integration-logo">🟢</div>
+                    <span class="integration-status status-active">Active</span>
+                    <h3>Xero</h3>
+                    <p>Seamless accounting integration for job tracking</p>
+                    <a href="#" class="integration-link">Learn More →</a>
+                </div>
+                
+                <div class="integration-card" data-category="accounting">
+                    <div class="integration-logo">📈</div>
+                    <span class="integration-status status-coming">Coming Soon</span>
+                    <h3>FreshBooks</h3>
+                    <p>Invoice creation and time tracking integration</p>
+                    <a href="#" class="integration-link">Join Waitlist →</a>
+                </div>
+                
+                <!-- More Integrations -->
+                <div class="integration-card" data-category="all">
+                    <div class="integration-logo">⚡</div>
+                    <span class="integration-status status-active">Active</span>
+                    <h3>Zapier</h3>
+                    <p>Connect with 5,000+ apps without coding</p>
+                    <a href="#" class="integration-link">Learn More →</a>
+                </div>
+                
+                <div class="integration-card" data-category="all">
+                    <div class="integration-logo">🔗</div>
+                    <span class="integration-status status-active">Active</span>
+                    <h3>Make (Integromat)</h3>
+                    <p>Advanced automation workflows</p>
+                    <a href="#" class="integration-link">Learn More →</a>
+                </div>
+                
+                <div class="integration-card" data-category="all">
+                    <div class="integration-logo">🚀</div>
+                    <span class="integration-status status-active">Active</span>
+                    <h3>REST API</h3>
+                    <p>Build custom integrations with our API</p>
+                    <a href="#" class="integration-link">View Docs →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Integration -->
+    <section class="featured-section">
+        <div class="container">
+            <div class="featured-integration">
+                <div class="featured-content">
+                    <div class="featured-text">
+                        <h2>🏆 Featured: ServiceTitan Integration</h2>
+                        <p>Direct, real-time integration with the industry's leading field service software. No more manual data entry.</p>
+                        <ul class="feature-list">
+                            <li>Automatic job creation in ServiceTitan</li>
+                            <li>Customer data sync in real-time</li>
+                            <li>Deposit collection through ServiceTitan</li>
+                            <li>Technician dispatch from SMS bookings</li>
+                            <li>Revenue reporting and analytics</li>
+                        </ul>
+                        <a href="#" class="btn-primary" style="display: inline-block; margin-top: 20px; background: var(--highlight); color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px;">Setup ServiceTitan Integration</a>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="background: var(--bg-section); padding: 60px; border-radius: 10px;">
+                            <h3 style="font-size: 72px; margin-bottom: 10px;">95%</h3>
+                            <p style="font-size: 18px; color: #666;">Time saved on data entry</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- API Section -->
+    <section class="api-section">
+        <div class="container">
+            <div class="api-box">
+                <div class="api-content">
+                    <h2>Build with ZestFlow AI</h2>
+                    <p>Powerful REST API and webhooks to create custom integrations and extend functionality</p>
+                    
+                    <div class="api-buttons">
+                        <a href="#" class="btn-api">View API Documentation</a>
+                        <a href="#" class="btn-api btn-secondary">Download Postman Collection</a>
+                    </div>
+                    
+                    <div style="margin-top: 40px; display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;">
+                        <div>
+                            <h4 style="font-size: 24px; margin-bottom: 5px;">RESTful API</h4>
+                            <p style="font-size: 14px; opacity: 0.8;">Modern JSON API</p>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 24px; margin-bottom: 5px;">Webhooks</h4>
+                            <p style="font-size: 14px; opacity: 0.8;">Real-time events</p>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 24px; margin-bottom: 5px;">Rate Limits</h4>
+                            <p style="font-size: 14px; opacity: 0.8;">10,000 req/hour</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Request Integration -->
+    <section class="request-section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 36px; margin-bottom: 20px; color: var(--primary);">Don't See Your Tool?</h2>
+            <p style="text-align: center; font-size: 18px; color: #666; margin-bottom: 40px;">Request a new integration and we'll build it</p>
+            
+            <form class="request-form" onsubmit="alert('In production, this would submit the integration request'); return false;">
+                <div class="form-group">
+                    <label for="company-name">Your Company</label>
+                    <input type="text" id="company-name" name="company-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="integration-name">Integration Name</label>
+                    <input type="text" id="integration-name" name="integration-name" placeholder="e.g., Housecall Pro, Jobber" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="integration-type">Integration Type</label>
+                    <select id="integration-type" name="integration-type" required>
+                        <option value="">Select a type...</option>
+                        <option value="crm">CRM System</option>
+                        <option value="payment">Payment Processor</option>
+                        <option value="scheduling">Scheduling Software</option>
+                        <option value="accounting">Accounting Software</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="use-case">How would you use this integration?</label>
+                    <textarea id="use-case" name="use-case" rows="4" placeholder="Describe your use case..." required></textarea>
+                </div>
+                
+                <button type="submit" class="form-submit">Submit Integration Request</button>
+            </form>
+            
+            <p style="text-align: center; margin-top: 20px; color: #666;">
+                Most requested integrations are built within 30 days
+            </p>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ZestFlow AI. All rights reserved.</p>
+            <p>
+                <a href="/terms.html" style="color: inherit;">Terms of Service</a> | 
+                <a href="/privacy.html" style="color: inherit;">Privacy Policy</a> | 
+                <a href="/api-terms.html" style="color: inherit;">API Terms</a>
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle?.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Category filtering
+        const categoryTabs = document.querySelectorAll('.category-tab');
+        const integrationCards = document.querySelectorAll('.integration-card');
+        
+        categoryTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Update active tab
+                categoryTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter integrations
+                const category = this.getAttribute('data-category');
+                
+                integrationCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    if (category === 'all' || cardCategory === category || cardCategory === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

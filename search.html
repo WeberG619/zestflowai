@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search - ZestFlow AI</title>
+    <meta name="description" content="Search ZestFlow AI documentation, help articles, and resources.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="consistent-styles.css">
+    <link rel="stylesheet" href="global-styles.css">
+    <style>
+        .search-hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .search-hero h1 {
+            font-size: 42px;
+            margin-bottom: 30px;
+        }
+        
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 20px 60px 20px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .search-button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--highlight);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+        
+        .search-button:hover {
+            background: var(--accent);
+        }
+        
+        .search-filters {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .filter-tag {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .filter-tag:hover,
+        .filter-tag.active {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        
+        .search-results {
+            padding: 60px 0;
+            min-height: 400px;
+        }
+        
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .results-count {
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .results-sort {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .sort-select {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+        }
+        
+        .result-item {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            color: var(--text-dark);
+        }
+        
+        .result-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+        }
+        
+        .result-title {
+            font-size: 22px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .result-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .result-type {
+            background: var(--bg-section);
+            padding: 3px 10px;
+            border-radius: 3px;
+        }
+        
+        .result-excerpt {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .result-excerpt mark {
+            background: #ffeb3b;
+            padding: 2px 4px;
+            border-radius: 2px;
+        }
+        
+        .result-path {
+            font-size: 14px;
+            color: var(--highlight);
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .no-results h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .suggested-searches {
+            margin-top: 30px;
+        }
+        
+        .suggested-searches h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .suggested-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .suggested-links a {
+            color: var(--highlight);
+            text-decoration: none;
+            padding: 8px 20px;
+            border: 2px solid var(--highlight);
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        
+        .suggested-links a:hover {
+            background: var(--highlight);
+            color: white;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .loading-spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(0,0,0,0.1);
+            border-radius: 50%;
+            border-top-color: var(--highlight);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .search-hero h1 {
+                font-size: 32px;
+            }
+            
+            .search-input {
+                font-size: 16px;
+                padding: 15px 50px 15px 20px;
+            }
+            
+            .results-header {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">ZestFlow AI</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li class="dropdown">
+                    <a href="/demo.html">Product</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/demo.html">Watch Demo</a></li>
+                        <li><a href="/widget-demo.html">How It Works</a></li>
+                        <li><a href="/integrations.html">Integrations</a></li>
+                        <li><a href="/status.html">System Status</a></li>
+                    </ul>
+                </li>
+                <li><a href="/pricing.html">Pricing</a></li>
+                <li class="dropdown">
+                    <a href="/resources.html">Resources</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/resources.html">Free Downloads</a></li>
+                        <li><a href="/blog.html">Blog</a></li>
+                        <li><a href="/tutorials.html">Video Tutorials</a></li>
+                        <li><a href="/help.html">Help Center</a></li>
+                        <li><a href="/calculator.html">ROI Calculator</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="/about.html">Company</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/testimonials.html">Testimonials</a></li>
+                        <li><a href="/case-studies.html">Case Studies</a></li>
+                        <li><a href="/press.html">Press & Media</a></li>
+                        <li><a href="/careers.html">Careers</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </li>
+                <li><a href="/book-install.html" class="nav-cta">Book Install</a></li>
+            </ul>
+            <a href="/book-install.html" class="contact-btn">Get Started</a>
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    
+    <!-- Search Hero -->
+    <section class="search-hero">
+        <div class="container">
+            <h1>How can we help?</h1>
+            <form class="search-box" id="search-form">
+                <input type="search" 
+                       class="search-input" 
+                       placeholder="Search for answers, tutorials, or features..." 
+                       id="search-input"
+                       autocomplete="off">
+                <button type="submit" class="search-button">Search</button>
+            </form>
+            
+            <div class="search-filters">
+                <span class="filter-tag active" data-filter="all">All</span>
+                <span class="filter-tag" data-filter="docs">Documentation</span>
+                <span class="filter-tag" data-filter="tutorials">Tutorials</span>
+                <span class="filter-tag" data-filter="blog">Blog Posts</span>
+                <span class="filter-tag" data-filter="help">Help Articles</span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Search Results -->
+    <section class="search-results">
+        <div class="container">
+            <div id="search-container">
+                <!-- Popular searches (default view) -->
+                <div class="no-results" id="default-view">
+                    <h2>Popular Searches</h2>
+                    <div class="suggested-searches">
+                        <div class="suggested-links">
+                            <a href="/search.html?q=pricing">Pricing</a>
+                            <a href="/search.html?q=integrations">Integrations</a>
+                            <a href="/search.html?q=deposit collection">Deposit Collection</a>
+                            <a href="/search.html?q=calendar sync">Calendar Sync</a>
+                            <a href="/search.html?q=SMS customization">SMS Customization</a>
+                            <a href="/search.html?q=analytics">Analytics</a>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 60px;">
+                        <h3 style="font-size: 24px; margin-bottom: 30px;">Browse by Category</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: left;">
+                            <div>
+                                <h4 style="color: var(--primary); margin-bottom: 15px;">Getting Started</h4>
+                                <ul style="list-style: none; padding: 0; line-height: 2;">
+                                    <li><a href="/onboarding.html" style="color: var(--text-dark);">Onboarding Guide</a></li>
+                                    <li><a href="/tutorials.html" style="color: var(--text-dark);">Video Tutorials</a></li>
+                                    <li><a href="/help.html#setup" style="color: var(--text-dark);">Initial Setup</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--primary); margin-bottom: 15px;">Features</h4>
+                                <ul style="list-style: none; padding: 0; line-height: 2;">
+                                    <li><a href="/widget-demo.html" style="color: var(--text-dark);">How It Works</a></li>
+                                    <li><a href="/integrations.html" style="color: var(--text-dark);">Integrations</a></li>
+                                    <li><a href="/api-docs.html" style="color: var(--text-dark);">API Documentation</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--primary); margin-bottom: 15px;">Support</h4>
+                                <ul style="list-style: none; padding: 0; line-height: 2;">
+                                    <li><a href="/help.html" style="color: var(--text-dark);">Help Center</a></li>
+                                    <li><a href="/contact.html" style="color: var(--text-dark);">Contact Support</a></li>
+                                    <li><a href="/status.html" style="color: var(--text-dark);">System Status</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Loading state -->
+                <div class="loading" id="loading-view" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <p style="margin-top: 20px; color: #666;">Searching...</p>
+                </div>
+                
+                <!-- Results view -->
+                <div id="results-view" style="display: none;">
+                    <div class="results-header">
+                        <div class="results-count" id="results-count"></div>
+                        <div class="results-sort">
+                            <label>Sort by:</label>
+                            <select class="sort-select" id="sort-select">
+                                <option value="relevance">Relevance</option>
+                                <option value="recent">Most Recent</option>
+                                <option value="popular">Most Popular</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div id="results-list"></div>
+                </div>
+                
+                <!-- No results view -->
+                <div class="no-results" id="no-results-view" style="display: none;">
+                    <h2>No results found</h2>
+                    <p style="font-size: 18px; color: #666; margin-bottom: 30px;">
+                        We couldn't find anything matching your search. Try different keywords or browse our categories.
+                    </p>
+                    <div class="suggested-searches">
+                        <h3>Suggested searches:</h3>
+                        <div class="suggested-links">
+                            <a href="/help.html">Help Center</a>
+                            <a href="/tutorials.html">Tutorials</a>
+                            <a href="/contact.html">Contact Support</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="/demo.html">Watch Demo</a></li>
+                            <li><a href="/widget-demo.html">How It Works</a></li>
+                            <li><a href="/pricing.html">Pricing</a></li>
+                            <li><a href="/integrations.html">Integrations</a></li>
+                            <li><a href="/changelog.html">What's New</a></li>
+                            <li><a href="/status.html">System Status</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="/blog.html">Blog</a></li>
+                            <li><a href="/tutorials.html">Video Tutorials</a></li>
+                            <li><a href="/resources.html">Free Downloads</a></li>
+                            <li><a href="/calculator.html">ROI Calculator</a></li>
+                            <li><a href="/help.html">Help Center</a></li>
+                            <li><a href="/api-docs.html">API Documentation</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="/about.html">About Us</a></li>
+                            <li><a href="/testimonials.html">Testimonials</a></li>
+                            <li><a href="/case-studies.html">Case Studies</a></li>
+                            <li><a href="/service-areas.html">Service Areas</a></li>
+                            <li><a href="/press.html">Press</a></li>
+                            <li><a href="/careers.html">Careers</a></li>
+                            <li><a href="/contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="/terms.html">Terms of Service</a></li>
+                            <li><a href="/privacy.html">Privacy Policy</a></li>
+                            <li><a href="/cookies.html">Cookie Policy</a></li>
+                            <li><a href="/refund.html">Refund Policy</a></li>
+                            <li><a href="/api-terms.html">API Terms</a></li>
+                            <li><a href="/accessibility.html">Accessibility</a></li>
+                            <li><a href="/ccpa.html">California Privacy</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <div class="social-links">
+                            <a href="https://facebook.com/zestflowai" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="https://twitter.com/zestflowai" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="https://linkedin.com/company/zestflowai" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://youtube.com/zestflowai" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="https://instagram.com/zestflowai" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <div class="footer-contact">
+                            <p><strong>Sales:</strong> 1-800-ZESTFLOW</p>
+                            <p><strong>Support:</strong> support@zestflowai.com</p>
+                            <p><strong>Hours:</strong> Mon-Fri 9AM-6PM EST</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2025 ZestFlow AI. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+    <script>
+        // Search data (in production, this would come from a backend)
+        const searchData = [
+            {
+                title: 'Getting Started with ZestFlow AI',
+                type: 'tutorial',
+                path: '/onboarding.html',
+                excerpt: 'Complete guide to setting up ZestFlow AI. From installation to your first booked job in 45 minutes.',
+                date: '2025-01-20'
+            },
+            {
+                title: 'Pricing Plans',
+                type: 'page',
+                path: '/pricing.html',
+                excerpt: 'Simple, transparent pricing. $497/month with no setup fees, no contracts, and a 7-day money-back guarantee.',
+                date: '2025-01-01'
+            },
+            {
+                title: 'How to Set Up Deposit Collection',
+                type: 'help',
+                path: '/help.html#deposits',
+                excerpt: 'Learn how to configure automatic deposit collection to reduce no-shows and secure bookings.',
+                date: '2025-01-15'
+            },
+            {
+                title: 'API Documentation',
+                type: 'docs',
+                path: '/api-docs.html',
+                excerpt: 'Complete API documentation for developers. Build custom integrations with our RESTful API.',
+                date: '2025-01-25'
+            },
+            {
+                title: 'SMS vs Phone Calls for Contractors',
+                type: 'blog',
+                path: '/blog/sms-vs-phone-calls.html',
+                excerpt: 'Data shows 87% of customers prefer SMS booking over phone calls. Learn why and how to capitalize on this trend.',
+                date: '2025-01-18'
+            },
+            {
+                title: 'Integrations Guide',
+                type: 'docs',
+                path: '/integrations.html',
+                excerpt: 'Connect ZestFlow AI with your existing tools. Supports ServiceTitan, Housecall Pro, QuickBooks, and 50+ more.',
+                date: '2025-01-10'
+            },
+            {
+                title: 'Video Tutorials',
+                type: 'tutorial',
+                path: '/tutorials.html',
+                excerpt: 'Watch step-by-step video guides for setting up and optimizing your ZestFlow AI system.',
+                date: '2025-01-12'
+            },
+            {
+                title: 'ROI Calculator',
+                type: 'tool',
+                path: '/calculator.html',
+                excerpt: 'Calculate your potential after-hours revenue and ROI with our interactive calculator.',
+                date: '2025-01-05'
+            },
+            {
+                title: 'System Status',
+                type: 'page',
+                path: '/status.html',
+                excerpt: 'Check real-time system status and uptime for all ZestFlow AI services.',
+                date: '2025-01-26'
+            },
+            {
+                title: 'Help Center',
+                type: 'help',
+                path: '/help.html',
+                excerpt: 'Browse our comprehensive help center for answers to common questions and troubleshooting guides.',
+                date: '2025-01-08'
+            }
+        ];
+        
+        // Search functionality
+        const searchForm = document.getElementById('search-form');
+        const searchInput = document.getElementById('search-input');
+        const filterTags = document.querySelectorAll('.filter-tag');
+        const defaultView = document.getElementById('default-view');
+        const loadingView = document.getElementById('loading-view');
+        const resultsView = document.getElementById('results-view');
+        const noResultsView = document.getElementById('no-results-view');
+        const resultsList = document.getElementById('results-list');
+        const resultsCount = document.getElementById('results-count');
+        let currentFilter = 'all';
+        
+        // Handle search form submission
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            performSearch();
+        });
+        
+        // Handle filter clicks
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                filterTags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+                currentFilter = tag.dataset.filter;
+                if (searchInput.value.trim()) {
+                    performSearch();
+                }
+            });
+        });
+        
+        // Perform search
+        function performSearch() {
+            const query = searchInput.value.trim().toLowerCase();
+            
+            if (!query) {
+                showDefaultView();
+                return;
+            }
+            
+            // Update URL
+            const url = new URL(window.location);
+            url.searchParams.set('q', query);
+            window.history.pushState({}, '', url);
+            
+            // Show loading
+            hideAllViews();
+            loadingView.style.display = 'block';
+            
+            // Simulate search delay
+            setTimeout(() => {
+                const results = searchData.filter(item => {
+                    // Filter by type if needed
+                    if (currentFilter !== 'all' && item.type !== currentFilter) {
+                        return false;
+                    }
+                    
+                    // Search in title and excerpt
+                    return item.title.toLowerCase().includes(query) ||
+                           item.excerpt.toLowerCase().includes(query);
+                });
+                
+                displayResults(results, query);
+            }, 500);
+        }
+        
+        // Display search results
+        function displayResults(results, query) {
+            hideAllViews();
+            
+            if (results.length === 0) {
+                noResultsView.style.display = 'block';
+                return;
+            }
+            
+            resultsView.style.display = 'block';
+            resultsCount.textContent = `${results.length} results for "${query}"`;
+            
+            resultsList.innerHTML = results.map(result => {
+                // Highlight search terms
+                const highlightedTitle = highlightText(result.title, query);
+                const highlightedExcerpt = highlightText(result.excerpt, query);
+                
+                return `
+                    <a href="${result.path}" class="result-item">
+                        <h3 class="result-title">${highlightedTitle}</h3>
+                        <div class="result-meta">
+                            <span class="result-type">${result.type}</span>
+                            <span>${result.date}</span>
+                        </div>
+                        <p class="result-excerpt">${highlightedExcerpt}</p>
+                        <span class="result-path">${result.path}</span>
+                    </a>
+                `;
+            }).join('');
+        }
+        
+        // Highlight search terms in text
+        function highlightText(text, query) {
+            const regex = new RegExp(`(${query})`, 'gi');
+            return text.replace(regex, '<mark>$1</mark>');
+        }
+        
+        // View management
+        function hideAllViews() {
+            defaultView.style.display = 'none';
+            loadingView.style.display = 'none';
+            resultsView.style.display = 'none';
+            noResultsView.style.display = 'none';
+        }
+        
+        function showDefaultView() {
+            hideAllViews();
+            defaultView.style.display = 'block';
+        }
+        
+        // Check for search query in URL on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q');
+            
+            if (query) {
+                searchInput.value = query;
+                performSearch();
+            }
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle?.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+    
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</body>
+</html>
