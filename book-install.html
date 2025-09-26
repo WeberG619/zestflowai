@@ -59,11 +59,6 @@
             align-items: center;
         }
         
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-        }
         
         .nav-links a {
             color: var(--text-dark);
@@ -340,9 +335,6 @@
         }
         
         @media (max-width: 968px) {
-            .nav-links {
-                display: none;
-            }
             
             .mobile-menu-toggle {
                 display: block;
@@ -385,6 +377,9 @@
         */
         
         @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
             /* Sticky button styles removed
             .sticky-cta {
                 bottom: 20px;
