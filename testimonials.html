@@ -13,10 +13,6 @@
     <link rel="stylesheet" href="/consistent-styles.css">
     <link rel="stylesheet" href="/navigation-fix.css">
     <link rel="stylesheet" href="/global-styles.css">
-    
-    <link rel="stylesheet" href="/consistent-styles.css">
-    <link rel="stylesheet" href="/navigation-fix.css">
-    <link rel="stylesheet" href="/global-styles.css">
     <style>
         * {
             margin: 0;
@@ -469,15 +465,41 @@
             <a href="/" class="logo">ZestFlow AI</a>
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
-                <li><a href="/demo.html">Demo</a></li>
-                <li><a href="/widget-demo.html">How It Works</a></li>
+                <li class="dropdown">
+                    <a href="/demo.html">Product</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/demo.html">Watch Demo</a></li>
+                        <li><a href="/widget-demo.html">How It Works</a></li>
+                        <li><a href="/integrations.html">Integrations</a></li>
+                        <li><a href="/status.html">System Status</a></li>
+                    </ul>
+                </li>
                 <li><a href="/pricing.html">Pricing</a></li>
-                <li><a href="/blog.html">Blog</a></li>
-                <li><a href="/testimonials.html" class="active">Testimonials</a></li>
-                <li><a href="/book-install.html">Book Install</a></li>
-                <li><a href="/contact.html">Contact</a></li>
+                <li class="dropdown">
+                    <a href="/resources.html">Resources</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/resources.html">Free Downloads</a></li>
+                        <li><a href="/blog.html">Blog</a></li>
+                        <li><a href="/tutorials.html">Video Tutorials</a></li>
+                        <li><a href="/help.html">Help Center</a></li>
+                        <li><a href="/calculator.html">ROI Calculator</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="/about.html">Company</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/testimonials.html" class="active">Testimonials</a></li>
+                        <li><a href="/case-studies.html">Case Studies</a></li>
+                        <li><a href="/press.html">Press & Media</a></li>
+                        <li><a href="/careers.html">Careers</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                        <li><a href="/affiliate.html">Affiliate Program</a></li>
+                    </ul>
+                </li>
+                <li><a href="/book-install.html" class="nav-cta">Book Install</a></li>
             </ul>
-            <a href="/book-install.html" class="contact-btn">Book Install</a>
+            <a href="/book-install.html" class="contact-btn">Get Started</a>
             <button class="mobile-menu-toggle">
                 <span></span>
                 <span></span>
@@ -522,6 +544,8 @@
                 <button class="filter-tab" data-filter="hvac">HVAC</button>
                 <button class="filter-tab" data-filter="electrical">Electrical</button>
                 <button class="filter-tab" data-filter="general">General</button>
+                <button class="filter-tab" data-filter="roofing">Roofing</button>
+                <button class="filter-tab" data-filter="landscaping">Landscaping</button>
             </div>
         </div>
     </section>
@@ -738,6 +762,231 @@
                         <div class="stat-mini">
                             <div class="stat-mini-value">8-10</div>
                             <div class="stat-mini-label">Jobs/Week</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 7 -->
+                <div class="testimonial-card" data-category="roofing">
+                    <div class="card-header">
+                        <div class="avatar">DK</div>
+                        <div class="contractor-info">
+                            <h4>David Kim</h4>
+                            <p class="contractor-type">Summit Roofing - Portland, OR</p>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Storm season used to mean chaos. Now when hail hits, the system books inspections automatically. We scheduled 78 roof inspections during the last storm - $156,000 in potential work."
+                    </p>
+                    <div class="testimonial-stats">
+                        <div class="stat-mini">
+                            <div class="stat-mini-value">78</div>
+                            <div class="stat-mini-label">Inspections</div>
+                        </div>
+                        <div class="stat-mini">
+                            <div class="stat-mini-value">$156K</div>
+                            <div class="stat-mini-label">Potential</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 8 -->
+                <div class="testimonial-card" data-category="landscaping">
+                    <div class="card-header">
+                        <div class="avatar">AS</div>
+                        <div class="contractor-info">
+                            <h4>Amanda Smith</h4>
+                            <p class="contractor-type">Green Valley Landscaping - Austin, TX</p>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Irrigation emergencies happen at 2 AM. Before ZestFlow, customers would call 3-4 companies until someone answered. Now we get 95% of emergency irrigation calls in our service area."
+                    </p>
+                    <div class="testimonial-stats">
+                        <div class="stat-mini">
+                            <div class="stat-mini-value">95%</div>
+                            <div class="stat-mini-label">Market Share</div>
+                        </div>
+                        <div class="stat-mini">
+                            <div class="stat-mini-value">$31K</div>
+                            <div class="stat-mini-label">Monthly Add</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 9 -->
+                <div class="testimonial-card" data-category="electrical">
+                    <div class="card-header">
+                        <div class="avatar">PH</div>
+                        <div class="contractor-info">
+                            <h4>Paul Henderson</h4>
+                            <p class="contractor-type">Henderson Electric - Nashville, TN</p>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Power outages mean emergency calls. The system handles everything - quotes service calls, schedules generator installations. We went from missing 70% of emergency calls to capturing 91%."
+                    </p>
+                    <div class="testimonial-stats">
+                        <div class="stat-mini">
+                            <div class="stat-mini-value">91%</div>
+                            <div class="stat-mini-label">Capture Rate</div>
+                        </div>
+                        <div class="stat-mini">
+                            <div class="stat-mini-value">$43K</div>
+                            <div class="stat-mini-label">Monthly Jump</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 10 -->
+                <div class="testimonial-card" data-category="hvac">
+                    <div class="card-header">
+                        <div class="avatar">KL</div>
+                        <div class="contractor-info">
+                            <h4>Kevin Lee</h4>
+                            <p class="contractor-type">Arctic Air Solutions - Chicago, IL</p>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Chicago winters are brutal. Furnace failures at midnight used to go to our competitors. Now we book 90% of emergency heating calls. Last January alone: $67,400 in emergency service revenue."
+                    </p>
+                    <div class="testimonial-stats">
+                        <div class="stat-mini">
+                            <div class="stat-mini-value">90%</div>
+                            <div class="stat-mini-label">Winter Calls</div>
+                        </div>
+                        <div class="stat-mini">
+                            <div class="stat-mini-value">$67K</div>
+                            <div class="stat-mini-label">January Revenue</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 11 -->
+                <div class="testimonial-card" data-category="plumbing">
+                    <div class="card-header">
+                        <div class="avatar">BT</div>
+                        <div class="contractor-info">
+                            <h4>Brian Thompson</h4>
+                            <p class="contractor-type">Thompson's Drain Solutions - Las Vegas, NV</p>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Water heater failures don't wait for business hours. The system books same-day replacements while I sleep. My install crew arrives to booked jobs every morning. We've installed 234 water heaters this year from after-hours bookings."
+                    </p>
+                    <div class="testimonial-stats">
+                        <div class="stat-mini">
+                            <div class="stat-mini-value">234</div>
+                            <div class="stat-mini-label">Installs</div>
+                        </div>
+                        <div class="stat-mini">
+                            <div class="stat-mini-value">$187K</div>
+                            <div class="stat-mini-label">Year Revenue</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 12 -->
+                <div class="testimonial-card" data-category="general">
+                    <div class="card-header">
+                        <div class="avatar">RT</div>
+                        <div class="contractor-info">
+                            <h4>Rachel Torres</h4>
+                            <p class="contractor-type">Torres Home Repairs - San Antonio, TX</p>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        "As a single mom running a contracting business, I can't answer calls at 11 PM. But my competition was. ZestFlow levels the playing field. I now compete with companies 10x my size for emergency work."
+                    </p>
+                    <div class="testimonial-stats">
+                        <div class="stat-mini">
+                            <div class="stat-mini-value">24/7</div>
+                            <div class="stat-mini-label">Available</div>
+                        </div>
+                        <div class="stat-mini">
+                            <div class="stat-mini-value">$28K</div>
+                            <div class="stat-mini-label">Monthly Gain</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 13 -->
+                <div class="testimonial-card" data-category="roofing">
+                    <div class="card-header">
+                        <div class="avatar">MO</div>
+                        <div class="contractor-info">
+                            <h4>Marcus O'Connor</h4>
+                            <p class="contractor-type">O'Connor Roofing - Boston, MA</p>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Roof leaks don't wait for Monday morning. The system books emergency tarping, leak repairs, and full replacements. We went from reactive to proactive. Customers are amazed we respond in minutes, not hours."
+                    </p>
+                    <div class="testimonial-stats">
+                        <div class="stat-mini">
+                            <div class="stat-mini-value">60s</div>
+                            <div class="stat-mini-label">Response Time</div>
+                        </div>
+                        <div class="stat-mini">
+                            <div class="stat-mini-value">89%</div>
+                            <div class="stat-mini-label">Book Rate</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 14 -->
+                <div class="testimonial-card" data-category="landscaping">
+                    <div class="card-header">
+                        <div class="avatar">SS</div>
+                        <div class="contractor-info">
+                            <h4>Steve Silva</h4>
+                            <p class="contractor-type">Silva's Landscaping - Phoenix, AZ</p>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Broken sprinkler lines flood properties at night. Before ZestFlow, customers called our competitors first. Now we handle 85% of irrigation emergencies in our ZIP code. The system even books the follow-up landscape repair work."
+                    </p>
+                    <div class="testimonial-stats">
+                        <div class="stat-mini">
+                            <div class="stat-mini-value">85%</div>
+                            <div class="stat-mini-label">Local Share</div>
+                        </div>
+                        <div class="stat-mini">
+                            <div class="stat-mini-value">$39K</div>
+                            <div class="stat-mini-label">Monthly Add</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 15 -->
+                <div class="testimonial-card" data-category="electrical">
+                    <div class="card-header">
+                        <div class="avatar">AL</div>
+                        <div class="contractor-info">
+                            <h4>Andrea Lopez</h4>
+                            <p class="contractor-type">Lopez Electrical Services - San Diego, CA</p>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        "Panel upgrades, outlet installations, electrical inspections - the system books it all. What used to be missed midnight calls are now scheduled appointments with deposits collected. My booking rate went from 23% to 88%."
+                    </p>
+                    <div class="testimonial-stats">
+                        <div class="stat-mini">
+                            <div class="stat-mini-value">88%</div>
+                            <div class="stat-mini-label">Book Rate</div>
+                        </div>
+                        <div class="stat-mini">
+                            <div class="stat-mini-value">$52K</div>
+                            <div class="stat-mini-label">Monthly Jump</div>
                         </div>
                     </div>
                 </div>
